@@ -26,6 +26,8 @@ import {
   Film,
   Image as ImageIcon,
   Clapperboard,
+  Minus,
+  Plus,
 } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import { asanaImages } from "@/data/asanaImages";
@@ -386,14 +388,16 @@ function TransitionVideo({
   );
 }
 
-/* ── Cinematic Video Component (plays at natural speed, fires onEnded) ── */
+/* ── Cinematic Video Component (plays at timer-matched speed, fires onEnded) ── */
 function CinematicVideo({
   src,
   className,
+  durationSeconds,
   onEnded,
 }: {
   src: string;
   className?: string;
+  durationSeconds?: number;
   onEnded: () => void;
 }) {
   const videoRef = useRef<HTMLVideoElement>(null);
@@ -403,9 +407,14 @@ function CinematicVideo({
     if (!video) return;
 
     video.currentTime = 0;
-    video.playbackRate = 1; // Natural speed always
 
     const handleLoaded = () => {
+      if (durationSeconds && video.duration && video.duration > 0) {
+        const rate = video.duration / durationSeconds;
+        video.playbackRate = Math.max(0.1, Math.min(4, rate));
+      } else {
+        video.playbackRate = 1;
+      }
       video.play().catch(() => {});
     };
 
@@ -416,7 +425,7 @@ function CinematicVideo({
     }
 
     return () => video.removeEventListener("loadedmetadata", handleLoaded);
-  }, [src]);
+  }, [src, durationSeconds]);
 
   return (
     <video
@@ -445,6 +454,7 @@ export default function SuryaNamaskar() {
   const [cinematicMode, setCinematicMode] = useState(false);
   // Cinematic mode sub-state: "pose" = showing static image, "video" = playing transition video
   const [cinematicPhase, setCinematicPhase] = useState<"pose" | "video">("pose");
+  const [poseHoldSeconds, setPoseHoldSeconds] = useState(3);
   const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
   const audioRef = useRef<AudioContext | null>(null);
 
@@ -455,7 +465,7 @@ export default function SuryaNamaskar() {
   const hasTransitionVideo = currentStepIndex < currentVideos.length;
   const showVideo = !cinematicMode && transitionMode && hasTransitionVideo;
 
-  const CINEMATIC_POSE_HOLD = 2; // seconds to show each pose image
+  const CINEMATIC_POSE_HOLD = poseHoldSeconds; // user-adjustable seconds to show each pose image
 
   const playBell = useCallback(() => {
     if (!soundEnabled) return;
@@ -615,6 +625,7 @@ export default function SuryaNamaskar() {
           <CinematicVideo
             src={currentVideos[stepIndex]}
             className="w-full h-full object-cover rounded-xl"
+            durationSeconds={step.duration}
             onEnded={handleCinematicVideoEnded}
           />
         );
@@ -745,6 +756,29 @@ export default function SuryaNamaskar() {
                 />
               </div>
 
+              {/* Pose hold duration control — only visible when cinematic mode is on */}
+              {cinematicMode && (
+                <div className="flex items-center gap-3 bg-card border border-gold/30 rounded-full px-4 py-2">
+                  <Clock className="w-4 h-4 text-gold-dark" />
+                  <span className="text-sm font-medium text-foreground whitespace-nowrap">Pose Hold:</span>
+                  <div className="flex items-center gap-1.5">
+                    <button
+                      onClick={() => setPoseHoldSeconds(Math.max(1, poseHoldSeconds - 1))}
+                      className="w-7 h-7 rounded-full bg-cream-dark flex items-center justify-center hover:bg-border transition-colors text-foreground"
+                    >
+                      <Minus className="w-3.5 h-3.5" />
+                    </button>
+                    <span className="text-sm font-bold text-gold-dark w-8 text-center">{poseHoldSeconds}s</span>
+                    <button
+                      onClick={() => setPoseHoldSeconds(Math.min(10, poseHoldSeconds + 1))}
+                      className="w-7 h-7 rounded-full bg-cream-dark flex items-center justify-center hover:bg-border transition-colors text-foreground"
+                    >
+                      <Plus className="w-3.5 h-3.5" />
+                    </button>
+                  </div>
+                </div>
+              )}
+
               <button
                 onClick={() => setShowContraindications(!showContraindications)}
                 className="inline-flex items-center gap-2 text-sm text-rose hover:text-rose/80 transition-colors"
@@ -833,7 +867,7 @@ export default function SuryaNamaskar() {
                 >
                   <p className="text-sm text-foreground">
                     <Clapperboard className="w-4 h-4 inline mr-2 text-gold-dark" />
-                    <strong>Cinematic Mode:</strong> Each pose is shown for 2 seconds, followed by a smooth transition video at natural speed. No sound cues — just visual flow.
+                    <strong>Cinematic Mode:</strong> Each pose is shown for {poseHoldSeconds} second{poseHoldSeconds !== 1 ? 's' : ''}, followed by a smooth transition video. Adjust the hold time above.
                   </p>
                 </motion.div>
               )}
