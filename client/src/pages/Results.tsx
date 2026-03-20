@@ -136,16 +136,28 @@ export default function Results() {
               )}
             </div>
 
-            {/* Stats */}
-            <div className="flex items-center gap-6 text-sm text-muted-foreground">
-              <span className="flex items-center gap-1.5">
-                <Check className="w-4 h-4 text-forest" />
-                {results.recommended.length} Recommended
-              </span>
-              <span className="flex items-center gap-1.5">
-                <X className="w-4 h-4 text-rose" />
-                {results.contraindicated.length} To Avoid
-              </span>
+            {/* Stats + Start Session */}
+            <div className="flex flex-col sm:flex-row sm:items-center gap-4 mt-2">
+              <div className="flex items-center gap-6 text-sm text-muted-foreground">
+                <span className="flex items-center gap-1.5">
+                  <Check className="w-4 h-4 text-forest" />
+                  {results.recommended.length} Recommended
+                </span>
+                <span className="flex items-center gap-1.5">
+                  <X className="w-4 h-4 text-rose" />
+                  {results.contraindicated.length} To Avoid
+                </span>
+              </div>
+              {results.recommended.length > 0 && (
+                <button
+                  onClick={() => navigate(`/session?${search}`)}
+                  className="inline-flex items-center gap-2 px-6 py-3 bg-forest text-cream rounded-full font-semibold hover:bg-forest-light transition-colors shadow-lg"
+                >
+                  <Play className="w-5 h-5" />
+                  Start Session
+                  <Timer className="w-4 h-4 opacity-60" />
+                </button>
+              )}
             </div>
           </motion.div>
         </div>
