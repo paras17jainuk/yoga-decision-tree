@@ -52,6 +52,7 @@
   --color-terracotta-light: oklch(0.72 0.10 45);
   --color-gold: oklch(0.78 0.10 85);
   --color-gold-light: oklch(0.88 0.06 85);
+  --color-gold-dark: oklch(0.60 0.10 85);
   --color-rose: oklch(0.72 0.08 15);
   --color-rose-light: oklch(0.88 0.05 15);
   --color-sage: oklch(0.75 0.06 155);

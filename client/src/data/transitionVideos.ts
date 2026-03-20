@@ -1,34 +1,127 @@
 /*
- * Surya Namaskar A — Transition Videos
+ * Transition Videos — CDN URLs for all flow sequences
  * Each video shows the smooth flow from one pose to the next.
  * Index corresponds to the step number (0-based): video[i] shows transition INTO step i.
- * Video 0 = Tadasana → Pranamasana (entering step 1)
- * Video 11 = Hasta Uttanasana → Pranamasana (entering step 12)
  */
 
+/* ── Surya Namaskar A ── */
 export const suryaATransitionVideos: string[] = [
-  // 0: Tadasana → Pranamasana (Step 1)
   "https://d2xsxph8kpxj0f.cloudfront.net/310519663318567070/87xTRNw69cyUtrfeqdS85m/01_tadasana_to_pranamasana_c034ca66.mp4",
-  // 1: Pranamasana → Hasta Uttanasana (Step 2)
   "https://d2xsxph8kpxj0f.cloudfront.net/310519663318567070/87xTRNw69cyUtrfeqdS85m/02_pranamasana_to_hasta_uttanasana_d800e10b.mp4",
-  // 2: Hasta Uttanasana → Uttanasana (Step 3)
   "https://d2xsxph8kpxj0f.cloudfront.net/310519663318567070/87xTRNw69cyUtrfeqdS85m/03_hasta_uttanasana_to_uttanasana_9ee38e54.mp4",
-  // 3: Uttanasana → Ashwa Sanchalanasana (Step 4)
   "https://d2xsxph8kpxj0f.cloudfront.net/310519663318567070/87xTRNw69cyUtrfeqdS85m/04_uttanasana_to_ashwa_sanchalanasana_c5eb6b29.mp4",
-  // 4: Ashwa Sanchalanasana → Phalakasana (Step 5)
   "https://d2xsxph8kpxj0f.cloudfront.net/310519663318567070/87xTRNw69cyUtrfeqdS85m/05_ashwa_sanchalanasana_to_phalakasana_7c9bae71.mp4",
-  // 5: Phalakasana → Ashtanga Namaskara (Step 6)
   "https://d2xsxph8kpxj0f.cloudfront.net/310519663318567070/87xTRNw69cyUtrfeqdS85m/06_phalakasana_to_ashtanga_namaskara_3463e791.mp4",
-  // 6: Ashtanga Namaskara → Bhujangasana (Step 7)
   "https://d2xsxph8kpxj0f.cloudfront.net/310519663318567070/87xTRNw69cyUtrfeqdS85m/07_ashtanga_namaskara_to_bhujangasana_3b0849c6.mp4",
-  // 7: Bhujangasana → Adho Mukha Svanasana (Step 8)
   "https://d2xsxph8kpxj0f.cloudfront.net/310519663318567070/87xTRNw69cyUtrfeqdS85m/08_bhujangasana_to_adho_mukha_svanasana_3c9cd8ef.mp4",
-  // 8: Adho Mukha Svanasana → Ashwa Sanchalanasana (Step 9)
   "https://d2xsxph8kpxj0f.cloudfront.net/310519663318567070/87xTRNw69cyUtrfeqdS85m/09_adho_mukha_svanasana_to_ashwa_sanchalanasana_e7f4440c.mp4",
-  // 9: Ashwa Sanchalanasana → Uttanasana (Step 10)
   "https://d2xsxph8kpxj0f.cloudfront.net/310519663318567070/87xTRNw69cyUtrfeqdS85m/10_ashwa_sanchalanasana_to_uttanasana_0b25a6fc.mp4",
-  // 10: Uttanasana → Hasta Uttanasana (Step 11)
   "https://d2xsxph8kpxj0f.cloudfront.net/310519663318567070/87xTRNw69cyUtrfeqdS85m/11_uttanasana_to_hasta_uttanasana_eb17fe1b.mp4",
-  // 11: Hasta Uttanasana → Pranamasana (Step 12)
   "https://d2xsxph8kpxj0f.cloudfront.net/310519663318567070/87xTRNw69cyUtrfeqdS85m/12_hasta_uttanasana_to_pranamasana_da43c991.mp4",
 ];
+
+/* ── Surya Namaskar B ── */
+export const suryaBTransitionVideos: string[] = [
+  "https://d2xsxph8kpxj0f.cloudfront.net/310519663318567070/87xTRNw69cyUtrfeqdS85m/01_tadasana_to_utkatasana_bdeeec67.mp4",
+  "https://d2xsxph8kpxj0f.cloudfront.net/310519663318567070/87xTRNw69cyUtrfeqdS85m/02_utkatasana_to_uttanasana_5e711ade.mp4",
+  "https://d2xsxph8kpxj0f.cloudfront.net/310519663318567070/87xTRNw69cyUtrfeqdS85m/03_uttanasana_to_ardha_uttanasana_36c23527.mp4",
+  "https://d2xsxph8kpxj0f.cloudfront.net/310519663318567070/87xTRNw69cyUtrfeqdS85m/04_ardha_uttanasana_to_chaturanga_dcc0e7fe.mp4",
+  "https://d2xsxph8kpxj0f.cloudfront.net/310519663318567070/87xTRNw69cyUtrfeqdS85m/05_chaturanga_to_upward_dog_70a383e0.mp4",
+  "https://d2xsxph8kpxj0f.cloudfront.net/310519663318567070/87xTRNw69cyUtrfeqdS85m/06_upward_dog_to_downward_dog_f5850dad.mp4",
+  "https://d2xsxph8kpxj0f.cloudfront.net/310519663318567070/87xTRNw69cyUtrfeqdS85m/07_downward_dog_to_warrior_i_right_7c29bbf1.mp4",
+  "https://d2xsxph8kpxj0f.cloudfront.net/310519663318567070/87xTRNw69cyUtrfeqdS85m/08_warrior_i_to_chaturanga_ff62efbe.mp4",
+  "https://d2xsxph8kpxj0f.cloudfront.net/310519663318567070/87xTRNw69cyUtrfeqdS85m/09_chaturanga_to_upward_dog_2_75a39a46.mp4",
+  "https://d2xsxph8kpxj0f.cloudfront.net/310519663318567070/87xTRNw69cyUtrfeqdS85m/10_upward_dog_to_downward_dog_2_44a3f3d1.mp4",
+  "https://d2xsxph8kpxj0f.cloudfront.net/310519663318567070/87xTRNw69cyUtrfeqdS85m/11_downward_dog_to_warrior_i_left_b4327ac8.mp4",
+  "https://d2xsxph8kpxj0f.cloudfront.net/310519663318567070/87xTRNw69cyUtrfeqdS85m/12_warrior_i_to_chaturanga_2_3f213c30.mp4",
+  "https://d2xsxph8kpxj0f.cloudfront.net/310519663318567070/87xTRNw69cyUtrfeqdS85m/13_chaturanga_to_upward_dog_3_26b3b44d.mp4",
+  "https://d2xsxph8kpxj0f.cloudfront.net/310519663318567070/87xTRNw69cyUtrfeqdS85m/14_upward_dog_to_downward_dog_3_dae4d8b8.mp4",
+  "https://d2xsxph8kpxj0f.cloudfront.net/310519663318567070/87xTRNw69cyUtrfeqdS85m/15_downward_dog_to_ardha_uttanasana_50527467.mp4",
+  "https://d2xsxph8kpxj0f.cloudfront.net/310519663318567070/87xTRNw69cyUtrfeqdS85m/16_ardha_uttanasana_to_uttanasana_64ff2262.mp4",
+  "https://d2xsxph8kpxj0f.cloudfront.net/310519663318567070/87xTRNw69cyUtrfeqdS85m/17_uttanasana_to_utkatasana_9c88a2fc.mp4",
+  "https://d2xsxph8kpxj0f.cloudfront.net/310519663318567070/87xTRNw69cyUtrfeqdS85m/18_utkatasana_to_tadasana_3efd1ac8.mp4",
+];
+
+/* ── Vinyasa Flow Videos ── */
+// Keyed by flow ID, each array has one video per step transition
+export const vinyasaFlowVideos: Record<string, string[]> = {
+  basic_vinyasa: [
+    "https://d2xsxph8kpxj0f.cloudfront.net/310519663318567070/87xTRNw69cyUtrfeqdS85m/bv_01_tadasana_to_uttanasana_208a7b7e.mp4",
+    "https://d2xsxph8kpxj0f.cloudfront.net/310519663318567070/87xTRNw69cyUtrfeqdS85m/bv_02_uttanasana_to_half_lift_05657902.mp4",
+    "https://d2xsxph8kpxj0f.cloudfront.net/310519663318567070/87xTRNw69cyUtrfeqdS85m/bv_03_half_lift_to_plank_2915f5e1.mp4",
+    "https://d2xsxph8kpxj0f.cloudfront.net/310519663318567070/87xTRNw69cyUtrfeqdS85m/bv_04_plank_to_chaturanga_c75088c8.mp4",
+    "https://d2xsxph8kpxj0f.cloudfront.net/310519663318567070/87xTRNw69cyUtrfeqdS85m/bv_05_chaturanga_to_cobra_4153f5ec.mp4",
+    "https://d2xsxph8kpxj0f.cloudfront.net/310519663318567070/87xTRNw69cyUtrfeqdS85m/bv_06_cobra_to_downdog_f5c01776.mp4",
+    "https://d2xsxph8kpxj0f.cloudfront.net/310519663318567070/87xTRNw69cyUtrfeqdS85m/bv_07_downdog_to_uttanasana_8b9be78e.mp4",
+    "https://d2xsxph8kpxj0f.cloudfront.net/310519663318567070/87xTRNw69cyUtrfeqdS85m/bv_08_uttanasana_to_tadasana_3d75db82.mp4",
+  ],
+  warrior_flow: [
+    "https://d2xsxph8kpxj0f.cloudfront.net/310519663318567070/87xTRNw69cyUtrfeqdS85m/wf_01_tadasana_to_warrior1_d73d4793.mp4",
+    "https://d2xsxph8kpxj0f.cloudfront.net/310519663318567070/87xTRNw69cyUtrfeqdS85m/wf_02_warrior1_to_warrior2_eb14f3be.mp4",
+    "https://d2xsxph8kpxj0f.cloudfront.net/310519663318567070/87xTRNw69cyUtrfeqdS85m/wf_03_warrior2_to_reverse_e39b0fe1.mp4",
+    "https://d2xsxph8kpxj0f.cloudfront.net/310519663318567070/87xTRNw69cyUtrfeqdS85m/wf_04_reverse_to_sideangle_158602d4.mp4",
+    "https://d2xsxph8kpxj0f.cloudfront.net/310519663318567070/87xTRNw69cyUtrfeqdS85m/wf_05_sideangle_to_warrior3_964aed11.mp4",
+    "https://d2xsxph8kpxj0f.cloudfront.net/310519663318567070/87xTRNw69cyUtrfeqdS85m/wf_06_warrior3_to_uttanasana_80867db5.mp4",
+    "https://d2xsxph8kpxj0f.cloudfront.net/310519663318567070/87xTRNw69cyUtrfeqdS85m/wf_07_uttanasana_to_warrior1_left_81f466af.mp4",
+    "https://d2xsxph8kpxj0f.cloudfront.net/310519663318567070/87xTRNw69cyUtrfeqdS85m/wf_08_warrior1_to_warrior2_left_8486d6db.mp4",
+    "https://d2xsxph8kpxj0f.cloudfront.net/310519663318567070/87xTRNw69cyUtrfeqdS85m/wf_09_warrior2_to_reverse_left_c8a5eaea.mp4",
+    "https://d2xsxph8kpxj0f.cloudfront.net/310519663318567070/87xTRNw69cyUtrfeqdS85m/wf_10_reverse_to_sideangle_left_fbe074ad.mp4",
+    "https://d2xsxph8kpxj0f.cloudfront.net/310519663318567070/87xTRNw69cyUtrfeqdS85m/wf_11_sideangle_to_warrior3_left_e1fd1061.mp4",
+    "https://d2xsxph8kpxj0f.cloudfront.net/310519663318567070/87xTRNw69cyUtrfeqdS85m/wf_12_warrior3_to_tadasana_9b1dd830.mp4",
+  ],
+  balance_flow: [
+    "https://d2xsxph8kpxj0f.cloudfront.net/310519663318567070/87xTRNw69cyUtrfeqdS85m/bf_01_tadasana_to_tree_111cc453.mp4",
+    "https://d2xsxph8kpxj0f.cloudfront.net/310519663318567070/87xTRNw69cyUtrfeqdS85m/bf_02_tree_to_eagle_24e4509f.mp4",
+    "https://d2xsxph8kpxj0f.cloudfront.net/310519663318567070/87xTRNw69cyUtrfeqdS85m/bf_03_eagle_to_warrior3_6134f44b.mp4",
+    "https://d2xsxph8kpxj0f.cloudfront.net/310519663318567070/87xTRNw69cyUtrfeqdS85m/bf_04_warrior3_to_halfmoon_a6238201.mp4",
+    "https://d2xsxph8kpxj0f.cloudfront.net/310519663318567070/87xTRNw69cyUtrfeqdS85m/bf_05_halfmoon_to_uttanasana_e85537b2.mp4",
+    "https://d2xsxph8kpxj0f.cloudfront.net/310519663318567070/87xTRNw69cyUtrfeqdS85m/bf_06_uttanasana_to_tree_left_bb743c21.mp4",
+    "https://d2xsxph8kpxj0f.cloudfront.net/310519663318567070/87xTRNw69cyUtrfeqdS85m/bf_07_tree_to_eagle_left_5cf68065.mp4",
+    "https://d2xsxph8kpxj0f.cloudfront.net/310519663318567070/87xTRNw69cyUtrfeqdS85m/bf_08_eagle_to_warrior3_left_e1fe13f1.mp4",
+    "https://d2xsxph8kpxj0f.cloudfront.net/310519663318567070/87xTRNw69cyUtrfeqdS85m/bf_09_warrior3_to_halfmoon_left_12348007.mp4",
+    "https://d2xsxph8kpxj0f.cloudfront.net/310519663318567070/87xTRNw69cyUtrfeqdS85m/bf_10_halfmoon_to_tadasana_aa5e37b5.mp4",
+  ],
+  hip_opening_flow: [
+    "https://d2xsxph8kpxj0f.cloudfront.net/310519663318567070/87xTRNw69cyUtrfeqdS85m/ho_01_sukhasana_to_butterfly_37381817.mp4",
+    "https://d2xsxph8kpxj0f.cloudfront.net/310519663318567070/87xTRNw69cyUtrfeqdS85m/ho_02_butterfly_to_lunge_d0d97f5b.mp4",
+    "https://d2xsxph8kpxj0f.cloudfront.net/310519663318567070/87xTRNw69cyUtrfeqdS85m/ho_03_lunge_to_pigeon_ce42668f.mp4",
+    "https://d2xsxph8kpxj0f.cloudfront.net/310519663318567070/87xTRNw69cyUtrfeqdS85m/ho_04_pigeon_to_reclined_22046c77.mp4",
+    "https://d2xsxph8kpxj0f.cloudfront.net/310519663318567070/87xTRNw69cyUtrfeqdS85m/ho_05_reclined_to_twist_108dbaab.mp4",
+    "https://d2xsxph8kpxj0f.cloudfront.net/310519663318567070/87xTRNw69cyUtrfeqdS85m/ho_06_twist_to_lunge_left_fb91af43.mp4",
+    "https://d2xsxph8kpxj0f.cloudfront.net/310519663318567070/87xTRNw69cyUtrfeqdS85m/ho_07_lunge_to_pigeon_left_54268dea.mp4",
+    "https://d2xsxph8kpxj0f.cloudfront.net/310519663318567070/87xTRNw69cyUtrfeqdS85m/ho_08_pigeon_to_reclined_left_6d9f3d43.mp4",
+    "https://d2xsxph8kpxj0f.cloudfront.net/310519663318567070/87xTRNw69cyUtrfeqdS85m/ho_09_reclined_to_twist_left_3b1ffa34.mp4",
+    "https://d2xsxph8kpxj0f.cloudfront.net/310519663318567070/87xTRNw69cyUtrfeqdS85m/ho_10_twist_to_happybaby_5dbcc3a9.mp4",
+    "https://d2xsxph8kpxj0f.cloudfront.net/310519663318567070/87xTRNw69cyUtrfeqdS85m/ho_11_happybaby_to_savasana_4d37f7ff.mp4",
+  ],
+  energizing_flow: [
+    "https://d2xsxph8kpxj0f.cloudfront.net/310519663318567070/87xTRNw69cyUtrfeqdS85m/ef_01_tadasana_to_chair_c2f5707b.mp4",
+    "https://d2xsxph8kpxj0f.cloudfront.net/310519663318567070/87xTRNw69cyUtrfeqdS85m/ef_02_chair_to_twisted_f236b7c0.mp4",
+    "https://d2xsxph8kpxj0f.cloudfront.net/310519663318567070/87xTRNw69cyUtrfeqdS85m/ef_03_twisted_to_plank_d8412f10.mp4",
+    "https://d2xsxph8kpxj0f.cloudfront.net/310519663318567070/87xTRNw69cyUtrfeqdS85m/ef_04_plank_to_forearm_cd2c869e.mp4",
+    "https://d2xsxph8kpxj0f.cloudfront.net/310519663318567070/87xTRNw69cyUtrfeqdS85m/ef_05_forearm_to_dolphin_db482b63.mp4",
+    "https://d2xsxph8kpxj0f.cloudfront.net/310519663318567070/87xTRNw69cyUtrfeqdS85m/ef_06_dolphin_to_warrior1_b4a8bffb.mp4",
+    "https://d2xsxph8kpxj0f.cloudfront.net/310519663318567070/87xTRNw69cyUtrfeqdS85m/ef_07_warrior1_to_humble_29ecba03.mp4",
+    "https://d2xsxph8kpxj0f.cloudfront.net/310519663318567070/87xTRNw69cyUtrfeqdS85m/ef_08_humble_to_warrior3_33bd5bff.mp4",
+    "https://d2xsxph8kpxj0f.cloudfront.net/310519663318567070/87xTRNw69cyUtrfeqdS85m/ef_09_warrior3_to_chaturanga_a75410e4.mp4",
+    "https://d2xsxph8kpxj0f.cloudfront.net/310519663318567070/87xTRNw69cyUtrfeqdS85m/ef_10_chaturanga_to_updog_01358391.mp4",
+    "https://d2xsxph8kpxj0f.cloudfront.net/310519663318567070/87xTRNw69cyUtrfeqdS85m/ef_11_updog_to_downdog_5426ba3c.mp4",
+    "https://d2xsxph8kpxj0f.cloudfront.net/310519663318567070/87xTRNw69cyUtrfeqdS85m/ef_12_downdog_to_warrior1_left_b7c0ceaf.mp4",
+    "https://d2xsxph8kpxj0f.cloudfront.net/310519663318567070/87xTRNw69cyUtrfeqdS85m/ef_13_warrior1_to_humble_left_083c3f36.mp4",
+    "https://d2xsxph8kpxj0f.cloudfront.net/310519663318567070/87xTRNw69cyUtrfeqdS85m/ef_14_humble_to_warrior3_left_3656ffc1.mp4",
+    "https://d2xsxph8kpxj0f.cloudfront.net/310519663318567070/87xTRNw69cyUtrfeqdS85m/ef_15_warrior3_to_boat_76a1305d.mp4",
+    "https://d2xsxph8kpxj0f.cloudfront.net/310519663318567070/87xTRNw69cyUtrfeqdS85m/ef_16_boat_to_bridge_b1ff3727.mp4",
+    "https://d2xsxph8kpxj0f.cloudfront.net/310519663318567070/87xTRNw69cyUtrfeqdS85m/ef_17_bridge_to_savasana_67737be2.mp4",
+  ],
+  gentle_flow: [
+    "https://d2xsxph8kpxj0f.cloudfront.net/310519663318567070/87xTRNw69cyUtrfeqdS85m/gf_01_sukhasana_to_catcow_a0d0cc84.mp4",
+    "https://d2xsxph8kpxj0f.cloudfront.net/310519663318567070/87xTRNw69cyUtrfeqdS85m/gf_02_catcow_to_childs_88aa8d67.mp4",
+    "https://d2xsxph8kpxj0f.cloudfront.net/310519663318567070/87xTRNw69cyUtrfeqdS85m/gf_03_childs_to_puppy_c6e2b45b.mp4",
+    "https://d2xsxph8kpxj0f.cloudfront.net/310519663318567070/87xTRNw69cyUtrfeqdS85m/gf_04_puppy_to_sphinx_84cf30e1.mp4",
+    "https://d2xsxph8kpxj0f.cloudfront.net/310519663318567070/87xTRNw69cyUtrfeqdS85m/gf_05_sphinx_to_reclined_butterfly_30ea8f9e.mp4",
+    "https://d2xsxph8kpxj0f.cloudfront.net/310519663318567070/87xTRNw69cyUtrfeqdS85m/gf_06_butterfly_to_knees_5d7e9845.mp4",
+    "https://d2xsxph8kpxj0f.cloudfront.net/310519663318567070/87xTRNw69cyUtrfeqdS85m/gf_07_knees_to_twist_4aa60a85.mp4",
+    "https://d2xsxph8kpxj0f.cloudfront.net/310519663318567070/87xTRNw69cyUtrfeqdS85m/gf_08_twist_to_legsup_d9c1bbdf.mp4",
+    "https://d2xsxph8kpxj0f.cloudfront.net/310519663318567070/87xTRNw69cyUtrfeqdS85m/gf_09_legsup_to_savasana_ca638f46.mp4",
+  ],
+};

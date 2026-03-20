@@ -5,7 +5,7 @@
  */
 import { Link, useLocation } from "wouter";
 import { motion } from "framer-motion";
-import { Leaf, Menu, X, Sun, Wind } from "lucide-react";
+import { Leaf, Menu, X } from "lucide-react";
 import { useState } from "react";
 
 const navItems = [
@@ -13,6 +13,8 @@ const navItems = [
   { label: "Explore Asanas", href: "/explore" },
   { label: "Surya Namaskar", href: "/surya-namaskar" },
   { label: "Vinyasa Flows", href: "/vinyasa" },
+  { label: "Pranayama", href: "/pranayama" },
+  { label: "Meditation", href: "/meditation" },
   { label: "Safety Guide", href: "/safety" },
   { label: "Dashboard", href: "/dashboard" },
 ];
@@ -42,13 +44,13 @@ export default function Navbar() {
         </Link>
 
         {/* Desktop nav */}
-        <div className="hidden md:flex items-center gap-1">
+        <div className="hidden lg:flex items-center gap-0.5">
           {navItems.map((item) => {
             const isActive = location === item.href;
             return (
               <Link key={item.href} href={item.href}>
                 <span
-                  className={`relative px-3 py-2 text-sm font-medium rounded-full transition-colors ${
+                  className={`relative px-2.5 py-2 text-[13px] font-medium rounded-full transition-colors ${
                     isActive
                       ? "text-forest-dark"
                       : "text-muted-foreground hover:text-foreground"
@@ -72,7 +74,7 @@ export default function Navbar() {
           <motion.span
             whileHover={{ scale: 1.03 }}
             whileTap={{ scale: 0.97 }}
-            className="hidden md:inline-flex items-center gap-2 px-5 py-2.5 bg-forest text-cream text-sm font-semibold rounded-full hover:bg-forest-light transition-colors"
+            className="hidden lg:inline-flex items-center gap-2 px-4 py-2 bg-forest text-cream text-sm font-semibold rounded-full hover:bg-forest-light transition-colors"
           >
             Start Assessment
           </motion.span>
@@ -80,7 +82,7 @@ export default function Navbar() {
 
         {/* Mobile hamburger */}
         <button
-          className="md:hidden p-2 rounded-lg hover:bg-sage-light transition-colors"
+          className="lg:hidden p-2 rounded-lg hover:bg-sage-light transition-colors"
           onClick={() => setMobileOpen(!mobileOpen)}
         >
           {mobileOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
@@ -93,7 +95,7 @@ export default function Navbar() {
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: -10 }}
-          className="md:hidden bg-cream/95 backdrop-blur-lg border-b border-border px-4 pb-4"
+          className="lg:hidden bg-cream/95 backdrop-blur-lg border-b border-border px-4 pb-4"
         >
           {navItems.map((item) => {
             const isActive = location === item.href;

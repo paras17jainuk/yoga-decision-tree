@@ -28,7 +28,7 @@ import {
 } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import { asanaImages } from "@/data/asanaImages";
-import { suryaATransitionVideos } from "@/data/transitionVideos";
+import { suryaATransitionVideos, suryaBTransitionVideos } from "@/data/transitionVideos";
 import { Switch } from "@/components/ui/switch";
 
 /* ── Surya Namaskar A Steps ── */
@@ -393,8 +393,9 @@ export default function SuryaNamaskar() {
   const steps = selectedFlow === "A" ? SURYA_A : SURYA_B;
   const currentStep = steps[currentStepIndex];
 
-  // Transition videos are only available for Surya Namaskar A
-  const hasTransitionVideo = selectedFlow === "A" && currentStepIndex < suryaATransitionVideos.length;
+  // Transition videos available for both Surya A and B
+  const currentVideos = selectedFlow === "A" ? suryaATransitionVideos : suryaBTransitionVideos;
+  const hasTransitionVideo = currentStepIndex < currentVideos.length;
   const showVideo = transitionMode && hasTransitionVideo;
 
   const playBell = useCallback(() => {
@@ -498,10 +499,11 @@ export default function SuryaNamaskar() {
   /* ── Render helper: Image or Video for a step ── */
   const renderStepMedia = (stepIndex: number, step: FlowStep, size: "sm" | "lg", inPracticeMode?: boolean) => {
     // Videos ONLY in practice mode, never in learn mode or thumbnails
-    const isVideoAvailable = inPracticeMode && transitionMode && selectedFlow === "A" && stepIndex < suryaATransitionVideos.length;
+    const vids = selectedFlow === "A" ? suryaATransitionVideos : suryaBTransitionVideos;
+    const isVideoAvailable = inPracticeMode && transitionMode && stepIndex < vids.length;
 
     if (isVideoAvailable && size === "lg") {
-      const videoUrl = suryaATransitionVideos[stepIndex];
+      const videoUrl = vids[stepIndex];
       return (
         <TransitionVideo
           src={videoUrl}
@@ -582,16 +584,14 @@ export default function SuryaNamaskar() {
 
             {/* Transition Mode toggle + Contraindications */}
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-              {selectedFlow === "A" && (
-                <div className="flex items-center gap-2.5 bg-card border border-border rounded-full px-4 py-2">
-                  <Film className={`w-4 h-4 ${transitionMode ? "text-forest" : "text-muted-foreground"}`} />
-                  <span className="text-sm font-medium text-foreground">Transition Videos</span>
-                  <Switch
-                    checked={transitionMode}
-                    onCheckedChange={setTransitionMode}
-                  />
-                </div>
-              )}
+              <div className="flex items-center gap-2.5 bg-card border border-border rounded-full px-4 py-2">
+                <Film className={`w-4 h-4 ${transitionMode ? "text-forest" : "text-muted-foreground"}`} />
+                <span className="text-sm font-medium text-foreground">Transition Videos</span>
+                <Switch
+                  checked={transitionMode}
+                  onCheckedChange={setTransitionMode}
+                />
+              </div>
               <button
                 onClick={() => setShowContraindications(!showContraindications)}
                 className="inline-flex items-center gap-2 text-sm text-rose hover:text-rose/80 transition-colors"

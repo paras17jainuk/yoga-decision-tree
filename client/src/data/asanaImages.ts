@@ -77,4 +77,10 @@ export const asanaImages: Record<string, string> = {
   "ashtanga_namaskara": "https://d2xsxph8kpxj0f.cloudfront.net/310519663318567070/87xTRNw69cyUtrfeqdS85m/ashtanga_namaskara_v2-fBLAYAV9WnGz7rfrEbZtka.png",
   "ashwa_sanchalanasana_mirrored": "https://d2xsxph8kpxj0f.cloudfront.net/310519663318567070/87xTRNw69cyUtrfeqdS85m/ashwa_sanchalanasana_mirrored_e75cda8d.png",
   "phalakasana_v2": "https://d2xsxph8kpxj0f.cloudfront.net/310519663318567070/87xTRNw69cyUtrfeqdS85m/phalakasana_v2-AjRY4m9JFQ9Fyqx9eo2rMK.png",
+  "sitali_pranayama": "https://d2xsxph8kpxj0f.cloudfront.net/310519663318567070/87xTRNw69cyUtrfeqdS85m/pranayama_sitali_fdd68bfa.png",
+  "bhastrika_pranayama_v2": "https://d2xsxph8kpxj0f.cloudfront.net/310519663318567070/87xTRNw69cyUtrfeqdS85m/pranayama_bhastrika-eymD7WqG6zaRadzTpZdw5k.png",
+  "meditation_seated": "https://d2xsxph8kpxj0f.cloudfront.net/310519663318567070/87xTRNw69cyUtrfeqdS85m/meditation_seated-LCHMN5tiS4ZTteYmg4WqVQ.png",
+  "meditation_body_scan": "https://d2xsxph8kpxj0f.cloudfront.net/310519663318567070/87xTRNw69cyUtrfeqdS85m/meditation_body_scan-cazafykZR756tRFtsGhy2c.png",
+  "meditation_walking": "https://d2xsxph8kpxj0f.cloudfront.net/310519663318567070/87xTRNw69cyUtrfeqdS85m/meditation_walking-W5TNu8HqQBpytcSsRYs5Sa.png",
+  "meditation_loving_kindness": "https://d2xsxph8kpxj0f.cloudfront.net/310519663318567070/87xTRNw69cyUtrfeqdS85m/meditation_loving_kindness-kEu3CrMgiScT6Vh8e9pHQz.png",
 };

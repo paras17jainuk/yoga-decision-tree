@@ -27,9 +27,12 @@ import {
   Zap,
   Feather,
   Target,
+  Film,
 } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import { asanaImages } from "@/data/asanaImages";
+import { vinyasaFlowVideos } from "@/data/transitionVideos";
+import { Switch } from "@/components/ui/switch";
 
 interface FlowStep {
   name: string;
@@ -232,6 +235,42 @@ const breathColors: Record<string, string> = {
   Normal: "text-muted-foreground bg-cream-dark/50",
 };
 
+/* ── Transition Video Component ── */
+function TransitionVideo({ src, className, durationSeconds }: { src: string; className?: string; durationSeconds?: number }) {
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+
+    video.load();
+
+    const handleLoaded = () => {
+      if (durationSeconds && video.duration && video.duration > 0) {
+        const rate = video.duration / durationSeconds;
+        video.playbackRate = Math.max(0.1, Math.min(4, rate));
+      } else {
+        video.playbackRate = 1;
+      }
+      video.play().catch(() => {});
+    };
+
+    video.addEventListener("loadedmetadata", handleLoaded);
+    return () => video.removeEventListener("loadedmetadata", handleLoaded);
+  }, [src, durationSeconds]);
+
+  return (
+    <video
+      ref={videoRef}
+      src={src}
+      className={className}
+      muted
+      playsInline
+      preload="auto"
+    />
+  );
+}
+
 export default function VinyasaFlows() {
   const [selectedFlow, setSelectedFlow] = useState<VinyasaFlow | null>(null);
   const [mode, setMode] = useState<"browse" | "learn" | "practice">("browse");
@@ -240,11 +279,17 @@ export default function VinyasaFlows() {
   const [timeLeft, setTimeLeft] = useState(0);
   const [soundEnabled, setSoundEnabled] = useState(true);
   const [showContraindications, setShowContraindications] = useState(false);
+  const [transitionMode, setTransitionMode] = useState(true);
   const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
   const audioRef = useRef<AudioContext | null>(null);
 
   const steps = selectedFlow?.steps || [];
   const currentStep = steps[currentStepIndex];
+
+  // Transition videos
+  const flowVideos = selectedFlow ? (vinyasaFlowVideos[selectedFlow.id] || []) : [];
+  const hasTransitionVideo = currentStepIndex < flowVideos.length;
+  const showVideo = transitionMode && hasTransitionVideo;
 
   const playBell = useCallback(() => {
     if (!soundEnabled) return;
@@ -477,13 +522,23 @@ export default function VinyasaFlows() {
                     </div>
                     <p className="text-muted-foreground">{selectedFlow.subtitle} — {selectedFlow.steps.length} poses, {selectedFlow.duration}</p>
                   </div>
-                  <button
-                    onClick={startPractice}
-                    className="flex items-center gap-2 px-8 py-3.5 bg-forest text-cream font-semibold rounded-full hover:bg-forest-light transition-all shadow-lg"
-                  >
-                    <Play className="w-5 h-5" />
-                    Start Guided Practice
-                  </button>
+                  <div className="flex items-center gap-3">
+                    <div className="flex items-center gap-2.5 bg-card border border-border rounded-full px-4 py-2">
+                      <Film className={`w-4 h-4 ${transitionMode ? "text-forest" : "text-muted-foreground"}`} />
+                      <span className="text-sm font-medium text-foreground">Videos</span>
+                      <Switch
+                        checked={transitionMode}
+                        onCheckedChange={setTransitionMode}
+                      />
+                    </div>
+                    <button
+                      onClick={startPractice}
+                      className="flex items-center gap-2 px-8 py-3.5 bg-forest text-cream font-semibold rounded-full hover:bg-forest-light transition-all shadow-lg"
+                    >
+                      <Play className="w-5 h-5" />
+                      Start Practice
+                    </button>
+                  </div>
                 </div>
 
                 {/* Step cards */}
@@ -562,7 +617,7 @@ export default function VinyasaFlows() {
                 {/* Current step */}
                 <AnimatePresence mode="wait">
                   <motion.div
-                    key={currentStepIndex}
+                    key={`${selectedFlow.id}-${currentStepIndex}-${transitionMode}`}
                     initial={{ opacity: 0, x: 50 }}
                     animate={{ opacity: 1, x: 0 }}
                     exit={{ opacity: 0, x: -50 }}
@@ -571,7 +626,13 @@ export default function VinyasaFlows() {
                   >
                     <div className="flex flex-col md:flex-row items-center gap-8">
                       <div className="w-40 h-40 md:w-48 md:h-48 rounded-2xl overflow-hidden bg-white border border-border/50 flex items-center justify-center shrink-0">
-                        {asanaImages[currentStep.imageKey] ? (
+                        {showVideo && flowVideos[currentStepIndex] ? (
+                          <TransitionVideo
+                            src={flowVideos[currentStepIndex]}
+                            className="w-full h-full object-cover rounded-xl"
+                            durationSeconds={currentStep.duration}
+                          />
+                        ) : asanaImages[currentStep.imageKey] ? (
                           <img src={asanaImages[currentStep.imageKey]} alt={currentStep.name} className="w-full h-full object-contain p-4" />
                         ) : (
                           <Leaf className="w-12 h-12 text-forest/20" />
@@ -588,6 +649,12 @@ export default function VinyasaFlows() {
                           {currentStep.side && (
                             <span className="text-sm px-3 py-1 rounded-full bg-cream-dark text-muted-foreground">
                               {currentStep.side === "both" ? "Both Sides" : `${currentStep.side.charAt(0).toUpperCase() + currentStep.side.slice(1)} Side`}
+                            </span>
+                          )}
+                          {showVideo && (
+                            <span className="text-sm px-3 py-1 rounded-full font-medium text-forest bg-sage-light/60">
+                              <Film className="w-3.5 h-3.5 inline mr-1" />
+                              Transition
                             </span>
                           )}
                         </div>
