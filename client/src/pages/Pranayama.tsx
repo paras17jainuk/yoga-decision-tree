@@ -461,6 +461,7 @@ export default function Pranayama() {
     setRounds(t.defaultRounds);
     setMode("info");
     resetPractice();
+    window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
   const startPractice = () => {
@@ -471,6 +472,7 @@ export default function Pranayama() {
     setIsPlaying(true);
     setIsComplete(false);
     setPracticeStartTime(Date.now());
+    window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
   const resetPractice = () => {
@@ -490,6 +492,7 @@ export default function Pranayama() {
       setSelectedTechnique(null);
       setMode("browse");
     }
+    window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
   // Breathing circle scale based on phase

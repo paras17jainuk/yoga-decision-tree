@@ -2,7 +2,7 @@
  * Design: Earth & Breath — Organic Modernism
  * Surya Namaskar: Dedicated practice page for Sun Salutation sequences
  * Features: Surya Namaskar A (12 steps) and B (Ashtanga), step-by-step guided flow,
- * contraindications, timer, breathing cues, transition video mode
+ * contraindications, timer, breathing cues, transition video mode, cinematic mode
  */
 import { useState, useEffect, useCallback, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
@@ -25,6 +25,7 @@ import {
   Info,
   Film,
   Image as ImageIcon,
+  Clapperboard,
 } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import { asanaImages } from "@/data/asanaImages";
@@ -273,13 +274,13 @@ const SURYA_B: FlowStep[] = [
     tips: "Press firmly through the hands to lift the torso.",
   },
   {
-    name: "Downward-Facing Dog",
+    name: "Downward-Facing Dog (5 Breaths)",
     sanskrit: "Adho Mukha Svanasana",
     imageKey: "adho_mukha_svanasana",
     breath: "Exhale",
-    duration: 8,
-    instruction: "Hold Downward Dog for 5 breaths. This is the longest hold in the sequence — use it to recenter.",
-    tips: "Spread fingers wide. Rotate upper arms outward. Press the mat away from you.",
+    duration: 20,
+    instruction: "Press back into Downward Dog. Hold here for 5 full breaths. This is the longest hold in the sequence.",
+    tips: "Pedal the feet, bend one knee then the other. Find stillness in the pose.",
   },
   {
     name: "Half Standing Forward Fold",
@@ -288,7 +289,7 @@ const SURYA_B: FlowStep[] = [
     breath: "Inhale",
     duration: 3,
     instruction: "Step or jump feet to hands. Lift halfway with a flat back.",
-    tips: "Engage the core as you transition forward.",
+    tips: "Fingertips on shins, gaze forward. Lengthen the spine.",
   },
   {
     name: "Standing Forward Fold",
@@ -297,7 +298,7 @@ const SURYA_B: FlowStep[] = [
     breath: "Exhale",
     duration: 4,
     instruction: "Fold forward completely. Release the head and neck.",
-    tips: "Let the exhale deepen the fold naturally.",
+    tips: "Let gravity deepen the fold.",
   },
   {
     name: "Chair Pose",
@@ -305,54 +306,62 @@ const SURYA_B: FlowStep[] = [
     imageKey: "utkatasana",
     breath: "Inhale",
     duration: 5,
-    instruction: "Bend knees, sweep arms up into Chair Pose. Sit back, weight in heels.",
-    tips: "This is the closing posture mirroring the opening.",
+    instruction: "Bend knees, sweep arms overhead, return to Chair Pose.",
+    tips: "Sit back deeply. Weight in the heels.",
   },
   {
     name: "Mountain Pose",
-    sanskrit: "Tadasana / Samasthiti",
+    sanskrit: "Tadasana",
     imageKey: "tadasana",
     breath: "Exhale",
     duration: 5,
-    instruction: "Straighten legs, bring arms to sides. Stand tall in Mountain Pose. One round of Surya Namaskar B is complete.",
-    tips: "Pause for 2-3 breaths. Notice the warmth and energy in the body.",
+    instruction: "Straighten legs, lower arms to sides. Stand tall in Tadasana. One round of Surya Namaskar B is complete.",
+    tips: "Take 2-3 breaths here before beginning the next round.",
   },
 ];
 
+/* ── Contraindications ── */
 const CONTRAINDICATIONS = [
-  { condition: "Back Injury", detail: "The spine undergoes repeated flexion and extension. Avoid if you have a herniated disc, acute back pain, or recent back surgery." },
-  { condition: "Pregnancy", detail: "Pressure on the abdomen and back makes this unsuitable during pregnancy. Consult your doctor for modified sequences." },
-  { condition: "High Blood Pressure", detail: "The rapid transitions and inversions can spike blood pressure. Practice very slowly or avoid entirely." },
-  { condition: "Heart Conditions", detail: "The cardiovascular demand of continuous rounds can be too intense. Get physician clearance first." },
-  { condition: "Wrist Injury", detail: "Multiple weight-bearing poses (Plank, Cobra, Downward Dog) put significant stress on the wrists." },
-  { condition: "Severe Arthritis", detail: "Knee stiffness and joint inflammation make the lunges and weight-bearing transitions risky." },
-  { condition: "Hernia", detail: "The forward bends and core engagement can aggravate hernias. Avoid until fully healed." },
-  { condition: "General Weakness / Fatigue", detail: "This is an energetic sequence. If you're recovering from illness or very fatigued, rest instead." },
+  { condition: "High Blood Pressure", detail: "Avoid holding inverted positions (Downward Dog) for extended periods. Move slowly through transitions." },
+  { condition: "Back Injuries", detail: "Skip deep backbends (Cobra/Upward Dog). Use Cat-Cow as an alternative. Keep knees bent in forward folds." },
+  { condition: "Wrist Issues / Carpal Tunnel", detail: "Use fists or forearms instead of flat palms. Consider using wrist wedges for support." },
+  { condition: "Pregnancy (2nd/3rd Trimester)", detail: "Widen stance, avoid deep twists and prone positions. Use modified Sun Salutation sequences." },
+  { condition: "Recent Surgery", detail: "Wait for medical clearance. Start with gentle stretches before attempting full sequences." },
+  { condition: "Shoulder Injuries", detail: "Keep arms lower in raised poses. Avoid weight-bearing on the affected shoulder in Plank/Chaturanga." },
+  { condition: "Vertigo / Inner Ear Issues", detail: "Move slowly between standing and folding positions. Keep gaze steady, avoid rapid head movements." },
+  { condition: "Knee Problems", detail: "Keep a micro-bend in standing poses. Use padding under knees in lunge positions." },
 ];
 
 const breathColors: Record<string, string> = {
-  Inhale: "text-forest bg-sage-light/60",
-  Exhale: "text-terracotta bg-terracotta-light/40",
-  Hold: "text-gold-dark bg-gold-light/50",
-  Normal: "text-muted-foreground bg-cream-dark/50",
+  Inhale: "bg-sky-100 text-sky-700",
+  Exhale: "bg-amber-100 text-amber-700",
+  Hold: "bg-purple-100 text-purple-700",
+  Normal: "bg-sage-light text-forest",
 };
 
 /* ── Transition Video Component ── */
-// durationSeconds: if provided, adjusts playback rate so video fills the timer duration
-function TransitionVideo({ src, className, durationSeconds }: { src: string; className?: string; durationSeconds?: number }) {
+function TransitionVideo({
+  src,
+  className,
+  durationSeconds,
+  onEnded,
+}: {
+  src: string;
+  className?: string;
+  durationSeconds?: number;
+  onEnded?: () => void;
+}) {
   const videoRef = useRef<HTMLVideoElement>(null);
 
   useEffect(() => {
     const video = videoRef.current;
     if (!video) return;
 
-    video.load();
+    video.currentTime = 0;
 
     const handleLoaded = () => {
-      // Adjust playback rate to match the step timer duration
       if (durationSeconds && video.duration && video.duration > 0) {
         const rate = video.duration / durationSeconds;
-        // Clamp rate between 0.1x and 4x (browser limits)
         video.playbackRate = Math.max(0.1, Math.min(4, rate));
       } else {
         video.playbackRate = 1;
@@ -372,6 +381,52 @@ function TransitionVideo({ src, className, durationSeconds }: { src: string; cla
       muted
       playsInline
       preload="auto"
+      onEnded={onEnded}
+    />
+  );
+}
+
+/* ── Cinematic Video Component (plays at natural speed, fires onEnded) ── */
+function CinematicVideo({
+  src,
+  className,
+  onEnded,
+}: {
+  src: string;
+  className?: string;
+  onEnded: () => void;
+}) {
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+
+    video.currentTime = 0;
+    video.playbackRate = 1; // Natural speed always
+
+    const handleLoaded = () => {
+      video.play().catch(() => {});
+    };
+
+    if (video.readyState >= 1) {
+      handleLoaded();
+    } else {
+      video.addEventListener("loadedmetadata", handleLoaded);
+    }
+
+    return () => video.removeEventListener("loadedmetadata", handleLoaded);
+  }, [src]);
+
+  return (
+    <video
+      ref={videoRef}
+      src={src}
+      className={className}
+      muted
+      playsInline
+      preload="auto"
+      onEnded={onEnded}
     />
   );
 }
@@ -386,17 +441,21 @@ export default function SuryaNamaskar() {
   const [timeLeft, setTimeLeft] = useState(0);
   const [soundEnabled, setSoundEnabled] = useState(true);
   const [showContraindications, setShowContraindications] = useState(false);
-  const [transitionMode, setTransitionMode] = useState(true); // ON by default
+  const [transitionMode, setTransitionMode] = useState(true);
+  const [cinematicMode, setCinematicMode] = useState(false);
+  // Cinematic mode sub-state: "pose" = showing static image, "video" = playing transition video
+  const [cinematicPhase, setCinematicPhase] = useState<"pose" | "video">("pose");
   const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
   const audioRef = useRef<AudioContext | null>(null);
 
   const steps = selectedFlow === "A" ? SURYA_A : SURYA_B;
   const currentStep = steps[currentStepIndex];
 
-  // Transition videos available for both Surya A and B
   const currentVideos = selectedFlow === "A" ? suryaATransitionVideos : suryaBTransitionVideos;
   const hasTransitionVideo = currentStepIndex < currentVideos.length;
-  const showVideo = transitionMode && hasTransitionVideo;
+  const showVideo = !cinematicMode && transitionMode && hasTransitionVideo;
+
+  const CINEMATIC_POSE_HOLD = 2; // seconds to show each pose image
 
   const playBell = useCallback(() => {
     if (!soundEnabled) return;
@@ -416,24 +475,64 @@ export default function SuryaNamaskar() {
     } catch { /* ignore */ }
   }, [soundEnabled]);
 
-  // Timer for practice mode
+  /* ── CINEMATIC MODE TIMER ── */
+  // In cinematic mode, the "pose" phase lasts CINEMATIC_POSE_HOLD seconds,
+  // then switches to "video" phase which plays at natural speed until onEnded fires.
   useEffect(() => {
-    if (!isPlaying || mode !== "practice") return;
+    if (!isPlaying || mode !== "practice" || !cinematicMode) return;
+    if (cinematicPhase !== "pose") return;
+
+    // Countdown for the pose hold
+    const timer = setTimeout(() => {
+      // After pose hold, check if there's a transition video
+      if (currentStepIndex < currentVideos.length) {
+        setCinematicPhase("video");
+      } else {
+        // No video for this step, advance to next step
+        advanceCinematicStep();
+      }
+    }, CINEMATIC_POSE_HOLD * 1000);
+
+    return () => clearTimeout(timer);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isPlaying, mode, cinematicMode, cinematicPhase, currentStepIndex, currentVideos.length]);
+
+  const advanceCinematicStep = useCallback(() => {
+    const nextIndex = currentStepIndex + 1;
+    if (nextIndex >= steps.length) {
+      if (currentRound < rounds) {
+        setCurrentRound((r) => r + 1);
+        setCurrentStepIndex(0);
+        setCinematicPhase("pose");
+      } else {
+        setIsPlaying(false);
+        setCinematicPhase("pose");
+      }
+    } else {
+      setCurrentStepIndex(nextIndex);
+      setCinematicPhase("pose");
+    }
+  }, [currentStepIndex, steps.length, currentRound, rounds]);
+
+  const handleCinematicVideoEnded = useCallback(() => {
+    advanceCinematicStep();
+  }, [advanceCinematicStep]);
+
+  /* ── STANDARD TIMER (non-cinematic) ── */
+  useEffect(() => {
+    if (!isPlaying || mode !== "practice" || cinematicMode) return;
 
     timerRef.current = setInterval(() => {
       setTimeLeft((prev) => {
         if (prev <= 1) {
-          // Move to next step
           const nextIndex = currentStepIndex + 1;
           if (nextIndex >= steps.length) {
-            // Round complete
             if (currentRound < rounds) {
               setCurrentRound((r) => r + 1);
               setCurrentStepIndex(0);
               playBell();
               return steps[0].duration;
             } else {
-              // All rounds complete
               setIsPlaying(false);
               playBell();
               return 0;
@@ -451,7 +550,7 @@ export default function SuryaNamaskar() {
     return () => {
       if (timerRef.current) clearInterval(timerRef.current);
     };
-  }, [isPlaying, mode, currentStepIndex, steps, currentRound, rounds, playBell]);
+  }, [isPlaying, mode, cinematicMode, currentStepIndex, steps, currentRound, rounds, playBell]);
 
   const startPractice = () => {
     setMode("practice");
@@ -459,12 +558,21 @@ export default function SuryaNamaskar() {
     setCurrentRound(1);
     setTimeLeft(steps[0].duration);
     setIsPlaying(true);
-    playBell();
+    if (cinematicMode) {
+      setCinematicPhase("pose");
+    } else {
+      playBell();
+    }
+    window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
   const togglePause = () => setIsPlaying(!isPlaying);
 
   const nextStep = () => {
+    if (cinematicMode) {
+      advanceCinematicStep();
+      return;
+    }
     const nextIndex = currentStepIndex + 1;
     if (nextIndex >= steps.length) {
       if (currentRound < rounds) {
@@ -483,6 +591,7 @@ export default function SuryaNamaskar() {
     if (currentStepIndex > 0) {
       setCurrentStepIndex(currentStepIndex - 1);
       setTimeLeft(steps[currentStepIndex - 1].duration);
+      if (cinematicMode) setCinematicPhase("pose");
     }
   };
 
@@ -492,15 +601,43 @@ export default function SuryaNamaskar() {
     setCurrentRound(1);
     setMode("learn");
     setTimeLeft(0);
+    setCinematicPhase("pose");
   };
 
   const totalTime = steps.reduce((s, st) => s + st.duration, 0) * rounds;
 
   /* ── Render helper: Image or Video for a step ── */
   const renderStepMedia = (stepIndex: number, step: FlowStep, size: "sm" | "lg", inPracticeMode?: boolean) => {
-    // Videos ONLY in practice mode, never in learn mode or thumbnails
+    // In cinematic mode during practice, handle pose/video phases
+    if (inPracticeMode && cinematicMode && size === "lg") {
+      if (cinematicPhase === "video" && stepIndex < currentVideos.length) {
+        return (
+          <CinematicVideo
+            src={currentVideos[stepIndex]}
+            className="w-full h-full object-cover rounded-xl"
+            onEnded={handleCinematicVideoEnded}
+          />
+        );
+      }
+      // Show static pose image during "pose" phase
+      if (asanaImages[step.imageKey]) {
+        return (
+          <motion.img
+            key={`cinematic-pose-${stepIndex}`}
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.3 }}
+            src={asanaImages[step.imageKey]}
+            alt={step.name}
+            className="w-full h-full object-contain p-4"
+          />
+        );
+      }
+    }
+
+    // Standard transition video mode
     const vids = selectedFlow === "A" ? suryaATransitionVideos : suryaBTransitionVideos;
-    const isVideoAvailable = inPracticeMode && transitionMode && stepIndex < vids.length;
+    const isVideoAvailable = inPracticeMode && !cinematicMode && transitionMode && stepIndex < vids.length;
 
     if (isVideoAvailable && size === "lg") {
       const videoUrl = vids[stepIndex];
@@ -582,16 +719,32 @@ export default function SuryaNamaskar() {
               </button>
             </div>
 
-            {/* Transition Mode toggle + Contraindications */}
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-              <div className="flex items-center gap-2.5 bg-card border border-border rounded-full px-4 py-2">
+            {/* Mode toggles + Contraindications */}
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 flex-wrap">
+              {/* Transition Videos toggle */}
+              <div className={`flex items-center gap-2.5 bg-card border border-border rounded-full px-4 py-2 transition-opacity ${cinematicMode ? "opacity-40 pointer-events-none" : ""}`}>
                 <Film className={`w-4 h-4 ${transitionMode ? "text-forest" : "text-muted-foreground"}`} />
                 <span className="text-sm font-medium text-foreground">Transition Videos</span>
                 <Switch
                   checked={transitionMode}
                   onCheckedChange={setTransitionMode}
+                  disabled={cinematicMode}
                 />
               </div>
+
+              {/* Cinematic Mode toggle */}
+              <div className="flex items-center gap-2.5 bg-card border-2 border-gold/40 rounded-full px-4 py-2">
+                <Clapperboard className={`w-4 h-4 ${cinematicMode ? "text-gold-dark" : "text-muted-foreground"}`} />
+                <span className="text-sm font-medium text-foreground">Cinematic Mode</span>
+                <Switch
+                  checked={cinematicMode}
+                  onCheckedChange={(checked) => {
+                    setCinematicMode(checked);
+                    if (checked) setTransitionMode(true);
+                  }}
+                />
+              </div>
+
               <button
                 onClick={() => setShowContraindications(!showContraindications)}
                 className="inline-flex items-center gap-2 text-sm text-rose hover:text-rose/80 transition-colors"
@@ -667,9 +820,23 @@ export default function SuryaNamaskar() {
                   className="flex items-center gap-2 px-8 py-3.5 bg-forest text-cream font-semibold rounded-full hover:bg-forest-light transition-all shadow-lg"
                 >
                   <Play className="w-5 h-5" />
-                  Start Guided Practice
+                  {cinematicMode ? "Start Cinematic Practice" : "Start Guided Practice"}
                 </button>
               </div>
+
+              {/* Cinematic mode info banner */}
+              {cinematicMode && (
+                <motion.div
+                  initial={{ opacity: 0, y: -10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  className="mb-6 p-4 bg-gold-light/30 border border-gold/30 rounded-xl text-center"
+                >
+                  <p className="text-sm text-foreground">
+                    <Clapperboard className="w-4 h-4 inline mr-2 text-gold-dark" />
+                    <strong>Cinematic Mode:</strong> Each pose is shown for 2 seconds, followed by a smooth transition video at natural speed. No sound cues — just visual flow.
+                  </p>
+                </motion.div>
+              )}
 
               {/* Step-by-step cards */}
               <div className="space-y-4">
@@ -737,7 +904,14 @@ export default function SuryaNamaskar() {
               <div className="mb-8">
                 <div className="flex items-center justify-between text-sm text-muted-foreground mb-2">
                   <span>Round {currentRound} of {rounds}</span>
-                  <span>Step {currentStepIndex + 1} of {steps.length}</span>
+                  <span className="flex items-center gap-2">
+                    Step {currentStepIndex + 1} of {steps.length}
+                    {cinematicMode && (
+                      <span className="text-xs px-2 py-0.5 rounded-full bg-gold-light/50 text-gold-dark font-medium">
+                        {cinematicPhase === "pose" ? "Pose" : "Transition"}
+                      </span>
+                    )}
+                  </span>
                 </div>
                 <div className="h-2 bg-cream-dark rounded-full overflow-hidden">
                   <motion.div
@@ -753,7 +927,7 @@ export default function SuryaNamaskar() {
               {/* Current step card */}
               <AnimatePresence mode="wait">
                 <motion.div
-                  key={`${currentRound}-${currentStepIndex}`}
+                  key={`${currentRound}-${currentStepIndex}-${cinematicMode ? cinematicPhase : "std"}`}
                   initial={{ opacity: 0, x: 50 }}
                   animate={{ opacity: 1, x: 0 }}
                   exit={{ opacity: 0, x: -50 }}
@@ -768,7 +942,7 @@ export default function SuryaNamaskar() {
 
                     {/* Step info */}
                     <div className="flex-1 text-center md:text-left">
-                      <div className="flex items-center justify-center md:justify-start gap-3 mb-2">
+                      <div className="flex items-center justify-center md:justify-start gap-3 mb-2 flex-wrap">
                         <span className="text-sm font-bold text-forest bg-sage-light/60 px-3 py-1 rounded-full">
                           Step {currentStepIndex + 1}
                         </span>
@@ -776,7 +950,20 @@ export default function SuryaNamaskar() {
                           <Wind className="w-3.5 h-3.5 inline mr-1" />
                           {currentStep.breath}
                         </span>
-                        {showVideo && (
+                        {cinematicMode && (
+                          <span className={`text-sm px-3 py-1 rounded-full font-medium ${
+                            cinematicPhase === "video"
+                              ? "text-gold-dark bg-gold-light/50"
+                              : "text-forest bg-sage-light/60"
+                          }`}>
+                            {cinematicPhase === "video" ? (
+                              <><Film className="w-3.5 h-3.5 inline mr-1" /> Transitioning</>
+                            ) : (
+                              <><ImageIcon className="w-3.5 h-3.5 inline mr-1" /> Hold Pose</>
+                            )}
+                          </span>
+                        )}
+                        {!cinematicMode && showVideo && (
                           <span className="text-sm px-3 py-1 rounded-full font-medium text-forest bg-sage-light/60">
                             <Film className="w-3.5 h-3.5 inline mr-1" />
                             Transition
@@ -793,20 +980,47 @@ export default function SuryaNamaskar() {
                         {currentStep.tips}
                       </p>
 
-                      {/* Timer */}
-                      <div className="mt-6 flex items-center justify-center md:justify-start gap-4">
-                        <div className="text-4xl font-mono font-bold text-forest">
-                          {timeLeft}s
+                      {/* Timer — only show in non-cinematic mode */}
+                      {!cinematicMode && (
+                        <div className="mt-6 flex items-center justify-center md:justify-start gap-4">
+                          <div className="text-4xl font-mono font-bold text-forest">
+                            {timeLeft}s
+                          </div>
+                          <div className="h-3 flex-1 max-w-48 bg-cream-dark rounded-full overflow-hidden">
+                            <motion.div
+                              className="h-full bg-forest rounded-full"
+                              animate={{
+                                width: `${((currentStep.duration - timeLeft) / currentStep.duration) * 100}%`,
+                              }}
+                            />
+                          </div>
                         </div>
-                        <div className="h-3 flex-1 max-w-48 bg-cream-dark rounded-full overflow-hidden">
-                          <motion.div
-                            className="h-full bg-forest rounded-full"
-                            animate={{
-                              width: `${((currentStep.duration - timeLeft) / currentStep.duration) * 100}%`,
-                            }}
-                          />
+                      )}
+
+                      {/* Cinematic mode: show a subtle phase indicator */}
+                      {cinematicMode && (
+                        <div className="mt-6 flex items-center justify-center md:justify-start gap-3">
+                          <div className="flex items-center gap-2">
+                            {cinematicPhase === "pose" ? (
+                              <motion.div
+                                initial={{ scale: 0.8 }}
+                                animate={{ scale: [1, 1.1, 1] }}
+                                transition={{ duration: 2, repeat: Infinity }}
+                                className="w-3 h-3 rounded-full bg-forest"
+                              />
+                            ) : (
+                              <motion.div
+                                animate={{ rotate: 360 }}
+                                transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
+                                className="w-3 h-3 rounded-full border-2 border-gold-dark border-t-transparent"
+                              />
+                            )}
+                            <span className="text-sm text-muted-foreground font-medium">
+                              {cinematicPhase === "pose" ? "Observing pose..." : "Flowing to next pose..."}
+                            </span>
+                          </div>
                         </div>
-                      </div>
+                      )}
                     </div>
                   </div>
                 </motion.div>
@@ -833,12 +1047,14 @@ export default function SuryaNamaskar() {
                 >
                   <ChevronRight className="w-5 h-5" />
                 </button>
-                <button
-                  onClick={() => setSoundEnabled(!soundEnabled)}
-                  className="w-10 h-10 rounded-full bg-cream-dark flex items-center justify-center hover:bg-border transition-colors"
-                >
-                  {soundEnabled ? <Volume2 className="w-4 h-4" /> : <VolumeX className="w-4 h-4" />}
-                </button>
+                {!cinematicMode && (
+                  <button
+                    onClick={() => setSoundEnabled(!soundEnabled)}
+                    className="w-10 h-10 rounded-full bg-cream-dark flex items-center justify-center hover:bg-border transition-colors"
+                  >
+                    {soundEnabled ? <Volume2 className="w-4 h-4" /> : <VolumeX className="w-4 h-4" />}
+                  </button>
+                )}
                 <button
                   onClick={resetPractice}
                   className="w-10 h-10 rounded-full bg-cream-dark flex items-center justify-center hover:bg-border transition-colors"
@@ -856,6 +1072,7 @@ export default function SuryaNamaskar() {
                       onClick={() => {
                         setCurrentStepIndex(i);
                         setTimeLeft(steps[i].duration);
+                        if (cinematicMode) setCinematicPhase("pose");
                       }}
                       className={`shrink-0 w-14 h-14 rounded-xl border-2 overflow-hidden flex items-center justify-center transition-all relative ${
                         i === currentStepIndex
