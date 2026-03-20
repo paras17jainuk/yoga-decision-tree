@@ -338,23 +338,37 @@ const breathColors: Record<string, string> = {
 };
 
 /* ── Transition Video Component ── */
-function TransitionVideo({ src, className }: { src: string; className?: string }) {
+// durationSeconds: if provided, adjusts playback rate so video fills the timer duration
+function TransitionVideo({ src, className, durationSeconds }: { src: string; className?: string; durationSeconds?: number }) {
   const videoRef = useRef<HTMLVideoElement>(null);
 
   useEffect(() => {
-    if (videoRef.current) {
-      videoRef.current.load();
-      videoRef.current.play().catch(() => {});
-    }
-  }, [src]);
+    const video = videoRef.current;
+    if (!video) return;
+
+    video.load();
+
+    const handleLoaded = () => {
+      // Adjust playback rate to match the step timer duration
+      if (durationSeconds && video.duration && video.duration > 0) {
+        const rate = video.duration / durationSeconds;
+        // Clamp rate between 0.1x and 4x (browser limits)
+        video.playbackRate = Math.max(0.1, Math.min(4, rate));
+      } else {
+        video.playbackRate = 1;
+      }
+      video.play().catch(() => {});
+    };
+
+    video.addEventListener("loadedmetadata", handleLoaded);
+    return () => video.removeEventListener("loadedmetadata", handleLoaded);
+  }, [src, durationSeconds]);
 
   return (
     <video
       ref={videoRef}
       src={src}
       className={className}
-      autoPlay
-      loop
       muted
       playsInline
       preload="auto"
@@ -482,28 +496,22 @@ export default function SuryaNamaskar() {
   const totalTime = steps.reduce((s, st) => s + st.duration, 0) * rounds;
 
   /* ── Render helper: Image or Video for a step ── */
-  const renderStepMedia = (stepIndex: number, step: FlowStep, size: "sm" | "lg") => {
-    const isVideoAvailable = transitionMode && selectedFlow === "A" && stepIndex < suryaATransitionVideos.length;
+  const renderStepMedia = (stepIndex: number, step: FlowStep, size: "sm" | "lg", inPracticeMode?: boolean) => {
+    // Videos ONLY in practice mode, never in learn mode or thumbnails
+    const isVideoAvailable = inPracticeMode && transitionMode && selectedFlow === "A" && stepIndex < suryaATransitionVideos.length;
 
-    if (isVideoAvailable) {
+    if (isVideoAvailable && size === "lg") {
       const videoUrl = suryaATransitionVideos[stepIndex];
-      if (size === "sm") {
-        return (
-          <TransitionVideo
-            src={videoUrl}
-            className="w-full h-full object-cover rounded-lg"
-          />
-        );
-      }
       return (
         <TransitionVideo
           src={videoUrl}
           className="w-full h-full object-cover rounded-xl"
+          durationSeconds={step.duration}
         />
       );
     }
 
-    // Fallback: static image
+    // Static image for learn mode, thumbnails, and fallback
     if (asanaImages[step.imageKey]) {
       return (
         <img
@@ -666,7 +674,6 @@ export default function SuryaNamaskar() {
               {/* Step-by-step cards */}
               <div className="space-y-4">
                 {steps.map((step, i) => {
-                  const hasVideo = transitionMode && selectedFlow === "A" && i < suryaATransitionVideos.length;
                   return (
                     <motion.div
                       key={`${selectedFlow}-${i}-${transitionMode}`}
@@ -681,8 +688,8 @@ export default function SuryaNamaskar() {
                           <span className="text-sm font-bold text-forest">{i + 1}</span>
                         </div>
 
-                        {/* Image or Video */}
-                        <div className={`${hasVideo ? "w-24 h-24" : "w-16 h-16"} rounded-xl overflow-hidden bg-white border border-border/50 shrink-0 flex items-center justify-center`}>
+                        {/* Image */}
+                        <div className="w-16 h-16 rounded-xl overflow-hidden bg-white border border-border/50 shrink-0 flex items-center justify-center">
                           {renderStepMedia(i, step, "sm")}
                         </div>
 
@@ -694,12 +701,7 @@ export default function SuryaNamaskar() {
                               <Wind className="w-3 h-3 inline mr-1" />
                               {step.breath}
                             </span>
-                            {hasVideo && (
-                              <span className="text-xs px-2 py-0.5 rounded-full font-medium text-forest bg-sage-light/60">
-                                <Film className="w-3 h-3 inline mr-1" />
-                                Video
-                              </span>
-                            )}
+
                           </div>
                           <p className="text-xs text-muted-foreground italic mb-2">{step.sanskrit}</p>
                           <p className="text-sm text-foreground/80 leading-relaxed">{step.instruction}</p>
@@ -760,8 +762,8 @@ export default function SuryaNamaskar() {
                 >
                   <div className="flex flex-col md:flex-row items-center gap-8">
                     {/* Large image or video */}
-                    <div className={`${showVideo ? "w-56 h-56 md:w-72 md:h-72" : "w-40 h-40 md:w-56 md:h-56"} rounded-2xl overflow-hidden bg-white border border-border/50 flex items-center justify-center shrink-0`}>
-                      {renderStepMedia(currentStepIndex, currentStep, "lg")}
+                    <div className="w-56 h-56 md:w-72 md:h-72 rounded-2xl overflow-hidden bg-white border border-border/50 flex items-center justify-center shrink-0">
+                      {renderStepMedia(currentStepIndex, currentStep, "lg", true)}
                     </div>
 
                     {/* Step info */}
@@ -848,7 +850,6 @@ export default function SuryaNamaskar() {
               {/* Step thumbnails */}
               <div className="mt-8 flex gap-2 overflow-x-auto pb-2">
                 {steps.map((step, i) => {
-                  const thumbHasVideo = transitionMode && selectedFlow === "A" && i < suryaATransitionVideos.length;
                   return (
                     <button
                       key={i}
@@ -878,11 +879,7 @@ export default function SuryaNamaskar() {
                           <Check className="w-4 h-4 text-forest" />
                         </div>
                       )}
-                      {thumbHasVideo && i === currentStepIndex && (
-                        <div className="absolute bottom-0 right-0 bg-forest text-cream rounded-tl-md px-1">
-                          <Film className="w-2.5 h-2.5" />
-                        </div>
-                      )}
+
                     </button>
                   );
                 })}

@@ -11,6 +11,7 @@ import Safety from "./pages/Safety";
 import Session from "./pages/Session";
 import SuryaNamaskar from "./pages/SuryaNamaskar";
 import VinyasaFlows from "./pages/VinyasaFlows";
+import AsanaDetail from "./pages/AsanaDetail";
 
 // Detect base path from Vite's base config (for GitHub Pages)
 const base = import.meta.env.BASE_URL.replace(/\/$/, "") || "";
@@ -21,6 +22,7 @@ function AppRouter() {
       <Route path={"/"} component={Home} />
       <Route path={"/results"} component={Results} />
       <Route path={"/explore"} component={Explore} />
+      <Route path={"/asana/:id"} component={AsanaDetail} />
       <Route path={"/safety"} component={Safety} />
       <Route path={"/session"} component={Session} />
       <Route path={"/surya-namaskar"} component={SuryaNamaskar} />

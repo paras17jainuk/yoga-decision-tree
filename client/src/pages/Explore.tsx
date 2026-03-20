@@ -1,9 +1,12 @@
-/*
+/**
  * Design: Earth & Breath — Organic Modernism
- * Explore: Browse all 71+ asanas with filtering and search
+ * Explore: Browse all asanas with filtering and search.
+ * Surya Namaskar is distinguished as a Flow (not an asana) with a special card.
+ * Each asana card links to its own detail page.
  */
 import { useState, useMemo } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { Link } from "wouter";
 import {
   Search,
   Filter,
@@ -12,13 +15,17 @@ import {
   Star,
   AlertTriangle,
   Leaf,
+  Sun,
+  ChevronRight,
+  Sparkles,
 } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import { getAllAsanas } from "@/data/engine";
 import { asanaImages } from "@/data/asanaImages";
 import type { Asana } from "@/data/types";
 
-const GENTLE_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663318567070/87xTRNw69cyUtrfeqdS85m/yoga-gentle-ekPcTrvJzCpwpzFotXwp7G.webp";
+const GENTLE_IMG =
+  "https://d2xsxph8kpxj0f.cloudfront.net/310519663318567070/87xTRNw69cyUtrfeqdS85m/yoga-gentle-ekPcTrvJzCpwpzFotXwp7G.webp";
 
 const difficultyColors: Record<string, string> = {
   beginner: "bg-sage-light text-forest-dark",
@@ -42,9 +49,16 @@ const typeLabels: Record<string, string> = {
   seated_forward_bend: "Seated Forward Bend",
   seated_twist: "Seated Twist",
   arm_balance: "Arm Balance",
+  arm_support: "Arm Support",
   backbend: "Backbend",
   pranayama: "Breathing Exercise",
   exercise: "Exercise",
+  standing_twist: "Standing Twist",
+  supine_twist: "Supine Twist",
+  kneeling_forward_bend: "Kneeling Forward Bend",
+  kneeling_backbend: "Kneeling Backbend",
+  hip_opener: "Hip Opener",
+  sequence: "Flow / Sequence",
 };
 
 export default function Explore() {
@@ -54,13 +68,27 @@ export default function Explore() {
   const [typeFilter, setTypeFilter] = useState<string>("all");
   const [expandedAsana, setExpandedAsana] = useState<string | null>(null);
 
-  const types = useMemo(() => {
-    const set = new Set(allAsanas.map((a) => a.type));
-    return Array.from(set).sort();
+  // Separate flows (like Surya Namaskar) from regular asanas
+  const { flows, regularAsanas } = useMemo(() => {
+    const f: Asana[] = [];
+    const r: Asana[] = [];
+    for (const a of allAsanas) {
+      if (a.type === "sequence" || a.id === "surya_namaskar") {
+        f.push(a);
+      } else {
+        r.push(a);
+      }
+    }
+    return { flows: f, regularAsanas: r };
   }, [allAsanas]);
 
+  const types = useMemo(() => {
+    const set = new Set(regularAsanas.map((a) => a.type));
+    return Array.from(set).sort();
+  }, [regularAsanas]);
+
   const filtered = useMemo(() => {
-    return allAsanas.filter((a) => {
+    return regularAsanas.filter((a) => {
       const matchesSearch =
         searchQuery === "" ||
         a.english_name.toLowerCase().includes(searchQuery.toLowerCase()) ||
@@ -73,7 +101,7 @@ export default function Explore() {
       const matchesType = typeFilter === "all" || a.type === typeFilter;
       return matchesSearch && matchesDifficulty && matchesType;
     });
-  }, [allAsanas, searchQuery, difficultyFilter, typeFilter]);
+  }, [regularAsanas, searchQuery, difficultyFilter, typeFilter]);
 
   return (
     <div className="min-h-screen bg-background">
@@ -102,15 +130,94 @@ export default function Explore() {
               Explore All Asanas
             </h1>
             <p className="text-muted-foreground text-lg max-w-xl">
-              Browse our complete database of {allAsanas.length} yoga poses with detailed
+              Browse our complete database of {regularAsanas.length} yoga poses with detailed
               instructions, benefits, and safety information.
             </p>
           </motion.div>
         </div>
       </section>
 
+      {/* Flows Section — Surya Namaskar & Vinyasa */}
+      <div className="container max-w-5xl mx-auto px-4 mb-8">
+        <motion.div
+          initial={{ opacity: 0, y: 15 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.1 }}
+        >
+          <h2 className="font-serif text-xl font-bold text-foreground mb-4 flex items-center gap-2">
+            <Sparkles className="w-5 h-5 text-gold" />
+            Yoga Flows & Sequences
+          </h2>
+          <div className="grid sm:grid-cols-2 gap-4">
+            {/* Surya Namaskar Flow Card */}
+            <Link href="/surya-namaskar">
+              <div className="group bg-gradient-to-br from-gold-light/60 via-card to-sage-light/30 border border-gold/30 rounded-2xl p-5 hover:border-gold/60 hover:shadow-lg transition-all cursor-pointer">
+                <div className="flex items-start gap-4">
+                  <div className="w-16 h-16 rounded-xl overflow-hidden bg-white border border-gold/20 shrink-0 flex items-center justify-center">
+                    <Sun className="w-8 h-8 text-gold" />
+                  </div>
+                  <div className="flex-1">
+                    <div className="flex items-center gap-2 mb-1">
+                      <span className="text-xs px-2 py-0.5 bg-gold/20 text-terracotta rounded-full font-semibold uppercase tracking-wide">
+                        Flow
+                      </span>
+                      <span className="text-xs px-2 py-0.5 bg-sage-light text-forest-dark rounded-full font-medium">
+                        12 + 18 Steps
+                      </span>
+                    </div>
+                    <h3 className="font-serif text-lg font-semibold text-foreground group-hover:text-forest transition-colors">
+                      Surya Namaskar (Sun Salutation)
+                    </h3>
+                    <p className="text-sm text-muted-foreground mt-1">
+                      A complete sequence of 12 poses flowing together with breath. Includes Surya Namaskar A & B with guided practice, transition videos, and timer.
+                    </p>
+                  </div>
+                  <ChevronRight className="w-5 h-5 text-muted-foreground group-hover:text-forest shrink-0 mt-2 transition-colors" />
+                </div>
+              </div>
+            </Link>
+
+            {/* Vinyasa Flows Card */}
+            <Link href="/vinyasa">
+              <div className="group bg-gradient-to-br from-sage-light/60 via-card to-gold-light/20 border border-forest/20 rounded-2xl p-5 hover:border-forest/40 hover:shadow-lg transition-all cursor-pointer">
+                <div className="flex items-start gap-4">
+                  <div className="w-16 h-16 rounded-xl overflow-hidden bg-white border border-forest/20 shrink-0 flex items-center justify-center">
+                    <Leaf className="w-8 h-8 text-forest" />
+                  </div>
+                  <div className="flex-1">
+                    <div className="flex items-center gap-2 mb-1">
+                      <span className="text-xs px-2 py-0.5 bg-forest/15 text-forest rounded-full font-semibold uppercase tracking-wide">
+                        Flow
+                      </span>
+                      <span className="text-xs px-2 py-0.5 bg-sage-light text-forest-dark rounded-full font-medium">
+                        6 Sequences
+                      </span>
+                    </div>
+                    <h3 className="font-serif text-lg font-semibold text-foreground group-hover:text-forest transition-colors">
+                      Vinyasa Flows
+                    </h3>
+                    <p className="text-sm text-muted-foreground mt-1">
+                      Six curated flow sequences from basic to advanced — Warrior Flow, Balance Flow, Hip Opening, Energizing, and Gentle Restorative.
+                    </p>
+                  </div>
+                  <ChevronRight className="w-5 h-5 text-muted-foreground group-hover:text-forest shrink-0 mt-2 transition-colors" />
+                </div>
+              </div>
+            </Link>
+          </div>
+        </motion.div>
+      </div>
+
+      {/* Divider */}
+      <div className="container max-w-5xl mx-auto px-4 mb-6">
+        <div className="border-t border-border" />
+      </div>
+
       {/* Filters */}
       <div className="container max-w-5xl mx-auto px-4 mb-8">
+        <h2 className="font-serif text-xl font-bold text-foreground mb-4">
+          Individual Asanas
+        </h2>
         <motion.div
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
@@ -162,7 +269,7 @@ export default function Explore() {
         </motion.div>
 
         <p className="text-sm text-muted-foreground mt-3">
-          Showing {filtered.length} of {allAsanas.length} asanas
+          Showing {filtered.length} of {regularAsanas.length} asanas
         </p>
       </div>
 
@@ -299,12 +406,17 @@ function ExploreAsanaCard({
                     Benefits
                   </h4>
                   <ul className="space-y-1">
-                    {asana.benefits.map((b, i) => (
+                    {asana.benefits.slice(0, 4).map((b, i) => (
                       <li key={i} className="flex items-start gap-2 text-sm text-foreground/80">
                         <Star className="w-3.5 h-3.5 text-gold shrink-0 mt-0.5" />
                         {b}
                       </li>
                     ))}
+                    {asana.benefits.length > 4 && (
+                      <li className="text-xs text-muted-foreground">
+                        +{asana.benefits.length - 4} more benefits
+                      </li>
+                    )}
                   </ul>
                 </div>
               )}
@@ -312,36 +424,32 @@ function ExploreAsanaCard({
               {asana.general_contraindications.length > 0 && (
                 <div>
                   <h4 className="text-xs font-semibold text-muted-foreground uppercase tracking-wide mb-2">
-                    General Contraindications
+                    Contraindications
                   </h4>
                   <ul className="space-y-1">
-                    {asana.general_contraindications.map((c, i) => (
+                    {asana.general_contraindications.slice(0, 3).map((c, i) => (
                       <li key={i} className="flex items-start gap-2 text-sm text-foreground/80">
                         <AlertTriangle className="w-3.5 h-3.5 text-rose shrink-0 mt-0.5" />
                         {c.replace(/_/g, " ")}
                       </li>
                     ))}
+                    {asana.general_contraindications.length > 3 && (
+                      <li className="text-xs text-muted-foreground">
+                        +{asana.general_contraindications.length - 3} more
+                      </li>
+                    )}
                   </ul>
                 </div>
               )}
 
-              {asana.precautions && (
-                <div>
-                  <h4 className="text-xs font-semibold text-muted-foreground uppercase tracking-wide mb-1">
-                    Precautions
-                  </h4>
-                  <p className="text-sm text-foreground/80">{asana.precautions}</p>
-                </div>
-              )}
-
-              {asana.modifications && (
-                <div>
-                  <h4 className="text-xs font-semibold text-muted-foreground uppercase tracking-wide mb-1">
-                    Modifications
-                  </h4>
-                  <p className="text-sm text-foreground/80">{asana.modifications}</p>
-                </div>
-              )}
+              {/* View full details link */}
+              <Link
+                href={`/asana/${asana.id}`}
+                className="inline-flex items-center gap-1.5 text-sm font-medium text-forest hover:text-forest-dark transition-colors pt-1"
+              >
+                View Full Details
+                <ChevronRight className="w-4 h-4" />
+              </Link>
             </div>
           </motion.div>
         )}
