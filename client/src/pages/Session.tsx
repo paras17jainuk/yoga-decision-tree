@@ -220,9 +220,15 @@ export default function Session() {
 
             const history = loadSessionHistory();
             history.push({
+              id: session.id,
               completedAt: Date.now(),
               durationMinutes: session.durationMinutes,
+              actualMinutes: Math.round((session.elapsedSeconds + next) / 60),
               asanaCount: session.asanas.length,
+              asanaIds: session.asanas.map(a => a.asanaId),
+              conditions: conditionIds,
+              severity: severity,
+              type: "assessment",
             });
             saveSessionHistory(history);
             return 0;

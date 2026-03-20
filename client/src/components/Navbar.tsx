@@ -14,6 +14,7 @@ const navItems = [
   { label: "Surya Namaskar", href: "/surya-namaskar" },
   { label: "Vinyasa Flows", href: "/vinyasa" },
   { label: "Safety Guide", href: "/safety" },
+  { label: "Dashboard", href: "/dashboard" },
 ];
 
 export default function Navbar() {
