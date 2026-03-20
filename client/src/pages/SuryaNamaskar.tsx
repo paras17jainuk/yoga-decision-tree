@@ -176,7 +176,7 @@ const SURYA_B: FlowStep[] = [
   {
     name: "Half Standing Forward Fold",
     sanskrit: "Ardha Uttanasana",
-    imageKey: "uttanasana",
+    imageKey: "ardha_uttanasana",
     breath: "Inhale",
     duration: 3,
     instruction: "Lift halfway, lengthening the spine. Fingertips on shins or floor, gaze slightly forward.",
@@ -284,7 +284,7 @@ const SURYA_B: FlowStep[] = [
   {
     name: "Half Standing Forward Fold",
     sanskrit: "Ardha Uttanasana",
-    imageKey: "uttanasana",
+    imageKey: "ardha_uttanasana",
     breath: "Inhale",
     duration: 3,
     instruction: "Step or jump feet to hands. Lift halfway with a flat back.",

@@ -71,7 +71,7 @@ const FLOWS: VinyasaFlow[] = [
     steps: [
       { name: "Mountain Pose", sanskrit: "Tadasana", imageKey: "tadasana", breath: "Normal", duration: 5, instruction: "Stand tall with feet together, arms at sides. Ground through all four corners of your feet. Engage your core gently." },
       { name: "Forward Fold", sanskrit: "Uttanasana", imageKey: "uttanasana", breath: "Exhale", duration: 4, instruction: "Fold forward from the hips, hands to the floor or shins. Let the head hang heavy." },
-      { name: "Half Lift", sanskrit: "Ardha Uttanasana", imageKey: "uttanasana", breath: "Inhale", duration: 3, instruction: "Lift halfway, flat back. Fingertips on shins, gaze slightly forward. Lengthen the spine." },
+      { name: "Half Lift", sanskrit: "Ardha Uttanasana", imageKey: "ardha_uttanasana", breath: "Inhale", duration: 3, instruction: "Lift halfway, flat back. Fingertips on shins, gaze slightly forward. Lengthen the spine." },
       { name: "Plank Pose", sanskrit: "Phalakasana", imageKey: "phalakasana", breath: "Hold", duration: 5, instruction: "Step back to Plank. Body in one straight line from head to heels. Engage the core, press through the palms." },
       { name: "Low Plank", sanskrit: "Chaturanga Dandasana", imageKey: "chaturanga_dandasana", breath: "Exhale", duration: 4, instruction: "Lower halfway down with elbows hugging the ribs. Keep body straight — don't let hips sag or pike." },
       { name: "Cobra / Upward Dog", sanskrit: "Bhujangasana / Urdhva Mukha", imageKey: "bhujangasana", breath: "Inhale", duration: 5, instruction: "Press through hands, lift chest. Beginners: Cobra (elbows bent). Advanced: Upward Dog (arms straight, thighs lifted)." },

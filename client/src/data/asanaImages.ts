@@ -6,6 +6,7 @@ export const asanaImages: Record<string, string> = {
   "apanasana": "https://files.manuscdn.com/user_upload_by_module/session_file/310519663318567070/AtBrYzaNyoFIbDuu.png",
   "ardha_chandrasana": "https://d2xsxph8kpxj0f.cloudfront.net/310519663318567070/87xTRNw69cyUtrfeqdS85m/ardha_chandrasana_flipped_d7a6d8da.png",
   "ardha_matsyendrasana": "https://d2xsxph8kpxj0f.cloudfront.net/310519663318567070/87xTRNw69cyUtrfeqdS85m/ardha_matsyendrasana_flipped_ea2356fe.png",
+  "ardha_uttanasana": "https://d2xsxph8kpxj0f.cloudfront.net/310519663318567070/87xTRNw69cyUtrfeqdS85m/ardha_uttanasana-bEEgPHAYBCh6qKgyW85HUe.png",
   "baddha_konasana": "https://files.manuscdn.com/user_upload_by_module/session_file/310519663318567070/FrPKLZUmStNurcfa.png",
   "balasana": "https://d2xsxph8kpxj0f.cloudfront.net/310519663318567070/87xTRNw69cyUtrfeqdS85m/balasana_flipped_a38c4246.png",
   "bhastrika_pranayama": "https://files.manuscdn.com/user_upload_by_module/session_file/310519663318567070/ZPOpIHtLZRmZBThS.png",
