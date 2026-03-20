@@ -2,7 +2,7 @@
  * Design: Earth & Breath — Organic Modernism
  * Surya Namaskar: Dedicated practice page for Sun Salutation sequences
  * Features: Surya Namaskar A (12 steps) and B (Ashtanga), step-by-step guided flow,
- * contraindications, timer, breathing cues
+ * contraindications, timer, breathing cues, transition video mode
  */
 import { useState, useEffect, useCallback, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
@@ -23,9 +23,13 @@ import {
   VolumeX,
   Leaf,
   Info,
+  Film,
+  Image as ImageIcon,
 } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import { asanaImages } from "@/data/asanaImages";
+import { suryaATransitionVideos } from "@/data/transitionVideos";
+import { Switch } from "@/components/ui/switch";
 
 /* ── Surya Namaskar A Steps ── */
 interface FlowStep {
@@ -274,8 +278,8 @@ const SURYA_B: FlowStep[] = [
     imageKey: "adho_mukha_svanasana",
     breath: "Exhale",
     duration: 8,
-    instruction: "Press back to Downward Dog. Hold here for 5 breaths.",
-    tips: "This is the longest hold in the sequence. Use it to steady the breath.",
+    instruction: "Hold Downward Dog for 5 breaths. This is the longest hold in the sequence — use it to recenter.",
+    tips: "Spread fingers wide. Rotate upper arms outward. Press the mat away from you.",
   },
   {
     name: "Half Standing Forward Fold",
@@ -333,6 +337,31 @@ const breathColors: Record<string, string> = {
   Normal: "text-muted-foreground bg-cream-dark/50",
 };
 
+/* ── Transition Video Component ── */
+function TransitionVideo({ src, className }: { src: string; className?: string }) {
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  useEffect(() => {
+    if (videoRef.current) {
+      videoRef.current.load();
+      videoRef.current.play().catch(() => {});
+    }
+  }, [src]);
+
+  return (
+    <video
+      ref={videoRef}
+      src={src}
+      className={className}
+      autoPlay
+      loop
+      muted
+      playsInline
+      preload="auto"
+    />
+  );
+}
+
 export default function SuryaNamaskar() {
   const [selectedFlow, setSelectedFlow] = useState<"A" | "B">("A");
   const [mode, setMode] = useState<"learn" | "practice">("learn");
@@ -343,11 +372,16 @@ export default function SuryaNamaskar() {
   const [timeLeft, setTimeLeft] = useState(0);
   const [soundEnabled, setSoundEnabled] = useState(true);
   const [showContraindications, setShowContraindications] = useState(false);
+  const [transitionMode, setTransitionMode] = useState(true); // ON by default
   const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
   const audioRef = useRef<AudioContext | null>(null);
 
   const steps = selectedFlow === "A" ? SURYA_A : SURYA_B;
   const currentStep = steps[currentStepIndex];
+
+  // Transition videos are only available for Surya Namaskar A
+  const hasTransitionVideo = selectedFlow === "A" && currentStepIndex < suryaATransitionVideos.length;
+  const showVideo = transitionMode && hasTransitionVideo;
 
   const playBell = useCallback(() => {
     if (!soundEnabled) return;
@@ -447,6 +481,42 @@ export default function SuryaNamaskar() {
 
   const totalTime = steps.reduce((s, st) => s + st.duration, 0) * rounds;
 
+  /* ── Render helper: Image or Video for a step ── */
+  const renderStepMedia = (stepIndex: number, step: FlowStep, size: "sm" | "lg") => {
+    const isVideoAvailable = transitionMode && selectedFlow === "A" && stepIndex < suryaATransitionVideos.length;
+
+    if (isVideoAvailable) {
+      const videoUrl = suryaATransitionVideos[stepIndex];
+      if (size === "sm") {
+        return (
+          <TransitionVideo
+            src={videoUrl}
+            className="w-full h-full object-cover rounded-lg"
+          />
+        );
+      }
+      return (
+        <TransitionVideo
+          src={videoUrl}
+          className="w-full h-full object-cover rounded-xl"
+        />
+      );
+    }
+
+    // Fallback: static image
+    if (asanaImages[step.imageKey]) {
+      return (
+        <img
+          src={asanaImages[step.imageKey]}
+          alt={step.name}
+          className={`w-full h-full object-contain ${size === "sm" ? "p-1.5" : "p-4"}`}
+          loading="lazy"
+        />
+      );
+    }
+    return <Leaf className={`${size === "sm" ? "w-6 h-6" : "w-12 h-12"} text-forest/20`} />;
+  };
+
   return (
     <div className="min-h-screen bg-background">
       <Navbar />
@@ -502,14 +572,26 @@ export default function SuryaNamaskar() {
               </button>
             </div>
 
-            {/* Contraindications toggle */}
-            <button
-              onClick={() => setShowContraindications(!showContraindications)}
-              className="inline-flex items-center gap-2 text-sm text-rose hover:text-rose/80 transition-colors"
-            >
-              <AlertTriangle className="w-4 h-4" />
-              {showContraindications ? "Hide" : "View"} Contraindications
-            </button>
+            {/* Transition Mode toggle + Contraindications */}
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+              {selectedFlow === "A" && (
+                <div className="flex items-center gap-2.5 bg-card border border-border rounded-full px-4 py-2">
+                  <Film className={`w-4 h-4 ${transitionMode ? "text-forest" : "text-muted-foreground"}`} />
+                  <span className="text-sm font-medium text-foreground">Transition Videos</span>
+                  <Switch
+                    checked={transitionMode}
+                    onCheckedChange={setTransitionMode}
+                  />
+                </div>
+              )}
+              <button
+                onClick={() => setShowContraindications(!showContraindications)}
+                className="inline-flex items-center gap-2 text-sm text-rose hover:text-rose/80 transition-colors"
+              >
+                <AlertTriangle className="w-4 h-4" />
+                {showContraindications ? "Hide" : "View"} Contraindications
+              </button>
+            </div>
           </motion.div>
         </div>
       </section>
@@ -583,58 +665,58 @@ export default function SuryaNamaskar() {
 
               {/* Step-by-step cards */}
               <div className="space-y-4">
-                {steps.map((step, i) => (
-                  <motion.div
-                    key={`${selectedFlow}-${i}`}
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: i * 0.04 }}
-                    className="bg-card border border-border rounded-2xl p-5 hover:border-forest/20 transition-all"
-                  >
-                    <div className="flex items-start gap-4">
-                      {/* Step number */}
-                      <div className="w-10 h-10 rounded-full bg-forest/10 flex items-center justify-center shrink-0">
-                        <span className="text-sm font-bold text-forest">{i + 1}</span>
-                      </div>
-
-                      {/* Image */}
-                      <div className="w-16 h-16 rounded-xl overflow-hidden bg-white border border-border/50 shrink-0 flex items-center justify-center">
-                        {asanaImages[step.imageKey] ? (
-                          <img
-                            src={asanaImages[step.imageKey]}
-                            alt={step.name}
-                            className="w-full h-full object-contain p-1.5"
-                            loading="lazy"
-                          />
-                        ) : (
-                          <Leaf className="w-6 h-6 text-forest/20" />
-                        )}
-                      </div>
-
-                      {/* Content */}
-                      <div className="flex-1">
-                        <div className="flex items-center gap-2 mb-1">
-                          <h3 className="font-serif text-lg font-semibold text-foreground">{step.name}</h3>
-                          <span className={`text-xs px-2 py-0.5 rounded-full font-medium ${breathColors[step.breath]}`}>
-                            <Wind className="w-3 h-3 inline mr-1" />
-                            {step.breath}
-                          </span>
+                {steps.map((step, i) => {
+                  const hasVideo = transitionMode && selectedFlow === "A" && i < suryaATransitionVideos.length;
+                  return (
+                    <motion.div
+                      key={`${selectedFlow}-${i}-${transitionMode}`}
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: i * 0.04 }}
+                      className="bg-card border border-border rounded-2xl p-5 hover:border-forest/20 transition-all"
+                    >
+                      <div className="flex items-start gap-4">
+                        {/* Step number */}
+                        <div className="w-10 h-10 rounded-full bg-forest/10 flex items-center justify-center shrink-0">
+                          <span className="text-sm font-bold text-forest">{i + 1}</span>
                         </div>
-                        <p className="text-xs text-muted-foreground italic mb-2">{step.sanskrit}</p>
-                        <p className="text-sm text-foreground/80 leading-relaxed">{step.instruction}</p>
-                        <p className="text-xs text-muted-foreground mt-2 flex items-start gap-1">
-                          <Info className="w-3 h-3 mt-0.5 shrink-0" />
-                          {step.tips}
-                        </p>
-                      </div>
 
-                      {/* Duration */}
-                      <div className="text-right shrink-0">
-                        <span className="text-xs text-muted-foreground">{step.duration}s</span>
+                        {/* Image or Video */}
+                        <div className={`${hasVideo ? "w-24 h-24" : "w-16 h-16"} rounded-xl overflow-hidden bg-white border border-border/50 shrink-0 flex items-center justify-center`}>
+                          {renderStepMedia(i, step, "sm")}
+                        </div>
+
+                        {/* Content */}
+                        <div className="flex-1">
+                          <div className="flex items-center gap-2 mb-1">
+                            <h3 className="font-serif text-lg font-semibold text-foreground">{step.name}</h3>
+                            <span className={`text-xs px-2 py-0.5 rounded-full font-medium ${breathColors[step.breath]}`}>
+                              <Wind className="w-3 h-3 inline mr-1" />
+                              {step.breath}
+                            </span>
+                            {hasVideo && (
+                              <span className="text-xs px-2 py-0.5 rounded-full font-medium text-forest bg-sage-light/60">
+                                <Film className="w-3 h-3 inline mr-1" />
+                                Video
+                              </span>
+                            )}
+                          </div>
+                          <p className="text-xs text-muted-foreground italic mb-2">{step.sanskrit}</p>
+                          <p className="text-sm text-foreground/80 leading-relaxed">{step.instruction}</p>
+                          <p className="text-xs text-muted-foreground mt-2 flex items-start gap-1">
+                            <Info className="w-3 h-3 mt-0.5 shrink-0" />
+                            {step.tips}
+                          </p>
+                        </div>
+
+                        {/* Duration */}
+                        <div className="text-right shrink-0">
+                          <span className="text-xs text-muted-foreground">{step.duration}s</span>
+                        </div>
                       </div>
-                    </div>
-                  </motion.div>
-                ))}
+                    </motion.div>
+                  );
+                })}
               </div>
             </div>
           ) : (
@@ -677,17 +759,9 @@ export default function SuryaNamaskar() {
                   className="bg-card border-2 border-forest/20 rounded-3xl p-8 mb-8"
                 >
                   <div className="flex flex-col md:flex-row items-center gap-8">
-                    {/* Large image */}
-                    <div className="w-40 h-40 md:w-56 md:h-56 rounded-2xl overflow-hidden bg-white border border-border/50 flex items-center justify-center shrink-0">
-                      {asanaImages[currentStep.imageKey] ? (
-                        <img
-                          src={asanaImages[currentStep.imageKey]}
-                          alt={currentStep.name}
-                          className="w-full h-full object-contain p-4"
-                        />
-                      ) : (
-                        <Leaf className="w-12 h-12 text-forest/20" />
-                      )}
+                    {/* Large image or video */}
+                    <div className={`${showVideo ? "w-56 h-56 md:w-72 md:h-72" : "w-40 h-40 md:w-56 md:h-56"} rounded-2xl overflow-hidden bg-white border border-border/50 flex items-center justify-center shrink-0`}>
+                      {renderStepMedia(currentStepIndex, currentStep, "lg")}
                     </div>
 
                     {/* Step info */}
@@ -700,6 +774,12 @@ export default function SuryaNamaskar() {
                           <Wind className="w-3.5 h-3.5 inline mr-1" />
                           {currentStep.breath}
                         </span>
+                        {showVideo && (
+                          <span className="text-sm px-3 py-1 rounded-full font-medium text-forest bg-sage-light/60">
+                            <Film className="w-3.5 h-3.5 inline mr-1" />
+                            Transition
+                          </span>
+                        )}
                       </div>
                       <h2 className="font-serif text-3xl font-bold text-foreground mb-1">
                         {currentStep.name}
@@ -767,37 +847,45 @@ export default function SuryaNamaskar() {
 
               {/* Step thumbnails */}
               <div className="mt-8 flex gap-2 overflow-x-auto pb-2">
-                {steps.map((step, i) => (
-                  <button
-                    key={i}
-                    onClick={() => {
-                      setCurrentStepIndex(i);
-                      setTimeLeft(steps[i].duration);
-                    }}
-                    className={`shrink-0 w-14 h-14 rounded-xl border-2 overflow-hidden flex items-center justify-center transition-all ${
-                      i === currentStepIndex
-                        ? "border-forest bg-sage-light/50 scale-110"
-                        : i < currentStepIndex
-                        ? "border-forest/30 bg-sage-light/20 opacity-60"
-                        : "border-border bg-white"
-                    }`}
-                  >
-                    {asanaImages[step.imageKey] ? (
-                      <img
-                        src={asanaImages[step.imageKey]}
-                        alt={step.name}
-                        className="w-full h-full object-contain p-1"
-                      />
-                    ) : (
-                      <span className="text-xs font-bold text-forest">{i + 1}</span>
-                    )}
-                    {i < currentStepIndex && (
-                      <div className="absolute inset-0 bg-forest/10 flex items-center justify-center">
-                        <Check className="w-4 h-4 text-forest" />
-                      </div>
-                    )}
-                  </button>
-                ))}
+                {steps.map((step, i) => {
+                  const thumbHasVideo = transitionMode && selectedFlow === "A" && i < suryaATransitionVideos.length;
+                  return (
+                    <button
+                      key={i}
+                      onClick={() => {
+                        setCurrentStepIndex(i);
+                        setTimeLeft(steps[i].duration);
+                      }}
+                      className={`shrink-0 w-14 h-14 rounded-xl border-2 overflow-hidden flex items-center justify-center transition-all relative ${
+                        i === currentStepIndex
+                          ? "border-forest bg-sage-light/50 scale-110"
+                          : i < currentStepIndex
+                          ? "border-forest/30 bg-sage-light/20 opacity-60"
+                          : "border-border bg-white"
+                      }`}
+                    >
+                      {asanaImages[step.imageKey] ? (
+                        <img
+                          src={asanaImages[step.imageKey]}
+                          alt={step.name}
+                          className="w-full h-full object-contain p-1"
+                        />
+                      ) : (
+                        <span className="text-xs font-bold text-forest">{i + 1}</span>
+                      )}
+                      {i < currentStepIndex && (
+                        <div className="absolute inset-0 bg-forest/10 flex items-center justify-center">
+                          <Check className="w-4 h-4 text-forest" />
+                        </div>
+                      )}
+                      {thumbHasVideo && i === currentStepIndex && (
+                        <div className="absolute bottom-0 right-0 bg-forest text-cream rounded-tl-md px-1">
+                          <Film className="w-2.5 h-2.5" />
+                        </div>
+                      )}
+                    </button>
+                  );
+                })}
               </div>
             </div>
           )}
