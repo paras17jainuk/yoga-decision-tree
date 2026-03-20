@@ -1,0 +1,2992 @@
+{
+  "meta": {
+    "version": "1.0.0",
+    "title": "Yoga Decision Tree Database",
+    "description": "Comprehensive database mapping health conditions to recommended and contraindicated yoga asanas",
+    "disclaimer": "This database is for informational purposes only. Always consult a healthcare professional before starting any yoga practice, especially if you have existing health conditions.",
+    "total_asanas": 71,
+    "total_conditions": 25,
+    "total_categories": 8
+  },
+  "categories": [
+    {
+      "id": "pain_musculoskeletal",
+      "name": "Pain & Musculoskeletal Issues",
+      "icon": "\ud83e\uddb4",
+      "description": "Pain in specific body areas, joint issues, and musculoskeletal conditions",
+      "conditions": [
+        "neck_pain",
+        "shoulder_pain",
+        "upper_back_pain",
+        "lower_back_pain",
+        "knee_pain",
+        "hip_pain",
+        "hip_replacement",
+        "wrist_pain",
+        "chest_pain",
+        "arthritis"
+      ]
+    },
+    {
+      "id": "cardiovascular",
+      "name": "Cardiovascular Conditions",
+      "icon": "\u2764\ufe0f",
+      "description": "Heart conditions, blood pressure issues, and circulatory problems",
+      "conditions": [
+        "high_blood_pressure",
+        "heart_condition"
+      ]
+    },
+    {
+      "id": "pregnancy",
+      "name": "Pregnancy",
+      "icon": "\ud83e\udd30",
+      "description": "Yoga guidance for each trimester of pregnancy",
+      "conditions": [
+        "pregnancy_first_trimester",
+        "pregnancy_second_trimester",
+        "pregnancy_third_trimester"
+      ]
+    },
+    {
+      "id": "mental_health",
+      "name": "Mental Health & Sleep",
+      "icon": "\ud83e\udde0",
+      "description": "Anxiety, depression, stress, and sleep disorders",
+      "conditions": [
+        "anxiety_stress",
+        "depression",
+        "insomnia"
+      ]
+    },
+    {
+      "id": "metabolic",
+      "name": "Metabolic & Weight",
+      "icon": "\u2696\ufe0f",
+      "description": "Diabetes, metabolic disorders, and weight management",
+      "conditions": [
+        "diabetes",
+        "obesity"
+      ]
+    },
+    {
+      "id": "digestive",
+      "name": "Digestive Health",
+      "icon": "\ud83e\udec3",
+      "description": "IBS, bloating, constipation, acid reflux, and digestive issues",
+      "conditions": [
+        "digestive_issues"
+      ]
+    },
+    {
+      "id": "respiratory",
+      "name": "Respiratory Health",
+      "icon": "\ud83e\udec1",
+      "description": "Asthma, COPD, and breathing difficulties",
+      "conditions": [
+        "respiratory_issues"
+      ]
+    },
+    {
+      "id": "neurological",
+      "name": "Neurological & Sensory",
+      "icon": "\ud83d\udc41\ufe0f",
+      "description": "Headaches, eye strain, vertigo, and balance disorders",
+      "conditions": [
+        "headache",
+        "eye_strain",
+        "vertigo"
+      ]
+    }
+  ],
+  "conditions": [
+    {
+      "id": "neck_pain",
+      "name": "Neck Pain / Stiff Neck",
+      "category": "pain_musculoskeletal",
+      "subcategory": "neck",
+      "description": "Pain, stiffness, or tension in the neck area including cervical spondylosis",
+      "recommended_asanas": [
+        "balasana",
+        "marjaryasana_bitilasana",
+        "uttana_shishosana",
+        "viparita_karani",
+        "savasana",
+        "supta_matsyendrasana",
+        "sukhasana",
+        "garudasana",
+        "trikonasana",
+        "setu_bandhasana"
+      ],
+      "contraindicated_asanas": [
+        "sirsasana",
+        "sarvangasana",
+        "halasana",
+        "matsyasana",
+        "ustrasana",
+        "chakrasana"
+      ],
+      "recommended_reason": "These poses gently stretch and release tension in the neck, shoulders, and upper back without compressing the cervical spine.",
+      "contraindicated_reason": "These poses place significant weight on the head/neck, compress the cervical spine, or cause hyperextension of the neck.",
+      "special_notes": "In twisting poses, initiate the twist from the base of the spine, not the neck. In Cobra and Triangle, gaze forward or down instead of up. Avoid any pose that causes sharp pain in the neck.",
+      "severity_levels": {
+        "mild": "All recommended poses can be practiced gently",
+        "moderate": "Avoid backbends and focus on gentle stretches. Use props for support.",
+        "severe": "Only practice under guidance. Stick to Savasana, gentle Cat-Cow, and breathing exercises."
+      }
+    },
+    {
+      "id": "shoulder_pain",
+      "name": "Shoulder Pain / Frozen Shoulder / Rotator Cuff",
+      "category": "pain_musculoskeletal",
+      "subcategory": "shoulder",
+      "description": "Pain or limited mobility in the shoulder including frozen shoulder, rotator cuff injuries, and general shoulder tension",
+      "recommended_asanas": [
+        "marjaryasana_bitilasana",
+        "garudasana",
+        "uttana_shishosana",
+        "gomukhasana",
+        "supta_matsyendrasana",
+        "balasana",
+        "dolphin_pose",
+        "parsva_tadasana"
+      ],
+      "contraindicated_asanas": [
+        "chaturanga_dandasana",
+        "adho_mukha_vrksasana",
+        "sirsasana",
+        "purvottanasana",
+        "humble_warrior"
+      ],
+      "recommended_reason": "These poses gently stretch and mobilize the shoulder joint, releasing tension and improving range of motion without putting excessive load on the joint.",
+      "contraindicated_reason": "These poses place heavy load on the shoulder joint, require significant shoulder strength, or can aggravate rotator cuff injuries.",
+      "special_notes": "Use a strap in Gomukhasana if shoulders are tight. Avoid any overhead movements that cause pain. Thread the Needle pose is excellent for shoulder mobility. Always warm up shoulders before practice.",
+      "severity_levels": {
+        "mild": "Practice all recommended poses gently with props as needed",
+        "moderate": "Focus on gentle stretches. Avoid weight-bearing on arms. Use straps and blocks.",
+        "severe": "Only gentle movements. Consult a physiotherapist. Avoid all weight-bearing poses."
+      }
+    },
+    {
+      "id": "upper_back_pain",
+      "name": "Upper Back Pain / Kyphosis / Rounded Shoulders",
+      "category": "pain_musculoskeletal",
+      "subcategory": "upper_back",
+      "description": "Pain in the upper back, thoracic spine issues, kyphosis, rounded shoulders, and postural problems",
+      "recommended_asanas": [
+        "marjaryasana_bitilasana",
+        "garudasana",
+        "uttana_shishosana",
+        "ustrasana",
+        "sphinx_pose",
+        "bhujangasana",
+        "setu_bandhasana",
+        "supta_baddha_konasana",
+        "urdhva_hastasana",
+        "tadasana",
+        "trikonasana",
+        "forearm_plank"
+      ],
+      "contraindicated_asanas": [
+        "sirsasana",
+        "halasana"
+      ],
+      "recommended_reason": "These poses open the chest, strengthen the upper back muscles, and improve thoracic spine mobility, counteracting the effects of rounded shoulders and kyphosis.",
+      "contraindicated_reason": "These poses can compress the thoracic spine or put excessive load on an already compromised upper back.",
+      "special_notes": "Focus on chest-opening poses and back-strengthening poses. Use a bolster in Supta Baddha Konasana for a gentle chest opener. Eagle Arms is excellent for releasing tension between shoulder blades.",
+      "severity_levels": {
+        "mild": "Practice all recommended poses. Focus on posture awareness.",
+        "moderate": "Avoid deep backbends. Use props generously. Focus on gentle chest openers.",
+        "severe": "Only practice gentle poses under guidance. Avoid any pose that increases pain."
+      }
+    },
+    {
+      "id": "lower_back_pain",
+      "name": "Lower Back Pain / Sciatica / Herniated Disc",
+      "category": "pain_musculoskeletal",
+      "subcategory": "lower_back",
+      "description": "Pain in the lower back including sciatica, herniated disc, lumbar spine issues, and general lower back tension",
+      "recommended_asanas": [
+        "marjaryasana_bitilasana",
+        "balasana",
+        "supta_matsyendrasana",
+        "setu_bandhasana",
+        "viparita_karani",
+        "sphinx_pose",
+        "apanasana",
+        "supta_kapotasana",
+        "adho_mukha_svanasana",
+        "tadasana",
+        "dandasana"
+      ],
+      "contraindicated_asanas": [
+        "uttanasana",
+        "paschimottanasana",
+        "halasana",
+        "dhanurasana",
+        "chakrasana",
+        "navasana",
+        "shalabhasana"
+      ],
+      "recommended_reason": "These poses gently stretch and strengthen the lower back, release tension in the hips and hamstrings (which contribute to lower back pain), and improve spinal mobility without excessive flexion or extension.",
+      "contraindicated_reason": "Deep forward bends can aggravate herniated discs. Intense backbends can compress the lumbar spine. High-impact core work can strain the lower back.",
+      "special_notes": "For sciatica, Pigeon Pose and Reclined Pigeon can help release the piriformis muscle. For herniated discs, avoid all deep forward bends and twists. Always engage the core before moving. Bend knees in forward folds.",
+      "severity_levels": {
+        "mild": "Practice recommended poses gently. Bend knees in all forward folds.",
+        "moderate": "Avoid all forward bends and deep twists. Focus on gentle stretches and core stabilization.",
+        "severe": "Only practice under medical guidance. Stick to Savasana, gentle breathing, and very gentle Cat-Cow."
+      }
+    },
+    {
+      "id": "knee_pain",
+      "name": "Knee Pain / Knee Injury / Meniscus / ACL",
+      "category": "pain_musculoskeletal",
+      "subcategory": "knee",
+      "description": "Pain or injury in the knee including meniscus tears, ACL injuries, general knee pain, and post-knee surgery",
+      "recommended_asanas": [
+        "tadasana",
+        "virabhadrasana_ii",
+        "utkatasana",
+        "setu_bandhasana",
+        "viparita_karani",
+        "dandasana",
+        "supta_kapotasana",
+        "savasana"
+      ],
+      "contraindicated_asanas": [
+        "padmasana",
+        "virasana",
+        "malasana",
+        "eka_pada_rajakapotasana",
+        "garudasana"
+      ],
+      "recommended_reason": "These poses strengthen the muscles around the knee (quadriceps, hamstrings) without putting excessive stress on the joint itself, improving stability and support.",
+      "contraindicated_reason": "These poses require deep knee flexion, rotation, or lateral stress that can aggravate knee injuries, especially meniscus tears and ACL injuries.",
+      "special_notes": "Never let the knee extend past the toes in lunges and warriors. Keep the knee aligned over the ankle. Avoid any pose that causes sharp knee pain. Use props to reduce range of motion. Strengthen quadriceps to support the knee.",
+      "severity_levels": {
+        "mild": "Practice recommended poses with attention to alignment. Avoid deep knee bends.",
+        "moderate": "Avoid all deep knee flexion poses. Use a chair for support in standing poses.",
+        "severe": "Only practice under medical guidance. Focus on gentle leg strengthening without bending the knee deeply."
+      }
+    },
+    {
+      "id": "hip_pain",
+      "name": "Hip Pain / Tight Hips / Piriformis Syndrome",
+      "category": "pain_musculoskeletal",
+      "subcategory": "hip",
+      "description": "Pain in the hip area including tight hips, piriformis syndrome, hip bursitis, and general hip discomfort",
+      "recommended_asanas": [
+        "supta_kapotasana",
+        "baddha_konasana",
+        "supta_baddha_konasana",
+        "anjaneyasana",
+        "virabhadrasana_ii",
+        "marjaryasana_bitilasana",
+        "apanasana",
+        "supta_matsyendrasana",
+        "janu_sirsasana"
+      ],
+      "contraindicated_asanas": [
+        "padmasana",
+        "eka_pada_rajakapotasana",
+        "malasana"
+      ],
+      "recommended_reason": "These poses gently open and stretch the hip muscles, release tension in the piriformis and hip flexors, and improve hip mobility without forcing the joint.",
+      "contraindicated_reason": "These poses require extreme hip rotation or deep flexion that can aggravate hip pain, especially in cases of bursitis or labral tears.",
+      "special_notes": "For piriformis syndrome, Reclined Pigeon is safer than full Pigeon Pose. Use blocks and bolsters to reduce intensity. Never force the hips open. Warm up thoroughly before hip openers.",
+      "severity_levels": {
+        "mild": "Practice all recommended poses gently. Use props as needed.",
+        "moderate": "Avoid deep hip openers. Focus on gentle stretches and strengthening.",
+        "severe": "Only practice under guidance. Avoid all deep hip rotation."
+      }
+    },
+    {
+      "id": "hip_replacement",
+      "name": "Post Hip Replacement",
+      "category": "pain_musculoskeletal",
+      "subcategory": "hip",
+      "description": "Recovery after hip replacement surgery",
+      "recommended_asanas": [
+        "tadasana",
+        "virabhadrasana_ii",
+        "setu_bandhasana",
+        "marjaryasana_bitilasana",
+        "savasana",
+        "dandasana"
+      ],
+      "contraindicated_asanas": [
+        "padmasana",
+        "eka_pada_rajakapotasana",
+        "malasana",
+        "baddha_konasana",
+        "virasana",
+        "garudasana"
+      ],
+      "recommended_reason": "These gentle poses help rebuild strength and mobility without risking dislocation of the new hip joint.",
+      "contraindicated_reason": "These poses involve deep hip rotation, crossing legs, or extreme flexion that can risk dislocation of the prosthetic hip.",
+      "special_notes": "CRITICAL: Follow your surgeon's specific guidelines. The surgical approach (anterior vs posterior) determines which movements are safe. Generally avoid: crossing legs, deep squats, internal rotation. Wait at least 6-12 weeks before starting yoga. Work with a yoga therapist experienced in hip replacements.",
+      "severity_levels": {
+        "mild": "Follow surgeon's guidelines. Gentle poses only.",
+        "moderate": "Very limited range of motion. Chair-based yoga recommended.",
+        "severe": "No yoga until cleared by surgeon."
+      }
+    },
+    {
+      "id": "wrist_pain",
+      "name": "Wrist Pain / Carpal Tunnel Syndrome",
+      "category": "pain_musculoskeletal",
+      "subcategory": "wrist",
+      "description": "Pain in the wrists including carpal tunnel syndrome, wrist injuries, and repetitive strain",
+      "recommended_asanas": [
+        "dolphin_pose",
+        "forearm_plank",
+        "virabhadrasana_i",
+        "virabhadrasana_ii",
+        "tadasana",
+        "vrksasana",
+        "viparita_karani",
+        "savasana"
+      ],
+      "contraindicated_asanas": [
+        "adho_mukha_svanasana",
+        "phalakasana",
+        "chaturanga_dandasana",
+        "urdhva_mukha_svanasana",
+        "adho_mukha_vrksasana",
+        "chakrasana",
+        "purvottanasana"
+      ],
+      "recommended_reason": "These poses avoid weight-bearing on the wrists or use forearm variations that bypass wrist stress entirely.",
+      "contraindicated_reason": "These poses require significant weight-bearing on the wrists with full extension, which can aggravate carpal tunnel and wrist injuries.",
+      "special_notes": "Modifications for wrist-bearing poses: use fists instead of flat hands, use a wedge under the heel of the hand, use forearm variations (Dolphin instead of Down Dog, Forearm Plank instead of Plank). Wrist rotations and stretches before practice can help.",
+      "severity_levels": {
+        "mild": "Use wedges and modifications for wrist-bearing poses.",
+        "moderate": "Avoid all wrist weight-bearing. Use forearm variations.",
+        "severe": "No weight on wrists at all. Focus on standing and supine poses only."
+      }
+    },
+    {
+      "id": "headache",
+      "name": "Headaches / Migraines / Tension Headaches",
+      "category": "neurological",
+      "subcategory": "headache",
+      "description": "Recurring headaches, migraines, and tension headaches",
+      "recommended_asanas": [
+        "balasana",
+        "marjaryasana_bitilasana",
+        "savasana",
+        "setu_bandhasana",
+        "viparita_karani",
+        "supta_matsyendrasana",
+        "uttanasana",
+        "brahmari_pranayama",
+        "nadi_shodhana"
+      ],
+      "contraindicated_asanas": [
+        "sirsasana",
+        "sarvangasana",
+        "halasana",
+        "dhanurasana",
+        "ustrasana",
+        "chakrasana",
+        "bhastrika_pranayama",
+        "kapalabhati_pranayama"
+      ],
+      "recommended_reason": "These poses release tension in the neck, shoulders, and back, improve blood flow to the brain, and activate the parasympathetic nervous system to reduce headache intensity.",
+      "contraindicated_reason": "Inversions, intense backbends, and forceful breathing can increase intracranial pressure and blood flow to the head, potentially worsening headaches and migraines.",
+      "special_notes": "During an active migraine, only practice Savasana in a dark, quiet room. For tension headaches, focus on neck and shoulder stretches. Brahmari Pranayama (Humming Bee Breath) is particularly effective for headache relief. Avoid hot yoga during migraine episodes.",
+      "severity_levels": {
+        "mild": "Practice recommended poses gently.",
+        "moderate": "Only gentle, restorative poses. Avoid all inversions.",
+        "severe": "Only Savasana and gentle breathing in a dark room."
+      }
+    },
+    {
+      "id": "high_blood_pressure",
+      "name": "High Blood Pressure (Hypertension)",
+      "category": "cardiovascular",
+      "subcategory": "blood_pressure",
+      "description": "Elevated blood pressure, whether controlled with medication or uncontrolled",
+      "recommended_asanas": [
+        "balasana",
+        "paschimottanasana",
+        "viparita_karani",
+        "sukhasana",
+        "savasana",
+        "setu_bandhasana",
+        "baddha_konasana",
+        "supta_baddha_konasana",
+        "marjaryasana_bitilasana",
+        "janu_sirsasana",
+        "nadi_shodhana",
+        "ujjayi_pranayama",
+        "dirgha_pranayama"
+      ],
+      "contraindicated_asanas": [
+        "sirsasana",
+        "sarvangasana",
+        "halasana",
+        "adho_mukha_vrksasana",
+        "bhastrika_pranayama",
+        "kapalabhati_pranayama",
+        "dhanurasana",
+        "chakrasana"
+      ],
+      "recommended_reason": "These calming, restorative poses activate the parasympathetic nervous system, reduce stress hormones, and help lower blood pressure naturally.",
+      "contraindicated_reason": "Inversions where the heart is above the head can cause dangerous spikes in blood pressure. Forceful breathing techniques also raise blood pressure. Intense backbends increase cardiovascular strain.",
+      "special_notes": "CRITICAL: Never hold breath (Kumbhaka) with hypertension. Avoid all inversions where head is below heart. Move slowly between poses to avoid blood pressure fluctuations. Practice in a cool environment. Avoid hot yoga. If on medication, practice gently and monitor how you feel.",
+      "severity_levels": {
+        "mild": "Practice recommended poses. Avoid inversions. Monitor symptoms.",
+        "moderate": "Only gentle, restorative poses. No breath retention. Avoid all inversions.",
+        "severe": "Only practice under medical supervision. Savasana and gentle breathing only."
+      }
+    },
+    {
+      "id": "heart_condition",
+      "name": "Heart Condition / Post Cardiac Surgery",
+      "category": "cardiovascular",
+      "subcategory": "heart",
+      "description": "Heart disease, angina, post heart attack, post cardiac surgery, or any cardiac condition",
+      "recommended_asanas": [
+        "tadasana",
+        "utkatasana",
+        "setu_bandhasana",
+        "viparita_karani",
+        "savasana",
+        "sukhasana",
+        "marjaryasana_bitilasana",
+        "balasana",
+        "nadi_shodhana",
+        "ujjayi_pranayama",
+        "dirgha_pranayama"
+      ],
+      "contraindicated_asanas": [
+        "sirsasana",
+        "sarvangasana",
+        "halasana",
+        "adho_mukha_vrksasana",
+        "chakrasana",
+        "ustrasana",
+        "dhanurasana",
+        "navasana",
+        "bhastrika_pranayama",
+        "kapalabhati_pranayama",
+        "surya_namaskar"
+      ],
+      "recommended_reason": "These gentle poses improve circulation, reduce stress, and strengthen the body without putting excessive strain on the cardiovascular system.",
+      "contraindicated_reason": "Inversions cause rapid blood pressure increases. Intense backbends and core work put excessive strain on the heart. Forceful breathing techniques spike heart rate and blood pressure.",
+      "special_notes": "CRITICAL: Get medical clearance before starting yoga. Avoid hot yoga, power yoga, and fast-paced vinyasa. Never hold breath. Start with very short sessions (10-15 minutes). Work with a yoga therapist experienced in cardiac rehabilitation. After surgery, wait for full medical clearance (typically 6-12 weeks). Avoid poses that compress the abdomen.",
+      "severity_levels": {
+        "mild": "Practice gentle yoga with medical clearance. Avoid inversions and intense poses.",
+        "moderate": "Only restorative yoga under guidance. Very gentle movements.",
+        "severe": "No yoga without explicit medical clearance. Only breathing exercises if approved."
+      }
+    },
+    {
+      "id": "pregnancy_first_trimester",
+      "name": "Pregnancy - First Trimester",
+      "category": "pregnancy",
+      "subcategory": "first_trimester",
+      "description": "First trimester of pregnancy (weeks 1-12)",
+      "recommended_asanas": [
+        "marjaryasana_bitilasana",
+        "virabhadrasana_ii",
+        "baddha_konasana",
+        "balasana",
+        "viparita_karani",
+        "sukhasana",
+        "tadasana",
+        "vrksasana",
+        "trikonasana"
+      ],
+      "contraindicated_asanas": [
+        "sirsasana",
+        "sarvangasana",
+        "halasana",
+        "dhanurasana",
+        "navasana",
+        "bhujangasana",
+        "shalabhasana",
+        "chakrasana",
+        "bhastrika_pranayama",
+        "kapalabhati_pranayama"
+      ],
+      "recommended_reason": "These poses are gentle, support the changing body, help with nausea and fatigue, and don't compress the abdomen.",
+      "contraindicated_reason": "Inversions, prone poses, intense core work, and forceful breathing are unsafe during pregnancy.",
+      "special_notes": "Avoid hot yoga. Don't lie on stomach. Avoid deep twists. Listen to your body \u2014 if something doesn't feel right, stop. Stay hydrated. Avoid overheating. Consult your OB/GYN before starting yoga.",
+      "severity_levels": {
+        "mild": "Practice recommended poses gently.",
+        "moderate": "Only prenatal yoga classes.",
+        "severe": "Consult doctor before any exercise."
+      }
+    },
+    {
+      "id": "pregnancy_second_trimester",
+      "name": "Pregnancy - Second Trimester",
+      "category": "pregnancy",
+      "subcategory": "second_trimester",
+      "description": "Second trimester of pregnancy (weeks 13-26)",
+      "recommended_asanas": [
+        "marjaryasana_bitilasana",
+        "virabhadrasana_ii",
+        "baddha_konasana",
+        "trikonasana",
+        "balasana",
+        "viparita_karani",
+        "malasana",
+        "tadasana",
+        "parsva_savasana"
+      ],
+      "contraindicated_asanas": [
+        "sirsasana",
+        "sarvangasana",
+        "halasana",
+        "dhanurasana",
+        "navasana",
+        "bhujangasana",
+        "savasana",
+        "chakrasana",
+        "ardha_matsyendrasana",
+        "bhastrika_pranayama",
+        "kapalabhati_pranayama"
+      ],
+      "recommended_reason": "These poses help with common second trimester discomforts like back pain, open the hips for birth preparation, and maintain strength.",
+      "contraindicated_reason": "Avoid lying flat on back (compresses vena cava), prone poses, deep twists, inversions, and intense core work.",
+      "special_notes": "After week 20, avoid lying flat on your back \u2014 use Side-Lying Corpse Pose instead of Savasana. Widen stance in all poses for balance. Use a wall for support. Avoid deep twists \u2014 only open twists away from the belly. Stay hydrated.",
+      "severity_levels": {
+        "mild": "Practice recommended poses with modifications.",
+        "moderate": "Only prenatal yoga classes with qualified instructor.",
+        "severe": "Consult doctor before any exercise."
+      }
+    },
+    {
+      "id": "pregnancy_third_trimester",
+      "name": "Pregnancy - Third Trimester",
+      "category": "pregnancy",
+      "subcategory": "third_trimester",
+      "description": "Third trimester of pregnancy (weeks 27-40)",
+      "recommended_asanas": [
+        "marjaryasana_bitilasana",
+        "virabhadrasana_ii",
+        "malasana",
+        "sukhasana",
+        "parsva_savasana",
+        "baddha_konasana",
+        "balasana",
+        "tadasana"
+      ],
+      "contraindicated_asanas": [
+        "sirsasana",
+        "sarvangasana",
+        "halasana",
+        "dhanurasana",
+        "navasana",
+        "bhujangasana",
+        "savasana",
+        "chakrasana",
+        "uttanasana",
+        "adho_mukha_svanasana",
+        "phalakasana",
+        "bhastrika_pranayama",
+        "kapalabhati_pranayama"
+      ],
+      "recommended_reason": "These poses help prepare the body for labor, relieve third trimester discomforts, and maintain gentle strength and flexibility.",
+      "contraindicated_reason": "Avoid lying on back, prone poses, inversions, intense core work, deep forward bends, and any pose that compresses the belly.",
+      "special_notes": "Focus on hip openers, gentle stretches, and breathing exercises. Use props extensively. Practice squatting (Malasana) to open the pelvis. Side-Lying Corpse Pose replaces Savasana. Avoid overexertion. Practice pelvic floor exercises.",
+      "severity_levels": {
+        "mild": "Practice recommended poses very gently with props.",
+        "moderate": "Only prenatal yoga with qualified instructor.",
+        "severe": "Consult doctor. Only breathing exercises if approved."
+      }
+    },
+    {
+      "id": "anxiety_stress",
+      "name": "Anxiety / Stress",
+      "category": "mental_health",
+      "subcategory": "anxiety",
+      "description": "Anxiety disorders, chronic stress, panic attacks, and general nervousness",
+      "recommended_asanas": [
+        "balasana",
+        "viparita_karani",
+        "savasana",
+        "sukhasana",
+        "marjaryasana_bitilasana",
+        "uttanasana",
+        "setu_bandhasana",
+        "supta_baddha_konasana",
+        "supta_matsyendrasana",
+        "nadi_shodhana",
+        "ujjayi_pranayama",
+        "dirgha_pranayama",
+        "brahmari_pranayama"
+      ],
+      "contraindicated_asanas": [
+        "bhastrika_pranayama",
+        "kapalabhati_pranayama",
+        "sirsasana"
+      ],
+      "recommended_reason": "These calming, grounding poses activate the parasympathetic nervous system, slow the heart rate, and promote deep relaxation, reducing anxiety and stress hormones.",
+      "contraindicated_reason": "Forceful, energizing breathing techniques can increase anxiety and trigger panic responses. Advanced inversions can be stressful for anxious practitioners.",
+      "special_notes": "Focus on slow, deep breathing throughout practice. Hold poses longer for deeper relaxation. Practice in a quiet, comfortable environment. Yoga Nidra (guided relaxation) is highly effective for anxiety. Forward bends are naturally calming. Avoid competitive or fast-paced yoga styles.",
+      "severity_levels": {
+        "mild": "Practice recommended poses. Focus on breathing.",
+        "moderate": "Restorative yoga and breathing exercises. Avoid challenging poses.",
+        "severe": "Only gentle breathing and Savasana. Seek professional mental health support."
+      }
+    },
+    {
+      "id": "depression",
+      "name": "Depression",
+      "category": "mental_health",
+      "subcategory": "depression",
+      "description": "Depression, low mood, and lack of motivation",
+      "recommended_asanas": [
+        "surya_namaskar",
+        "virabhadrasana_i",
+        "virabhadrasana_ii",
+        "ustrasana",
+        "bhujangasana",
+        "setu_bandhasana",
+        "adho_mukha_svanasana",
+        "vrksasana",
+        "tadasana",
+        "nadi_shodhana",
+        "ujjayi_pranayama"
+      ],
+      "contraindicated_asanas": [],
+      "recommended_reason": "Heart-opening backbends, standing poses, and energizing sequences help lift mood, increase energy, build confidence, and release stored emotions.",
+      "contraindicated_reason": "No specific contraindications for depression, but avoid overly passive practice if it worsens lethargy.",
+      "special_notes": "Backbends and chest openers are particularly effective for depression as they counteract the closed, collapsed posture associated with low mood. Sun Salutations provide energizing movement. Balance active and restorative practice. Yoga is a complement to, not a replacement for, professional treatment.",
+      "severity_levels": {
+        "mild": "Practice a balanced mix of active and restorative poses.",
+        "moderate": "Start with gentle movement and gradually increase intensity.",
+        "severe": "Seek professional help first. Gentle movement as tolerated."
+      }
+    },
+    {
+      "id": "insomnia",
+      "name": "Insomnia / Sleep Disorders",
+      "category": "mental_health",
+      "subcategory": "sleep",
+      "description": "Difficulty falling asleep, staying asleep, or poor sleep quality",
+      "recommended_asanas": [
+        "viparita_karani",
+        "supta_baddha_konasana",
+        "balasana",
+        "supta_matsyendrasana",
+        "uttanasana",
+        "savasana",
+        "marjaryasana_bitilasana",
+        "setu_bandhasana_supported",
+        "janu_sirsasana",
+        "nadi_shodhana",
+        "dirgha_pranayama"
+      ],
+      "contraindicated_asanas": [
+        "sirsasana",
+        "surya_namaskar",
+        "bhastrika_pranayama",
+        "kapalabhati_pranayama",
+        "virabhadrasana_i",
+        "virabhadrasana_ii",
+        "utkatasana"
+      ],
+      "recommended_reason": "These calming, restorative poses activate the parasympathetic nervous system, release physical tension, and prepare the body and mind for sleep.",
+      "contraindicated_reason": "Energizing poses, vigorous sequences, and stimulating breathing techniques can increase alertness and make it harder to fall asleep.",
+      "special_notes": "Practice 30-60 minutes before bed. Keep the room dim and quiet. Hold restorative poses for 3-5 minutes each. Avoid vigorous practice within 2 hours of bedtime. Legs Up the Wall is one of the most effective poses for promoting sleep. Yoga Nidra before bed is highly recommended.",
+      "severity_levels": {
+        "mild": "Practice bedtime yoga routine 30 minutes before sleep.",
+        "moderate": "Focus on restorative poses and breathing. Avoid all stimulating practice.",
+        "severe": "Seek professional help. Only Savasana and gentle breathing."
+      }
+    },
+    {
+      "id": "diabetes",
+      "name": "Diabetes / Metabolic Disorders",
+      "category": "metabolic",
+      "subcategory": "diabetes",
+      "description": "Type 1 or Type 2 diabetes, insulin resistance, and metabolic syndrome",
+      "recommended_asanas": [
+        "viparita_karani",
+        "paschimottanasana",
+        "dhanurasana",
+        "ardha_matsyendrasana",
+        "setu_bandhasana",
+        "balasana",
+        "bhujangasana",
+        "surya_namaskar",
+        "shalabhasana",
+        "navasana",
+        "marjaryasana_bitilasana",
+        "nadi_shodhana"
+      ],
+      "contraindicated_asanas": [],
+      "recommended_reason": "These poses stimulate the pancreas and abdominal organs, improve insulin sensitivity, reduce stress (which affects blood sugar), and help regulate metabolism.",
+      "contraindicated_reason": "No specific yoga poses are strictly contraindicated for diabetes, but practice must be adapted based on complications.",
+      "special_notes": "Monitor blood sugar before and after practice. Keep a snack nearby in case of hypoglycemia. Avoid practicing on an empty stomach. Twisting poses and forward bends are particularly beneficial as they massage abdominal organs. If you have diabetic retinopathy, avoid inversions. If you have neuropathy, be extra careful with balance poses and check feet for injuries.",
+      "severity_levels": {
+        "mild": "Practice a full range of poses. Monitor blood sugar.",
+        "moderate": "Adapt practice based on complications. Monitor blood sugar closely.",
+        "severe": "Practice under medical guidance. Avoid inversions if retinopathy is present."
+      }
+    },
+    {
+      "id": "digestive_issues",
+      "name": "Digestive Issues (IBS / Bloating / Constipation / Acid Reflux)",
+      "category": "digestive",
+      "subcategory": "digestion",
+      "description": "Irritable bowel syndrome, bloating, constipation, acid reflux, and general digestive discomfort",
+      "recommended_asanas": [
+        "apanasana",
+        "pawanmuktasana",
+        "marjaryasana_bitilasana",
+        "ardha_matsyendrasana",
+        "balasana",
+        "bhujangasana",
+        "dhanurasana",
+        "supta_matsyendrasana",
+        "malasana",
+        "paschimottanasana",
+        "trikonasana",
+        "parivrtta_trikonasana"
+      ],
+      "contraindicated_asanas": [],
+      "recommended_reason": "These poses massage the abdominal organs, stimulate peristalsis, relieve gas and bloating, and improve overall digestive function through compression, twisting, and stretching.",
+      "contraindicated_reason": "No specific poses are strictly contraindicated, but some modifications are needed for acid reflux.",
+      "special_notes": "For acid reflux: avoid deep forward bends and inversions after eating. Practice on an empty stomach (wait 2-3 hours after eating). Twisting poses are particularly effective for constipation. Wind-Relieving Pose (Pawanmuktasana) is excellent for gas and bloating. For IBS, practice gently and avoid poses that increase abdominal pressure during flare-ups.",
+      "severity_levels": {
+        "mild": "Practice recommended poses. Wait 2 hours after eating.",
+        "moderate": "Gentle practice only. Avoid deep compression during flare-ups.",
+        "severe": "Only very gentle poses. Consult a gastroenterologist."
+      }
+    },
+    {
+      "id": "respiratory_issues",
+      "name": "Respiratory Issues (Asthma / COPD / Breathing Difficulties)",
+      "category": "respiratory",
+      "subcategory": "breathing",
+      "description": "Asthma, COPD, chronic bronchitis, and general breathing difficulties",
+      "recommended_asanas": [
+        "marjaryasana_bitilasana",
+        "bhujangasana",
+        "setu_bandhasana",
+        "matsyasana",
+        "ustrasana",
+        "sphinx_pose",
+        "sukhasana",
+        "savasana",
+        "nadi_shodhana",
+        "ujjayi_pranayama",
+        "dirgha_pranayama",
+        "brahmari_pranayama"
+      ],
+      "contraindicated_asanas": [
+        "sirsasana",
+        "sarvangasana",
+        "halasana",
+        "bhastrika_pranayama",
+        "kapalabhati_pranayama"
+      ],
+      "recommended_reason": "Chest-opening poses expand lung capacity, strengthen respiratory muscles, and improve breathing patterns. Gentle pranayama improves breath control and calms the nervous system.",
+      "contraindicated_reason": "Inversions can compress the chest and make breathing difficult. Forceful breathing techniques can trigger bronchospasm in asthma patients.",
+      "special_notes": "Keep an inhaler nearby during practice. Avoid practicing in dusty, cold, or polluted environments. Focus on extending the exhalation (longer exhale than inhale). Dirgha (Three-Part) Breath is excellent for increasing lung capacity. Avoid breath retention. Practice in a well-ventilated space.",
+      "severity_levels": {
+        "mild": "Practice chest-opening poses and gentle pranayama.",
+        "moderate": "Only gentle poses. Avoid all forceful breathing. Keep inhaler nearby.",
+        "severe": "Only practice under medical guidance. Very gentle breathing exercises only."
+      }
+    },
+    {
+      "id": "eye_strain",
+      "name": "Eye Strain / Digital Eye Fatigue",
+      "category": "neurological",
+      "subcategory": "eyes",
+      "description": "Eye strain from prolonged screen use, digital eye fatigue, and tired eyes",
+      "recommended_asanas": [
+        "eye_exercises",
+        "balasana",
+        "savasana",
+        "nadi_shodhana",
+        "brahmari_pranayama",
+        "viparita_karani"
+      ],
+      "contraindicated_asanas": [],
+      "recommended_reason": "Eye exercises strengthen and relax eye muscles. Restorative poses and breathing reduce overall tension that contributes to eye strain.",
+      "contraindicated_reason": "No specific contraindications for eye strain.",
+      "special_notes": "Practice the 20-20-20 rule: every 20 minutes, look at something 20 feet away for 20 seconds. Palming (covering eyes with warm palms) provides immediate relief. Practice eye exercises 2-3 times daily. Ensure proper lighting and screen distance.",
+      "severity_levels": {
+        "mild": "Practice eye exercises regularly.",
+        "moderate": "Add restorative poses and reduce screen time.",
+        "severe": "Consult an ophthalmologist."
+      }
+    },
+    {
+      "id": "vertigo",
+      "name": "Vertigo / Balance Disorders",
+      "category": "neurological",
+      "subcategory": "balance",
+      "description": "Vertigo, dizziness, and balance disorders including BPPV",
+      "recommended_asanas": [
+        "tadasana",
+        "vrksasana",
+        "virabhadrasana_ii",
+        "sukhasana",
+        "marjaryasana_bitilasana",
+        "savasana"
+      ],
+      "contraindicated_asanas": [
+        "sirsasana",
+        "sarvangasana",
+        "halasana",
+        "adho_mukha_vrksasana",
+        "uttanasana",
+        "adho_mukha_svanasana",
+        "chakrasana"
+      ],
+      "recommended_reason": "Gentle standing poses improve balance and proprioception. Grounding poses help stabilize the vestibular system.",
+      "contraindicated_reason": "Inversions and poses where the head goes below the heart can trigger or worsen vertigo episodes.",
+      "special_notes": "Always practice near a wall for support. Move slowly between poses \u2014 avoid quick head movements. Avoid any pose that triggers dizziness. Focus on a fixed point (drishti) during balance poses. If vertigo is active, only practice seated or lying poses.",
+      "severity_levels": {
+        "mild": "Practice balance poses near a wall. Move slowly.",
+        "moderate": "Only seated and lying poses. Avoid all head-below-heart positions.",
+        "severe": "No yoga during active vertigo episodes. Seek medical treatment."
+      }
+    },
+    {
+      "id": "arthritis",
+      "name": "Arthritis (Rheumatoid & Osteoarthritis)",
+      "category": "pain_musculoskeletal",
+      "subcategory": "joints",
+      "description": "Rheumatoid arthritis, osteoarthritis, and general joint inflammation",
+      "recommended_asanas": [
+        "marjaryasana_bitilasana",
+        "utkatasana",
+        "virabhadrasana_ii",
+        "baddha_konasana",
+        "ardha_matsyendrasana",
+        "parsva_tadasana",
+        "uttanasana",
+        "tadasana",
+        "dandasana",
+        "setu_bandhasana",
+        "viparita_karani",
+        "savasana"
+      ],
+      "contraindicated_asanas": [
+        "padmasana",
+        "sirsasana",
+        "adho_mukha_vrksasana",
+        "chakrasana"
+      ],
+      "recommended_reason": "Gentle, low-impact poses improve joint mobility, reduce stiffness, strengthen supporting muscles, and decrease inflammation through stress reduction.",
+      "contraindicated_reason": "Poses requiring extreme joint range of motion or heavy weight-bearing can aggravate inflamed joints.",
+      "special_notes": "Practice during the time of day when joints feel least stiff. Warm up thoroughly. Use props extensively. Never force a joint. During flare-ups, practice only very gentle movement or rest. Iyengar yoga (with props) is particularly suitable for arthritis. Warm (not hot) environments can help.",
+      "severity_levels": {
+        "mild": "Practice recommended poses gently. Use props.",
+        "moderate": "Very gentle practice. Avoid any pose that causes joint pain. Chair yoga is excellent.",
+        "severe": "Only practice during non-flare periods. Very gentle movement only."
+      }
+    },
+    {
+      "id": "obesity",
+      "name": "Obesity / Weight Management",
+      "category": "metabolic",
+      "subcategory": "weight",
+      "description": "Obesity, overweight, and weight management goals",
+      "recommended_asanas": [
+        "surya_namaskar",
+        "virabhadrasana_i",
+        "virabhadrasana_ii",
+        "utkatasana",
+        "phalakasana",
+        "navasana",
+        "bhujangasana",
+        "dhanurasana",
+        "trikonasana",
+        "adho_mukha_svanasana",
+        "konasana",
+        "setu_bandhasana"
+      ],
+      "contraindicated_asanas": [],
+      "recommended_reason": "These active poses build muscle, boost metabolism, burn calories, and improve cardiovascular fitness while being adaptable to different fitness levels.",
+      "contraindicated_reason": "No specific contraindications for obesity, but modifications are essential to protect joints.",
+      "special_notes": "Start slowly and build up gradually. Use modifications to protect knees and joints that bear extra weight. Chair yoga is an excellent starting point. Focus on consistency over intensity. Combine with healthy eating. Avoid comparing yourself to others. Power yoga and vinyasa flow are effective for weight loss when fitness allows.",
+      "severity_levels": {
+        "mild": "Practice active yoga regularly. Build up intensity gradually.",
+        "moderate": "Start with chair yoga or gentle yoga. Modify all poses for joint protection.",
+        "severe": "Start with chair yoga only. Consult a doctor before starting."
+      }
+    },
+    {
+      "id": "chest_pain",
+      "name": "Chest Pain (Non-Cardiac)",
+      "category": "pain_musculoskeletal",
+      "subcategory": "chest",
+      "description": "Chest pain from muscular tension, costochondritis, or non-cardiac causes. IMPORTANT: Rule out cardiac causes first.",
+      "recommended_asanas": [
+        "sphinx_pose",
+        "marjaryasana_bitilasana",
+        "supta_baddha_konasana",
+        "balasana",
+        "savasana",
+        "dirgha_pranayama"
+      ],
+      "contraindicated_asanas": [
+        "dhanurasana",
+        "chakrasana",
+        "ustrasana",
+        "bhujangasana",
+        "chaturanga_dandasana"
+      ],
+      "recommended_reason": "Gentle chest openers and breathing exercises can release muscular tension in the chest without straining the area.",
+      "contraindicated_reason": "Deep backbends and poses that put pressure on the chest can aggravate chest pain.",
+      "special_notes": "CRITICAL: Always rule out cardiac causes of chest pain before practicing yoga. If chest pain is accompanied by shortness of breath, radiating pain to arm/jaw, or sweating, seek emergency medical attention immediately. For muscular chest pain, gentle stretching and breathing can help.",
+      "severity_levels": {
+        "mild": "Gentle chest openers after ruling out cardiac causes.",
+        "moderate": "Only breathing exercises and very gentle poses.",
+        "severe": "Seek medical attention immediately. No yoga until cleared."
+      }
+    }
+  ],
+  "asanas": [
+    {
+      "id": "tadasana",
+      "sanskrit_name": "Tadasana",
+      "english_name": "Mountain Pose",
+      "description": "Stand with feet together or hip-width apart, arms by your sides. Ground down through your feet and lengthen your spine. Engage your thigh muscles and draw your shoulder blades down your back.",
+      "difficulty": "beginner",
+      "target_areas": [
+        "full_body",
+        "legs",
+        "core"
+      ],
+      "type": "standing",
+      "benefits": [
+        "Improves posture",
+        "Strengthens thighs, knees, and ankles",
+        "Firms abdomen and buttocks",
+        "Improves balance and body awareness",
+        "Foundation for all standing poses"
+      ],
+      "general_contraindications": [],
+      "precautions": "If you feel dizzy or lightheaded, practice near a wall for support.",
+      "modifications": "Stand with feet hip-width apart if balance is challenging."
+    },
+    {
+      "id": "balasana",
+      "sanskrit_name": "Balasana",
+      "english_name": "Child's Pose",
+      "description": "From a kneeling position, sit back on your heels and fold forward, resting your forehead on the floor. Arms can be extended forward or rest alongside the body.",
+      "difficulty": "beginner",
+      "target_areas": [
+        "back",
+        "hips",
+        "shoulders",
+        "neck"
+      ],
+      "type": "kneeling",
+      "benefits": [
+        "Relieves neck and back pain",
+        "Calms the mind and reduces stress",
+        "Gently stretches hips, thighs, and ankles",
+        "Relieves headaches",
+        "Promotes relaxation and sleep"
+      ],
+      "general_contraindications": [
+        "knee_injury_severe"
+      ],
+      "precautions": "Place a blanket under the knees or forehead for comfort. Widen knees for more belly space during pregnancy.",
+      "modifications": "Stack hands under forehead for neck support. Use a bolster between thighs for deeper relaxation."
+    },
+    {
+      "id": "marjaryasana_bitilasana",
+      "sanskrit_name": "Marjaryasana-Bitilasana",
+      "english_name": "Cat-Cow Pose",
+      "description": "Start on all fours. Inhale, drop your belly and look up (Cow). Exhale, round your spine toward the ceiling and tuck your chin (Cat). Move with your breath.",
+      "difficulty": "beginner",
+      "target_areas": [
+        "spine",
+        "neck",
+        "core",
+        "back"
+      ],
+      "type": "kneeling",
+      "benefits": [
+        "Releases tension in the neck and spine",
+        "Improves spinal flexibility and mobility",
+        "Stimulates digestion",
+        "Calms the mind",
+        "Warms up the spine for deeper practice"
+      ],
+      "general_contraindications": [],
+      "precautions": "Move gently and with breath. Avoid if wrists are painful \u2014 use fists or forearms instead.",
+      "modifications": "Can be done seated in a chair. Use padding under knees."
+    },
+    {
+      "id": "adho_mukha_svanasana",
+      "sanskrit_name": "Adho Mukha Svanasana",
+      "english_name": "Downward-Facing Dog",
+      "description": "From all fours, tuck your toes and lift your hips up and back, forming an inverted V shape. Press your hands firmly into the mat, straighten your arms, and let your head hang between your upper arms.",
+      "difficulty": "beginner",
+      "target_areas": [
+        "full_body",
+        "shoulders",
+        "hamstrings",
+        "calves",
+        "arms"
+      ],
+      "type": "inversion_mild",
+      "benefits": [
+        "Strengthens arms and legs",
+        "Stretches shoulders, hamstrings, calves, and hands",
+        "Energizes the body",
+        "Improves digestion",
+        "Relieves headache, insomnia, back pain, and fatigue"
+      ],
+      "general_contraindications": [
+        "carpal_tunnel_severe",
+        "late_pregnancy"
+      ],
+      "precautions": "Bend knees if hamstrings are tight. Avoid if you have severe wrist pain.",
+      "modifications": "Use a wall or chair for a modified version. Bend knees generously."
+    },
+    {
+      "id": "uttanasana",
+      "sanskrit_name": "Uttanasana",
+      "english_name": "Standing Forward Bend",
+      "description": "Stand with feet hip-width apart. Exhale and fold forward from your hips, keeping your spine long. Let your head and neck relax. Bend knees as needed.",
+      "difficulty": "beginner",
+      "target_areas": [
+        "hamstrings",
+        "calves",
+        "back",
+        "neck"
+      ],
+      "type": "standing_forward_bend",
+      "benefits": [
+        "Stretches hamstrings, calves, and hips",
+        "Calms the brain and relieves stress",
+        "Reduces anxiety and fatigue",
+        "Relieves headache and insomnia",
+        "Improves digestion"
+      ],
+      "general_contraindications": [
+        "back_injury_severe"
+      ],
+      "precautions": "Bend knees generously if hamstrings are tight. Keep spine long.",
+      "modifications": "Place hands on blocks. Bend knees deeply. Hold opposite elbows."
+    },
+    {
+      "id": "virabhadrasana_i",
+      "sanskrit_name": "Virabhadrasana I",
+      "english_name": "Warrior I",
+      "description": "From standing, step one foot back. Bend the front knee to 90 degrees. Raise arms overhead. Square hips forward.",
+      "difficulty": "beginner",
+      "target_areas": [
+        "legs",
+        "hips",
+        "core",
+        "shoulders",
+        "chest"
+      ],
+      "type": "standing",
+      "benefits": [
+        "Strengthens legs and core",
+        "Stretches chest, lungs, and shoulders",
+        "Improves balance and stability",
+        "Builds stamina"
+      ],
+      "general_contraindications": [
+        "high_blood_pressure_uncontrolled"
+      ],
+      "precautions": "Keep front knee aligned over ankle. Don't let knee go past toes.",
+      "modifications": "Shorten stance. Keep hands on hips instead of overhead."
+    },
+    {
+      "id": "virabhadrasana_ii",
+      "sanskrit_name": "Virabhadrasana II",
+      "english_name": "Warrior II",
+      "description": "Step feet wide apart. Turn one foot out 90 degrees. Bend the front knee. Extend arms parallel to the floor. Gaze over front fingertips.",
+      "difficulty": "beginner",
+      "target_areas": [
+        "legs",
+        "hips",
+        "shoulders",
+        "chest",
+        "core"
+      ],
+      "type": "standing",
+      "benefits": [
+        "Strengthens legs, ankles, and feet",
+        "Opens hips and chest",
+        "Improves stamina and concentration",
+        "Builds leg and core strength"
+      ],
+      "general_contraindications": [],
+      "precautions": "Keep front knee over ankle. If you have neck problems, look straight ahead.",
+      "modifications": "Decrease bend in front knee. Use a chair under front thigh."
+    },
+    {
+      "id": "virabhadrasana_iii",
+      "sanskrit_name": "Virabhadrasana III",
+      "english_name": "Warrior III",
+      "description": "From Warrior I, shift weight onto front foot and lift back leg parallel to the floor. Extend arms forward or alongside body.",
+      "difficulty": "intermediate",
+      "target_areas": [
+        "legs",
+        "core",
+        "back",
+        "shoulders"
+      ],
+      "type": "standing_balance",
+      "benefits": [
+        "Strengthens legs, ankles, and back",
+        "Improves balance and coordination",
+        "Tones the abdomen",
+        "Improves posture"
+      ],
+      "general_contraindications": [
+        "high_blood_pressure_uncontrolled"
+      ],
+      "precautions": "Use a wall or chair for balance support.",
+      "modifications": "Keep hands on a wall. Don't lift back leg as high."
+    },
+    {
+      "id": "trikonasana",
+      "sanskrit_name": "Trikonasana",
+      "english_name": "Triangle Pose",
+      "description": "Stand with feet wide apart. Turn one foot out. Extend arms to sides. Reach toward the front foot and tilt sideways, placing hand on shin, block, or floor. Other arm reaches up.",
+      "difficulty": "beginner",
+      "target_areas": [
+        "legs",
+        "hips",
+        "spine",
+        "chest",
+        "shoulders"
+      ],
+      "type": "standing",
+      "benefits": [
+        "Stretches legs, hips, and spine",
+        "Opens chest and shoulders",
+        "Strengthens legs and core",
+        "Improves balance and stability"
+      ],
+      "general_contraindications": [],
+      "precautions": "If you have neck pain, gaze forward or down instead of up. Use a block under lower hand.",
+      "modifications": "Place hand on shin or block. Gaze forward instead of up."
+    },
+    {
+      "id": "bhujangasana",
+      "sanskrit_name": "Bhujangasana",
+      "english_name": "Cobra Pose",
+      "description": "Lie on your stomach with legs straight. Place palms under shoulders. Inhale and lift head and chest off the floor, keeping elbows slightly bent.",
+      "difficulty": "beginner",
+      "target_areas": [
+        "back",
+        "chest",
+        "shoulders",
+        "abdomen"
+      ],
+      "type": "prone_backbend",
+      "benefits": [
+        "Strengthens the spine",
+        "Stretches chest, lungs, shoulders, and abdomen",
+        "Firms the buttocks",
+        "Stimulates abdominal organs",
+        "Helps relieve stress and fatigue",
+        "Opens the heart and lungs"
+      ],
+      "general_contraindications": [
+        "pregnancy",
+        "carpal_tunnel_severe"
+      ],
+      "precautions": "Don't straighten arms fully if back is stiff. Keep chin level for neck pain.",
+      "modifications": "Keep elbows bent (Baby Cobra). Use forearms (Sphinx Pose)."
+    },
+    {
+      "id": "setu_bandhasana",
+      "sanskrit_name": "Setu Bandha Sarvangasana",
+      "english_name": "Bridge Pose",
+      "description": "Lie on your back with knees bent, feet flat on the floor hip-width apart. Press into feet and lift hips off the floor. Arms alongside body, palms down.",
+      "difficulty": "beginner",
+      "target_areas": [
+        "chest",
+        "neck",
+        "spine",
+        "hips",
+        "glutes"
+      ],
+      "type": "supine_backbend",
+      "benefits": [
+        "Stretches chest, neck, and spine",
+        "Calms the brain and reduces stress",
+        "Stimulates abdominal organs, lungs, and thyroid",
+        "Rejuvenates tired legs",
+        "Improves digestion",
+        "Reduces anxiety and fatigue"
+      ],
+      "general_contraindications": [
+        "neck_injury_severe"
+      ],
+      "precautions": "Place a block under sacrum for supported version. Avoid turning head while in pose.",
+      "modifications": "Place a block under sacrum. Keep arms by sides."
+    },
+    {
+      "id": "savasana",
+      "sanskrit_name": "Savasana",
+      "english_name": "Corpse Pose",
+      "description": "Lie on your back with legs straight, feet slightly wider than hips, arms alongside body with palms facing up. Close eyes and relax completely.",
+      "difficulty": "beginner",
+      "target_areas": [
+        "full_body"
+      ],
+      "type": "supine_restorative",
+      "benefits": [
+        "Deeply relaxes the entire body",
+        "Calms the mind",
+        "Reduces blood pressure",
+        "Reduces headache, fatigue, and insomnia",
+        "Promotes healing and recovery"
+      ],
+      "general_contraindications": [],
+      "precautions": "Place a blanket under head for neck support. Cover body for warmth.",
+      "modifications": "Place bolster under knees for lower back comfort. Lie on side during pregnancy."
+    },
+    {
+      "id": "viparita_karani",
+      "sanskrit_name": "Viparita Karani",
+      "english_name": "Legs-Up-the-Wall Pose",
+      "description": "Sit with one hip against a wall. Swing legs up the wall as you lower your back to the floor. Legs rest against the wall. Arms rest at sides.",
+      "difficulty": "beginner",
+      "target_areas": [
+        "legs",
+        "lower_back",
+        "nervous_system"
+      ],
+      "type": "inversion_restorative",
+      "benefits": [
+        "Relieves tired legs and feet",
+        "Gently stretches hamstrings and lower back",
+        "Calms the nervous system",
+        "Reduces anxiety and insomnia",
+        "Helps lower blood pressure",
+        "Reduces swelling in legs and feet"
+      ],
+      "general_contraindications": [
+        "glaucoma",
+        "serious_eye_problems"
+      ],
+      "precautions": "Place a folded blanket under hips. Avoid during menstruation if uncomfortable.",
+      "modifications": "Bend knees slightly. Place a bolster under hips."
+    },
+    {
+      "id": "paschimottanasana",
+      "sanskrit_name": "Paschimottanasana",
+      "english_name": "Seated Forward Bend",
+      "description": "Sit with legs extended straight. Inhale and lengthen spine. Exhale and fold forward from hips, reaching for feet or ankles.",
+      "difficulty": "beginner",
+      "target_areas": [
+        "hamstrings",
+        "spine",
+        "shoulders"
+      ],
+      "type": "seated_forward_bend",
+      "benefits": [
+        "Stretches spine, shoulders, and hamstrings",
+        "Calms the brain and relieves stress",
+        "Reduces anxiety and fatigue",
+        "Stimulates liver, kidneys, and digestive organs",
+        "Helps relieve symptoms of menopause"
+      ],
+      "general_contraindications": [
+        "asthma_acute",
+        "diarrhea"
+      ],
+      "precautions": "Sit on a folded blanket to elevate hips. Use a strap around feet.",
+      "modifications": "Bend knees. Use a strap. Place pillows on legs to rest torso."
+    },
+    {
+      "id": "ardha_matsyendrasana",
+      "sanskrit_name": "Ardha Matsyendrasana",
+      "english_name": "Half Lord of the Fishes / Seated Spinal Twist",
+      "description": "Sit with legs extended. Bend one knee and cross it over the other leg. Twist upper body toward the bent knee. Use opposite arm against the knee for leverage.",
+      "difficulty": "intermediate",
+      "target_areas": [
+        "spine",
+        "shoulders",
+        "hips"
+      ],
+      "type": "seated_twist",
+      "benefits": [
+        "Increases spinal mobility",
+        "Stretches shoulders, hips, and neck",
+        "Stimulates digestive organs",
+        "Relieves backache and fatigue",
+        "Improves digestion"
+      ],
+      "general_contraindications": [
+        "spine_injury_severe"
+      ],
+      "precautions": "Initiate twist from base of spine, not neck. Keep spine long.",
+      "modifications": "Keep bottom leg straight. Use a blanket under hips."
+    },
+    {
+      "id": "utkatasana",
+      "sanskrit_name": "Utkatasana",
+      "english_name": "Chair Pose",
+      "description": "From standing, inhale and raise arms overhead. Exhale and bend knees as if sitting in a chair. Keep thighs as parallel to floor as possible, back straight.",
+      "difficulty": "beginner",
+      "target_areas": [
+        "legs",
+        "core",
+        "shoulders"
+      ],
+      "type": "standing",
+      "benefits": [
+        "Strengthens legs, ankles, and core",
+        "Stretches shoulders and chest",
+        "Stimulates the diaphragm and heart",
+        "Builds stamina and heat"
+      ],
+      "general_contraindications": [
+        "low_blood_pressure"
+      ],
+      "precautions": "Don't go as deep if you feel strain. Keep weight in heels.",
+      "modifications": "Place a block between thighs. Use a wall for back support."
+    },
+    {
+      "id": "vrksasana",
+      "sanskrit_name": "Vrksasana",
+      "english_name": "Tree Pose",
+      "description": "Stand on one leg. Place the sole of the other foot on the inner thigh or calf (never on the knee). Bring hands to prayer position or extend overhead.",
+      "difficulty": "beginner",
+      "target_areas": [
+        "legs",
+        "core",
+        "hips"
+      ],
+      "type": "standing_balance",
+      "benefits": [
+        "Improves balance and stability",
+        "Strengthens legs and core",
+        "Opens hips",
+        "Improves concentration and focus"
+      ],
+      "general_contraindications": [],
+      "precautions": "Never place foot on the knee joint. Use a wall for support.",
+      "modifications": "Place foot on calf instead of thigh. Touch a wall for balance."
+    },
+    {
+      "id": "ustrasana",
+      "sanskrit_name": "Ustrasana",
+      "english_name": "Camel Pose",
+      "description": "Kneel with knees hip-width apart. Push hips forward and bend backward, reaching hands to heels. Open chest and look up.",
+      "difficulty": "intermediate",
+      "target_areas": [
+        "chest",
+        "shoulders",
+        "back",
+        "neck",
+        "hips"
+      ],
+      "type": "kneeling_backbend",
+      "benefits": [
+        "Opens chest and shoulders",
+        "Stretches the entire front body",
+        "Strengthens back muscles",
+        "Improves posture",
+        "Stimulates abdominal organs"
+      ],
+      "general_contraindications": [
+        "high_blood_pressure_uncontrolled",
+        "migraine",
+        "neck_injury_severe"
+      ],
+      "precautions": "Rest in Child's Pose afterward. Don't drop head back if neck is sensitive.",
+      "modifications": "Keep hands on lower back instead of reaching heels. Use blocks on either side."
+    },
+    {
+      "id": "dhanurasana",
+      "sanskrit_name": "Dhanurasana",
+      "english_name": "Bow Pose",
+      "description": "Lie on stomach. Bend knees and reach back to grasp ankles. Inhale and lift chest and thighs off the floor, creating a bow shape.",
+      "difficulty": "intermediate",
+      "target_areas": [
+        "back",
+        "chest",
+        "abdomen",
+        "legs"
+      ],
+      "type": "prone_backbend",
+      "benefits": [
+        "Stretches the entire front body",
+        "Strengthens back muscles",
+        "Improves posture",
+        "Stimulates abdominal organs and digestion",
+        "Increases blood flow to digestive system"
+      ],
+      "general_contraindications": [
+        "pregnancy",
+        "high_blood_pressure_uncontrolled",
+        "hernia",
+        "recent_abdominal_surgery"
+      ],
+      "precautions": "Avoid if you have lower back pain. Don't compress the lower back.",
+      "modifications": "Lift only chest or only legs. Use a strap around ankles."
+    },
+    {
+      "id": "matsyasana",
+      "sanskrit_name": "Matsyasana",
+      "english_name": "Fish Pose",
+      "description": "Lie on your back. Arch your chest upward, supported by your arms, while the crown of your head rests lightly on the floor.",
+      "difficulty": "beginner",
+      "target_areas": [
+        "chest",
+        "neck",
+        "back",
+        "throat"
+      ],
+      "type": "supine_backbend",
+      "benefits": [
+        "Opens chest and lungs",
+        "Stretches the front of the neck and throat",
+        "Stimulates thyroid gland",
+        "Improves posture"
+      ],
+      "general_contraindications": [
+        "neck_injury_severe",
+        "migraine"
+      ],
+      "precautions": "Avoid if you have neck problems. Don't put too much weight on the head.",
+      "modifications": "Place a block under upper back for supported version."
+    },
+    {
+      "id": "halasana",
+      "sanskrit_name": "Halasana",
+      "english_name": "Plow Pose",
+      "description": "Lie on your back and raise your legs over your head until toes touch the floor behind you. Support your back with your hands or keep arms on the floor.",
+      "difficulty": "intermediate",
+      "target_areas": [
+        "shoulders",
+        "back",
+        "neck",
+        "hamstrings"
+      ],
+      "type": "inversion",
+      "benefits": [
+        "Stretches shoulders and spine",
+        "Calms the brain",
+        "Stimulates thyroid and abdominal organs",
+        "Reduces stress and fatigue"
+      ],
+      "general_contraindications": [
+        "neck_injury_severe",
+        "pregnancy",
+        "high_blood_pressure_uncontrolled",
+        "menstruation"
+      ],
+      "precautions": "Never turn head while in pose. Support back with hands.",
+      "modifications": "Use a chair to rest feet on instead of floor."
+    },
+    {
+      "id": "sarvangasana",
+      "sanskrit_name": "Sarvangasana",
+      "english_name": "Shoulderstand",
+      "description": "Lie on your back, lift legs and hips overhead, supporting your back with your hands. Body is inverted with weight on shoulders.",
+      "difficulty": "intermediate",
+      "target_areas": [
+        "shoulders",
+        "neck",
+        "core",
+        "legs"
+      ],
+      "type": "inversion",
+      "benefits": [
+        "Stimulates thyroid and prostate glands",
+        "Strengthens shoulders and core",
+        "Calms the brain",
+        "Improves digestion"
+      ],
+      "general_contraindications": [
+        "neck_injury_severe",
+        "high_blood_pressure_uncontrolled",
+        "pregnancy",
+        "menstruation",
+        "glaucoma",
+        "heart_condition"
+      ],
+      "precautions": "Use blankets under shoulders. Never turn head while in pose.",
+      "modifications": "Use a wall for support. Practice half shoulderstand."
+    },
+    {
+      "id": "sirsasana",
+      "sanskrit_name": "Sirsasana",
+      "english_name": "Headstand",
+      "description": "An inverted pose where the body is balanced on the forearms and crown of the head. The body is fully inverted.",
+      "difficulty": "advanced",
+      "target_areas": [
+        "core",
+        "shoulders",
+        "arms",
+        "full_body"
+      ],
+      "type": "inversion",
+      "benefits": [
+        "Strengthens arms, legs, and spine",
+        "Improves balance and concentration",
+        "Stimulates pituitary and pineal glands",
+        "Calms the brain"
+      ],
+      "general_contraindications": [
+        "neck_injury",
+        "high_blood_pressure",
+        "heart_condition",
+        "pregnancy",
+        "menstruation",
+        "glaucoma",
+        "back_injury_severe",
+        "headache_active"
+      ],
+      "precautions": "Only practice under guidance of experienced teacher. Use a wall for support.",
+      "modifications": "Practice Dolphin Pose as preparation. Use a wall."
+    },
+    {
+      "id": "sukhasana",
+      "sanskrit_name": "Sukhasana",
+      "english_name": "Easy Pose",
+      "description": "Sit cross-legged on the floor with spine tall. Rest hands on knees. Close eyes and focus on breath.",
+      "difficulty": "beginner",
+      "target_areas": [
+        "hips",
+        "spine"
+      ],
+      "type": "seated",
+      "benefits": [
+        "Opens hips",
+        "Lengthens spine",
+        "Promotes mental clarity and calm",
+        "Good for meditation and breathing exercises"
+      ],
+      "general_contraindications": [],
+      "precautions": "Sit on a cushion or block to elevate hips if needed.",
+      "modifications": "Place blocks under knees. Sit against a wall."
+    },
+    {
+      "id": "padmasana",
+      "sanskrit_name": "Padmasana",
+      "english_name": "Lotus Pose",
+      "description": "Sit on the floor and place each foot on the opposite thigh. Spine is tall, hands rest on knees.",
+      "difficulty": "advanced",
+      "target_areas": [
+        "hips",
+        "knees",
+        "ankles"
+      ],
+      "type": "seated",
+      "benefits": [
+        "Opens hips deeply",
+        "Calms the mind",
+        "Stimulates pelvis and abdomen",
+        "Traditional meditation posture"
+      ],
+      "general_contraindications": [
+        "knee_injury",
+        "ankle_injury"
+      ],
+      "precautions": "Never force knees. Build up hip flexibility first.",
+      "modifications": "Practice Half Lotus. Use Sukhasana instead."
+    },
+    {
+      "id": "virasana",
+      "sanskrit_name": "Virasana",
+      "english_name": "Hero Pose",
+      "description": "Kneel on the floor with knees together and feet slightly wider than hips. Sit back between your feet.",
+      "difficulty": "beginner",
+      "target_areas": [
+        "knees",
+        "ankles",
+        "thighs"
+      ],
+      "type": "kneeling",
+      "benefits": [
+        "Stretches thighs, knees, and ankles",
+        "Improves digestion",
+        "Reduces swelling in legs during pregnancy (second trimester)"
+      ],
+      "general_contraindications": [
+        "knee_injury",
+        "ankle_injury"
+      ],
+      "precautions": "Sit on a block or cushion if uncomfortable. Never force.",
+      "modifications": "Place a block or bolster between feet to sit on."
+    },
+    {
+      "id": "gomukhasana",
+      "sanskrit_name": "Gomukhasana",
+      "english_name": "Cow Face Pose",
+      "description": "Seated pose with knees stacked and arms clasped behind the back \u2014 one arm reaching over the shoulder, the other from below.",
+      "difficulty": "intermediate",
+      "target_areas": [
+        "shoulders",
+        "hips",
+        "chest"
+      ],
+      "type": "seated",
+      "benefits": [
+        "Deeply stretches shoulders and chest",
+        "Opens hips",
+        "Stretches ankles, thighs, and triceps"
+      ],
+      "general_contraindications": [
+        "shoulder_injury_severe",
+        "knee_injury_severe"
+      ],
+      "precautions": "Use a strap between hands if shoulders are tight.",
+      "modifications": "Use a strap or towel. Sit on a block."
+    },
+    {
+      "id": "garudasana",
+      "sanskrit_name": "Garudasana",
+      "english_name": "Eagle Pose",
+      "description": "Stand on one leg, wrap the other leg around it. Cross arms in front, wrapping forearms and pressing palms together.",
+      "difficulty": "intermediate",
+      "target_areas": [
+        "shoulders",
+        "upper_back",
+        "hips",
+        "legs"
+      ],
+      "type": "standing_balance",
+      "benefits": [
+        "Stretches upper back and shoulders",
+        "Strengthens legs and core",
+        "Improves balance and concentration",
+        "Opens space between shoulder blades"
+      ],
+      "general_contraindications": [
+        "knee_injury_severe"
+      ],
+      "precautions": "Use a wall for balance. Don't wrap leg if knee is sensitive.",
+      "modifications": "Just do Eagle Arms while seated. Touch toe to floor instead of wrapping."
+    },
+    {
+      "id": "uttana_shishosana",
+      "sanskrit_name": "Uttana Shishosana",
+      "english_name": "Extended Puppy Pose",
+      "description": "From all fours, walk hands forward and lower chest toward the floor while keeping hips over knees. Rest forehead on the floor.",
+      "difficulty": "beginner",
+      "target_areas": [
+        "back",
+        "shoulders",
+        "spine"
+      ],
+      "type": "kneeling",
+      "benefits": [
+        "Stretches the spine and shoulders",
+        "Relieves stress and tension",
+        "Opens the chest",
+        "Calms the mind"
+      ],
+      "general_contraindications": [],
+      "precautions": "Place a block under forehead for support.",
+      "modifications": "Use a bolster under chest."
+    },
+    {
+      "id": "supta_baddha_konasana",
+      "sanskrit_name": "Supta Baddha Konasana",
+      "english_name": "Reclining Bound Angle Pose",
+      "description": "Lie on your back with soles of feet together, knees falling out to sides. Arms rest at sides or overhead.",
+      "difficulty": "beginner",
+      "target_areas": [
+        "hips",
+        "groin",
+        "chest"
+      ],
+      "type": "supine_restorative",
+      "benefits": [
+        "Opens hips and groin",
+        "Stretches inner thighs",
+        "Relieves stress and mild depression",
+        "Promotes relaxation and sleep",
+        "Stimulates abdominal organs"
+      ],
+      "general_contraindications": [
+        "groin_injury"
+      ],
+      "precautions": "Place blocks or cushions under knees for support.",
+      "modifications": "Use a bolster along spine. Place blankets under knees."
+    },
+    {
+      "id": "baddha_konasana",
+      "sanskrit_name": "Baddha Konasana",
+      "english_name": "Bound Angle / Cobbler's Pose",
+      "description": "Sit on the floor, bring soles of feet together, let knees fall to sides. Hold feet and sit tall.",
+      "difficulty": "beginner",
+      "target_areas": [
+        "hips",
+        "groin",
+        "inner_thighs"
+      ],
+      "type": "seated",
+      "benefits": [
+        "Stretches inner thighs, groins, and knees",
+        "Stimulates abdominal organs",
+        "Improves circulation",
+        "Opens hips"
+      ],
+      "general_contraindications": [
+        "groin_injury",
+        "knee_injury_severe"
+      ],
+      "precautions": "Sit on a folded blanket. Place blocks under knees.",
+      "modifications": "Elevate hips on a blanket. Support knees with blocks."
+    },
+    {
+      "id": "malasana",
+      "sanskrit_name": "Malasana",
+      "english_name": "Garland Pose / Deep Squat",
+      "description": "Stand with feet slightly wider than hips, toes turned out. Squat down deeply, pressing elbows against inner knees, palms together.",
+      "difficulty": "intermediate",
+      "target_areas": [
+        "hips",
+        "groin",
+        "ankles",
+        "core"
+      ],
+      "type": "standing",
+      "benefits": [
+        "Opens hips deeply",
+        "Stretches ankles, groins, and back",
+        "Tones the belly",
+        "Improves balance"
+      ],
+      "general_contraindications": [
+        "knee_injury_severe"
+      ],
+      "precautions": "Place a folded blanket under heels if they lift. Avoid if prone to prolapse.",
+      "modifications": "Sit on a block. Use a wall for support."
+    },
+    {
+      "id": "navasana",
+      "sanskrit_name": "Navasana",
+      "english_name": "Boat Pose",
+      "description": "Sit on the floor, lean back slightly, lift legs to 45 degrees, extend arms forward parallel to the floor. Balance on sit bones.",
+      "difficulty": "intermediate",
+      "target_areas": [
+        "core",
+        "hip_flexors",
+        "spine"
+      ],
+      "type": "seated",
+      "benefits": [
+        "Strengthens core and hip flexors",
+        "Improves balance",
+        "Stimulates kidneys, thyroid, and intestines",
+        "Reduces belly fat"
+      ],
+      "general_contraindications": [
+        "pregnancy",
+        "heart_condition",
+        "low_blood_pressure",
+        "diarrhea",
+        "headache_active"
+      ],
+      "precautions": "Keep spine long. Bend knees if needed.",
+      "modifications": "Bend knees (Half Boat). Hold behind thighs."
+    },
+    {
+      "id": "phalakasana",
+      "sanskrit_name": "Phalakasana",
+      "english_name": "Plank Pose",
+      "description": "From all fours, step feet back and straighten body into a straight line from head to heels. Arms straight, hands under shoulders.",
+      "difficulty": "beginner",
+      "target_areas": [
+        "core",
+        "arms",
+        "shoulders",
+        "legs"
+      ],
+      "type": "arm_support",
+      "benefits": [
+        "Strengthens core, arms, and shoulders",
+        "Tones the entire body",
+        "Builds stamina",
+        "Improves posture"
+      ],
+      "general_contraindications": [
+        "carpal_tunnel_severe"
+      ],
+      "precautions": "Keep body in a straight line. Don't let hips sag or pike.",
+      "modifications": "Drop knees to floor. Use forearms (Forearm Plank)."
+    },
+    {
+      "id": "chaturanga_dandasana",
+      "sanskrit_name": "Chaturanga Dandasana",
+      "english_name": "Four-Limbed Staff Pose",
+      "description": "From Plank, lower body halfway down with elbows close to ribs. Body stays in a straight line.",
+      "difficulty": "intermediate",
+      "target_areas": [
+        "arms",
+        "shoulders",
+        "core"
+      ],
+      "type": "arm_support",
+      "benefits": [
+        "Strengthens arms, shoulders, and core",
+        "Builds upper body strength",
+        "Prepares for arm balances"
+      ],
+      "general_contraindications": [
+        "shoulder_injury",
+        "carpal_tunnel",
+        "pregnancy"
+      ],
+      "precautions": "Keep elbows close to body. Don't let shoulders dip below elbows.",
+      "modifications": "Drop knees. Lower all the way to floor."
+    },
+    {
+      "id": "urdhva_mukha_svanasana",
+      "sanskrit_name": "Urdhva Mukha Svanasana",
+      "english_name": "Upward-Facing Dog",
+      "description": "From a low position, straighten arms, lift chest and thighs off the floor. Only hands and tops of feet touch the floor.",
+      "difficulty": "intermediate",
+      "target_areas": [
+        "chest",
+        "shoulders",
+        "back",
+        "arms"
+      ],
+      "type": "prone_backbend",
+      "benefits": [
+        "Strengthens spine, arms, and wrists",
+        "Stretches chest, lungs, and shoulders",
+        "Improves posture",
+        "Stimulates abdominal organs"
+      ],
+      "general_contraindications": [
+        "back_injury_severe",
+        "carpal_tunnel",
+        "pregnancy"
+      ],
+      "precautions": "Keep chin level for neck pain. Don't compress lower back.",
+      "modifications": "Practice Cobra Pose instead. Keep thighs on floor."
+    },
+    {
+      "id": "supta_matsyendrasana",
+      "sanskrit_name": "Supta Matsyendrasana",
+      "english_name": "Reclined Spinal Twist",
+      "description": "Lie on your back, draw one knee to chest, then guide it across the body to the opposite side. Extend arms out to sides. Turn head opposite to knees.",
+      "difficulty": "beginner",
+      "target_areas": [
+        "spine",
+        "hips",
+        "shoulders"
+      ],
+      "type": "supine_twist",
+      "benefits": [
+        "Stretches the spine and hips",
+        "Releases tension in the lower back",
+        "Stimulates digestion",
+        "Promotes relaxation and sleep"
+      ],
+      "general_contraindications": [],
+      "precautions": "Keep both shoulders on the floor. Use a pillow between knees.",
+      "modifications": "Place a pillow between knees. Keep both knees bent."
+    },
+    {
+      "id": "anjaneyasana",
+      "sanskrit_name": "Anjaneyasana",
+      "english_name": "Low Lunge / Crescent Lunge",
+      "description": "From a lunge position, lower the back knee to the floor. Raise arms overhead. Sink hips forward and down.",
+      "difficulty": "beginner",
+      "target_areas": [
+        "hips",
+        "groin",
+        "legs",
+        "chest"
+      ],
+      "type": "kneeling",
+      "benefits": [
+        "Stretches hip flexors and groin",
+        "Strengthens legs",
+        "Opens chest and shoulders",
+        "Improves balance"
+      ],
+      "general_contraindications": [
+        "knee_injury_severe"
+      ],
+      "precautions": "Pad the back knee with a blanket. Don't let front knee go past toes.",
+      "modifications": "Keep hands on hips. Use blocks under hands."
+    },
+    {
+      "id": "eka_pada_rajakapotasana",
+      "sanskrit_name": "Eka Pada Rajakapotasana",
+      "english_name": "Pigeon Pose",
+      "description": "From all fours, bring one knee forward behind the wrist. Extend the other leg straight back. Fold forward over the front leg or stay upright.",
+      "difficulty": "intermediate",
+      "target_areas": [
+        "hips",
+        "groin",
+        "back"
+      ],
+      "type": "hip_opener",
+      "benefits": [
+        "Deeply opens hips",
+        "Stretches hip flexors and groin",
+        "Relieves sciatic pain",
+        "Releases stored tension and emotions"
+      ],
+      "general_contraindications": [
+        "knee_injury_severe",
+        "sacroiliac_injury"
+      ],
+      "precautions": "Keep front shin at an angle that's comfortable. Use a block under hip.",
+      "modifications": "Do Reclined Pigeon (Supta Kapotasana) instead. Place a block under hip."
+    },
+    {
+      "id": "supta_kapotasana",
+      "sanskrit_name": "Supta Kapotasana",
+      "english_name": "Reclined Pigeon Pose",
+      "description": "Lie on your back with knees bent. Cross one ankle over the opposite knee. Pull the bottom leg toward chest.",
+      "difficulty": "beginner",
+      "target_areas": [
+        "hips",
+        "glutes",
+        "lower_back"
+      ],
+      "type": "supine",
+      "benefits": [
+        "Opens hips gently",
+        "Stretches piriformis and glutes",
+        "Relieves lower back tension",
+        "Good alternative to Pigeon Pose"
+      ],
+      "general_contraindications": [
+        "knee_injury_severe",
+        "hip_injury_acute"
+      ],
+      "precautions": "Keep head and shoulders on the floor.",
+      "modifications": "Use a strap around the thigh. Keep foot on the floor."
+    },
+    {
+      "id": "prasarita_padottanasana",
+      "sanskrit_name": "Prasarita Padottanasana",
+      "english_name": "Wide-Legged Standing Forward Bend",
+      "description": "Stand with feet wide apart. Fold forward from hips, placing hands on the floor or on blocks.",
+      "difficulty": "beginner",
+      "target_areas": [
+        "hamstrings",
+        "inner_thighs",
+        "back"
+      ],
+      "type": "standing_forward_bend",
+      "benefits": [
+        "Stretches hamstrings and inner thighs",
+        "Strengthens feet and legs",
+        "Calms the brain",
+        "Relieves mild backache"
+      ],
+      "general_contraindications": [
+        "low_blood_pressure"
+      ],
+      "precautions": "Bend knees if hamstrings are tight. Use blocks.",
+      "modifications": "Place hands on blocks. Bend knees."
+    },
+    {
+      "id": "parsvottanasana",
+      "sanskrit_name": "Parsvottanasana",
+      "english_name": "Pyramid Pose / Intense Side Stretch",
+      "description": "Stand with one foot forward and one back. Square hips. Fold forward over the front leg with a long spine.",
+      "difficulty": "intermediate",
+      "target_areas": [
+        "hamstrings",
+        "hips",
+        "spine"
+      ],
+      "type": "standing_forward_bend",
+      "benefits": [
+        "Stretches hamstrings and hips",
+        "Calms the brain",
+        "Improves balance",
+        "Stimulates digestion"
+      ],
+      "general_contraindications": [
+        "high_blood_pressure_uncontrolled"
+      ],
+      "precautions": "Keep spine long. Use blocks under hands.",
+      "modifications": "Bend front knee. Use blocks."
+    },
+    {
+      "id": "ardha_chandrasana",
+      "sanskrit_name": "Ardha Chandrasana",
+      "english_name": "Half Moon Pose",
+      "description": "From Triangle Pose, shift weight onto front foot and lift back leg parallel to floor. Place bottom hand on floor or block. Top arm reaches up.",
+      "difficulty": "intermediate",
+      "target_areas": [
+        "legs",
+        "hips",
+        "core",
+        "spine"
+      ],
+      "type": "standing_balance",
+      "benefits": [
+        "Strengthens legs and core",
+        "Improves balance and coordination",
+        "Stretches hamstrings and groin",
+        "Opens chest and shoulders"
+      ],
+      "general_contraindications": [
+        "low_blood_pressure",
+        "headache_active"
+      ],
+      "precautions": "Use a block under bottom hand. Practice near a wall.",
+      "modifications": "Use a block. Practice with back against a wall."
+    },
+    {
+      "id": "sphinx_pose",
+      "sanskrit_name": "Salamba Bhujangasana",
+      "english_name": "Sphinx Pose",
+      "description": "Lie on your stomach. Place forearms on the floor with elbows under shoulders. Lift chest gently.",
+      "difficulty": "beginner",
+      "target_areas": [
+        "back",
+        "chest",
+        "shoulders"
+      ],
+      "type": "prone_backbend",
+      "benefits": [
+        "Gently strengthens the spine",
+        "Stretches chest and shoulders",
+        "Opens the lungs",
+        "Therapeutic for fatigue"
+      ],
+      "general_contraindications": [],
+      "precautions": "Keep elbows directly under shoulders. Don't compress lower back.",
+      "modifications": "Place a blanket under forearms."
+    },
+    {
+      "id": "shalabhasana",
+      "sanskrit_name": "Shalabhasana",
+      "english_name": "Locust Pose",
+      "description": "Lie on your stomach with arms alongside body. Inhale and lift head, chest, arms, and legs off the floor simultaneously.",
+      "difficulty": "beginner",
+      "target_areas": [
+        "back",
+        "glutes",
+        "legs"
+      ],
+      "type": "prone_backbend",
+      "benefits": [
+        "Strengthens back muscles",
+        "Stretches shoulders, chest, and abdomen",
+        "Improves posture",
+        "Stimulates abdominal organs"
+      ],
+      "general_contraindications": [
+        "pregnancy",
+        "headache_active"
+      ],
+      "precautions": "Lift only as high as comfortable. Keep neck neutral.",
+      "modifications": "Lift only upper body or only legs. Keep arms by sides."
+    },
+    {
+      "id": "dandasana",
+      "sanskrit_name": "Dandasana",
+      "english_name": "Staff Pose",
+      "description": "Sit on the floor with legs extended straight. Press hands into floor alongside hips. Lengthen spine and engage leg muscles.",
+      "difficulty": "beginner",
+      "target_areas": [
+        "back",
+        "core",
+        "legs"
+      ],
+      "type": "seated",
+      "benefits": [
+        "Strengthens back muscles",
+        "Improves posture",
+        "Stretches shoulders and chest",
+        "Foundation for seated poses"
+      ],
+      "general_contraindications": [],
+      "precautions": "Sit on a blanket if hamstrings are tight.",
+      "modifications": "Sit on a folded blanket. Bend knees slightly."
+    },
+    {
+      "id": "janu_sirsasana",
+      "sanskrit_name": "Janu Sirsasana",
+      "english_name": "Head-to-Knee Forward Bend",
+      "description": "Sit with one leg extended and the other bent with sole of foot against inner thigh. Fold forward over the extended leg.",
+      "difficulty": "beginner",
+      "target_areas": [
+        "hamstrings",
+        "back",
+        "groin"
+      ],
+      "type": "seated_forward_bend",
+      "benefits": [
+        "Stretches hamstrings and back",
+        "Calms the brain",
+        "Relieves anxiety and fatigue",
+        "Stimulates liver and kidneys"
+      ],
+      "general_contraindications": [
+        "knee_injury_severe"
+      ],
+      "precautions": "Don't force the fold. Use a strap around the foot.",
+      "modifications": "Use a strap. Bend the extended knee slightly."
+    },
+    {
+      "id": "parsva_savasana",
+      "sanskrit_name": "Parsva Savasana",
+      "english_name": "Side-Lying Corpse Pose",
+      "description": "Lie on your left side with left leg straight and right knee bent, supported by cushions. Place a cushion under the head.",
+      "difficulty": "beginner",
+      "target_areas": [
+        "full_body"
+      ],
+      "type": "supine_restorative",
+      "benefits": [
+        "Relieves fatigue",
+        "Enhances relaxation",
+        "Safe resting pose during pregnancy",
+        "Reduces blood pressure"
+      ],
+      "general_contraindications": [],
+      "precautions": "Use cushions for support.",
+      "modifications": "Place a pillow between knees."
+    },
+    {
+      "id": "chakravakasana",
+      "sanskrit_name": "Chakravakasana",
+      "english_name": "Tabletop / Bird-Dog Pose",
+      "description": "Start on all fours. Extend opposite arm and leg simultaneously. Hold briefly, then switch sides.",
+      "difficulty": "beginner",
+      "target_areas": [
+        "core",
+        "back",
+        "shoulders"
+      ],
+      "type": "kneeling",
+      "benefits": [
+        "Strengthens core and back",
+        "Improves balance and coordination",
+        "Stabilizes the spine"
+      ],
+      "general_contraindications": [],
+      "precautions": "Keep hips level. Move slowly.",
+      "modifications": "Extend only arm or only leg."
+    },
+    {
+      "id": "apanasana",
+      "sanskrit_name": "Apanasana",
+      "english_name": "Knees-to-Chest Pose / Wind-Relieving Pose",
+      "description": "Lie on your back. Draw both knees toward chest. Wrap arms around shins and gently rock side to side.",
+      "difficulty": "beginner",
+      "target_areas": [
+        "lower_back",
+        "hips",
+        "abdomen"
+      ],
+      "type": "supine",
+      "benefits": [
+        "Relieves lower back tension",
+        "Massages abdominal organs",
+        "Aids digestion and relieves gas",
+        "Calms the mind"
+      ],
+      "general_contraindications": [
+        "pregnancy_late"
+      ],
+      "precautions": "Keep head on the floor. Don't force knees too close.",
+      "modifications": "Hug one knee at a time."
+    },
+    {
+      "id": "urdhva_hastasana",
+      "sanskrit_name": "Urdhva Hastasana",
+      "english_name": "Upward Salute / Arms Overhead Pose",
+      "description": "Stand in Mountain Pose. Inhale and extend arms overhead, palms facing each other or touching.",
+      "difficulty": "beginner",
+      "target_areas": [
+        "shoulders",
+        "chest",
+        "spine"
+      ],
+      "type": "standing",
+      "benefits": [
+        "Stretches shoulders and chest",
+        "Improves posture",
+        "Creates a slight backbend in thoracic spine",
+        "Energizes the body"
+      ],
+      "general_contraindications": [],
+      "precautions": "Limit hold time with untreated high blood pressure.",
+      "modifications": "Keep arms shoulder-width apart. Bend elbows slightly."
+    },
+    {
+      "id": "nadi_shodhana",
+      "sanskrit_name": "Nadi Shodhana",
+      "english_name": "Alternate Nostril Breathing",
+      "description": "Sit comfortably. Use right thumb to close right nostril. Inhale through left. Close left nostril with ring finger. Exhale through right. Inhale through right. Close right. Exhale through left. This is one cycle.",
+      "difficulty": "beginner",
+      "target_areas": [
+        "respiratory_system",
+        "nervous_system"
+      ],
+      "type": "pranayama",
+      "benefits": [
+        "Balances the nervous system",
+        "Reduces stress and anxiety",
+        "Improves respiratory function",
+        "Calms the mind",
+        "Purifies energy channels"
+      ],
+      "general_contraindications": [],
+      "precautions": "Never force the breath. Stop if dizzy.",
+      "modifications": "Start with shorter cycles."
+    },
+    {
+      "id": "ujjayi_pranayama",
+      "sanskrit_name": "Ujjayi Pranayama",
+      "english_name": "Ocean Breath / Victorious Breath",
+      "description": "Breathe in and out through the nose with a slight constriction at the back of the throat, creating a soft ocean-like sound.",
+      "difficulty": "beginner",
+      "target_areas": [
+        "respiratory_system",
+        "nervous_system"
+      ],
+      "type": "pranayama",
+      "benefits": [
+        "Calms the nervous system",
+        "Warms the breath",
+        "Increases focus and mindfulness",
+        "Improves oxygen exchange"
+      ],
+      "general_contraindications": [],
+      "precautions": "Keep the sound gentle. Don't strain the throat.",
+      "modifications": "Practice without the throat constriction first."
+    },
+    {
+      "id": "bhastrika_pranayama",
+      "sanskrit_name": "Bhastrika Pranayama",
+      "english_name": "Bellows Breath",
+      "description": "Sit comfortably. Take forceful, rapid inhalations and exhalations through the nose, like a bellows.",
+      "difficulty": "intermediate",
+      "target_areas": [
+        "respiratory_system",
+        "core"
+      ],
+      "type": "pranayama",
+      "benefits": [
+        "Clears respiratory passages",
+        "Increases oxygen intake",
+        "Energizes the body and mind",
+        "Strengthens diaphragm"
+      ],
+      "general_contraindications": [
+        "high_blood_pressure",
+        "heart_condition",
+        "pregnancy",
+        "epilepsy",
+        "hernia"
+      ],
+      "precautions": "Start slowly. Stop if dizzy or lightheaded.",
+      "modifications": "Reduce speed and force. Take breaks between rounds."
+    },
+    {
+      "id": "brahmari_pranayama",
+      "sanskrit_name": "Brahmari Pranayama",
+      "english_name": "Humming Bee Breath",
+      "description": "Sit comfortably. Close eyes. Place index fingers on the cartilage of the ears. Inhale deeply. Exhale while making a humming sound.",
+      "difficulty": "beginner",
+      "target_areas": [
+        "nervous_system",
+        "head"
+      ],
+      "type": "pranayama",
+      "benefits": [
+        "Calms the mind instantly",
+        "Relieves tension and anxiety",
+        "Reduces headache and migraine",
+        "Improves concentration"
+      ],
+      "general_contraindications": [
+        "ear_infection"
+      ],
+      "precautions": "Don't press too hard on the ears.",
+      "modifications": "Keep fingers lightly on ears."
+    },
+    {
+      "id": "kapalabhati_pranayama",
+      "sanskrit_name": "Kapalabhati Pranayama",
+      "english_name": "Skull Shining Breath",
+      "description": "Sit comfortably. Take a deep breath in. Exhale forcefully through the nose by contracting the abdomen. Inhalation happens passively.",
+      "difficulty": "intermediate",
+      "target_areas": [
+        "core",
+        "respiratory_system"
+      ],
+      "type": "pranayama",
+      "benefits": [
+        "Cleanses respiratory system",
+        "Strengthens abdominal muscles",
+        "Improves digestion",
+        "Energizes the mind"
+      ],
+      "general_contraindications": [
+        "high_blood_pressure",
+        "heart_condition",
+        "pregnancy",
+        "hernia",
+        "recent_abdominal_surgery",
+        "epilepsy"
+      ],
+      "precautions": "Start slowly. Stop if dizzy.",
+      "modifications": "Reduce speed. Take longer breaks."
+    },
+    {
+      "id": "dirgha_pranayama",
+      "sanskrit_name": "Dirgha Pranayama",
+      "english_name": "Three-Part Breath",
+      "description": "Sit or lie comfortably. Breathe into the lower abdomen, then the middle chest, then the upper chest sequentially. Exhale in reverse order.",
+      "difficulty": "beginner",
+      "target_areas": [
+        "respiratory_system",
+        "nervous_system"
+      ],
+      "type": "pranayama",
+      "benefits": [
+        "Increases lung capacity",
+        "Promotes deep relaxation",
+        "Reduces stress and anxiety",
+        "Improves oxygen exchange"
+      ],
+      "general_contraindications": [],
+      "precautions": "Never force the breath.",
+      "modifications": "Practice lying down first."
+    },
+    {
+      "id": "dolphin_pose",
+      "sanskrit_name": "Ardha Pincha Mayurasana",
+      "english_name": "Dolphin Pose",
+      "description": "From all fours, lower forearms to the floor with elbows shoulder-distance apart. Tuck toes, lift hips up and back like Downward Dog but on forearms.",
+      "difficulty": "intermediate",
+      "target_areas": [
+        "shoulders",
+        "hamstrings",
+        "core",
+        "arms"
+      ],
+      "type": "inversion_mild",
+      "benefits": [
+        "Strengthens arms, shoulders, and core",
+        "Stretches hamstrings and calves",
+        "Calms the brain",
+        "Prepares for Headstand and Forearm Stand"
+      ],
+      "general_contraindications": [
+        "shoulder_injury_severe"
+      ],
+      "precautions": "Keep elbows shoulder-width apart. Don't let head hang.",
+      "modifications": "Bend knees. Walk feet closer to elbows."
+    },
+    {
+      "id": "setu_bandhasana_supported",
+      "sanskrit_name": "Supported Setu Bandhasana",
+      "english_name": "Supported Bridge Pose",
+      "description": "Lie on your back with knees bent. Lift hips and place a yoga block or bolster under the sacrum. Rest weight on the support.",
+      "difficulty": "beginner",
+      "target_areas": [
+        "chest",
+        "spine",
+        "hips"
+      ],
+      "type": "supine_restorative",
+      "benefits": [
+        "Gently opens chest and shoulders",
+        "Relieves lower back tension",
+        "Calms the nervous system",
+        "Promotes relaxation"
+      ],
+      "general_contraindications": [
+        "neck_injury_severe"
+      ],
+      "precautions": "Choose block height that's comfortable.",
+      "modifications": "Use a bolster instead of a block."
+    },
+    {
+      "id": "pawanmuktasana",
+      "sanskrit_name": "Pawanmuktasana",
+      "english_name": "Wind-Relieving Pose",
+      "description": "Lie on your back. Bring one or both knees to chest. Wrap arms around shins. Gently press thighs against abdomen.",
+      "difficulty": "beginner",
+      "target_areas": [
+        "abdomen",
+        "lower_back",
+        "hips"
+      ],
+      "type": "supine",
+      "benefits": [
+        "Relieves gas and bloating",
+        "Massages abdominal organs",
+        "Eases lower back pain",
+        "Improves digestion"
+      ],
+      "general_contraindications": [
+        "pregnancy",
+        "recent_abdominal_surgery"
+      ],
+      "precautions": "Be gentle with pressure on abdomen.",
+      "modifications": "Hug one knee at a time."
+    },
+    {
+      "id": "chakrasana",
+      "sanskrit_name": "Urdhva Dhanurasana",
+      "english_name": "Wheel Pose / Full Backbend",
+      "description": "Lie on your back. Place hands by ears, fingers pointing toward shoulders. Press up, lifting entire body into a deep backbend.",
+      "difficulty": "advanced",
+      "target_areas": [
+        "full_body",
+        "chest",
+        "spine",
+        "arms"
+      ],
+      "type": "backbend",
+      "benefits": [
+        "Strengthens arms, legs, and spine",
+        "Stretches the entire front body",
+        "Increases energy",
+        "Opens chest and lungs"
+      ],
+      "general_contraindications": [
+        "back_injury_severe",
+        "carpal_tunnel",
+        "high_blood_pressure",
+        "heart_condition",
+        "pregnancy",
+        "headache_active"
+      ],
+      "precautions": "Warm up thoroughly. Only attempt with proper preparation.",
+      "modifications": "Practice Bridge Pose instead."
+    },
+    {
+      "id": "adho_mukha_vrksasana",
+      "sanskrit_name": "Adho Mukha Vrksasana",
+      "english_name": "Handstand",
+      "description": "An inverted pose where the body is balanced on the hands with arms straight and body fully inverted.",
+      "difficulty": "advanced",
+      "target_areas": [
+        "arms",
+        "shoulders",
+        "core",
+        "full_body"
+      ],
+      "type": "inversion",
+      "benefits": [
+        "Strengthens arms, shoulders, and core",
+        "Improves balance",
+        "Builds confidence",
+        "Energizes the body"
+      ],
+      "general_contraindications": [
+        "high_blood_pressure",
+        "heart_condition",
+        "neck_injury",
+        "back_injury_severe",
+        "pregnancy",
+        "wrist_injury",
+        "glaucoma"
+      ],
+      "precautions": "Practice against a wall. Only with experienced guidance.",
+      "modifications": "Practice L-shape at wall. Practice Dolphin Pose."
+    },
+    {
+      "id": "parsva_tadasana",
+      "sanskrit_name": "Parsva Tadasana",
+      "english_name": "Standing Side Bend",
+      "description": "Stand tall in Mountain Pose. Inhale and reach arms overhead. Exhale and bend to one side, keeping chest open.",
+      "difficulty": "beginner",
+      "target_areas": [
+        "spine",
+        "obliques",
+        "shoulders"
+      ],
+      "type": "standing",
+      "benefits": [
+        "Stretches the sides of the body",
+        "Improves spinal flexibility",
+        "Relieves tension in shoulders and back",
+        "Opens the intercostal muscles"
+      ],
+      "general_contraindications": [],
+      "precautions": "Keep hips level. Don't collapse into the bend.",
+      "modifications": "Keep hands on hips."
+    },
+    {
+      "id": "konasana",
+      "sanskrit_name": "Konasana",
+      "english_name": "Angle Pose",
+      "description": "A standing side bend variation that targets the waistline. Stand with feet apart, raise one arm and bend to the opposite side.",
+      "difficulty": "beginner",
+      "target_areas": [
+        "waist",
+        "spine",
+        "core"
+      ],
+      "type": "standing",
+      "benefits": [
+        "Burns fat around waistline",
+        "Improves flexibility and balance",
+        "Stimulates digestive system"
+      ],
+      "general_contraindications": [],
+      "precautions": "Move slowly and with control.",
+      "modifications": "Reduce the range of motion."
+    },
+    {
+      "id": "parivrtta_trikonasana",
+      "sanskrit_name": "Parivrtta Trikonasana",
+      "english_name": "Revolved Triangle Pose",
+      "description": "From a wide stance, turn one foot out. Square hips forward. Twist torso and reach opposite hand to the floor outside the front foot. Other arm reaches up.",
+      "difficulty": "intermediate",
+      "target_areas": [
+        "spine",
+        "hamstrings",
+        "hips",
+        "core"
+      ],
+      "type": "standing_twist",
+      "benefits": [
+        "Strengthens and stretches legs",
+        "Improves balance",
+        "Stimulates digestion through twisting",
+        "Stretches hamstrings and spine"
+      ],
+      "general_contraindications": [
+        "low_blood_pressure",
+        "migraine",
+        "diarrhea",
+        "back_injury_severe"
+      ],
+      "precautions": "Use a block under bottom hand. Keep spine long.",
+      "modifications": "Use a block. Reduce the depth of the twist."
+    },
+    {
+      "id": "sasangasana",
+      "sanskrit_name": "Sasangasana",
+      "english_name": "Rabbit Pose",
+      "description": "From Child's Pose, reach back and hold the heels. Tuck chin and round the spine, lifting hips and rolling onto the crown of the head.",
+      "difficulty": "intermediate",
+      "target_areas": [
+        "back",
+        "shoulders",
+        "neck"
+      ],
+      "type": "kneeling_forward_bend",
+      "benefits": [
+        "Stretches the back and shoulders",
+        "Stimulates thyroid",
+        "Relieves tension headaches",
+        "Increases blood flow to the brain"
+      ],
+      "general_contraindications": [
+        "neck_injury_severe",
+        "high_blood_pressure"
+      ],
+      "precautions": "Don't put too much weight on the head.",
+      "modifications": "Keep more weight in the knees."
+    },
+    {
+      "id": "surya_namaskar",
+      "sanskrit_name": "Surya Namaskar",
+      "english_name": "Sun Salutation",
+      "description": "A flowing sequence of 12 poses performed in a continuous flow, synchronized with breath. Includes forward bends, lunges, plank, cobra/upward dog, and downward dog.",
+      "difficulty": "beginner",
+      "target_areas": [
+        "full_body"
+      ],
+      "type": "sequence",
+      "benefits": [
+        "Warms up the entire body",
+        "Builds cardiovascular endurance",
+        "Strengthens and stretches all major muscle groups",
+        "Improves flexibility",
+        "Boosts metabolism"
+      ],
+      "general_contraindications": [
+        "high_blood_pressure_uncontrolled",
+        "heart_condition_severe"
+      ],
+      "precautions": "Start slowly. Modify individual poses as needed.",
+      "modifications": "Do a gentle version with knees down in plank and cobra instead of upward dog."
+    },
+    {
+      "id": "forearm_plank",
+      "sanskrit_name": "Makara Adho Mukha Svanasana",
+      "english_name": "Forearm Plank",
+      "description": "A plank variation where the body is supported on the forearms instead of hands. Body forms a straight line from head to heels.",
+      "difficulty": "beginner",
+      "target_areas": [
+        "core",
+        "shoulders",
+        "back"
+      ],
+      "type": "arm_support",
+      "benefits": [
+        "Stabilizes core and shoulder joints",
+        "Improves posture",
+        "Builds endurance",
+        "Wrist-friendly alternative to Plank"
+      ],
+      "general_contraindications": [],
+      "precautions": "Keep body in a straight line. Don't let hips sag.",
+      "modifications": "Drop knees to floor."
+    },
+    {
+      "id": "purvottanasana",
+      "sanskrit_name": "Purvottanasana",
+      "english_name": "Upward Plank Pose / Reverse Plank",
+      "description": "Sit with legs extended. Place hands behind hips. Press up, lifting hips to create a straight line from shoulders to feet.",
+      "difficulty": "intermediate",
+      "target_areas": [
+        "arms",
+        "chest",
+        "shoulders",
+        "wrists"
+      ],
+      "type": "arm_support",
+      "benefits": [
+        "Strengthens arms and wrists",
+        "Stretches chest and shoulders",
+        "Strengthens legs",
+        "Counterpose to forward bends"
+      ],
+      "general_contraindications": [
+        "wrist_injury",
+        "neck_injury_severe"
+      ],
+      "precautions": "Don't drop head back if neck is sensitive.",
+      "modifications": "Bend knees (Reverse Tabletop)."
+    },
+    {
+      "id": "humble_warrior",
+      "sanskrit_name": "Baddha Virabhadrasana",
+      "english_name": "Humble Warrior",
+      "description": "From Warrior I, interlace fingers behind back. Fold forward inside the front thigh, bringing the shoulder to the inside of the front knee.",
+      "difficulty": "intermediate",
+      "target_areas": [
+        "hips",
+        "hamstrings",
+        "chest",
+        "shoulders"
+      ],
+      "type": "standing_forward_bend",
+      "benefits": [
+        "Opens hips and strengthens legs",
+        "Stretches hamstrings, chest, and spine",
+        "Improves balance",
+        "Promotes humility and surrender"
+      ],
+      "general_contraindications": [
+        "high_blood_pressure",
+        "heart_condition",
+        "shoulder_injury"
+      ],
+      "precautions": "Keep core engaged. Don't force the fold.",
+      "modifications": "Keep hands on hips instead of interlaced."
+    },
+    {
+      "id": "eye_exercises",
+      "sanskrit_name": "Netra Vyayamam",
+      "english_name": "Yoga Eye Exercises",
+      "description": "A series of eye movements including: looking up/down, left/right, diagonal movements, circular rotations, palming (covering eyes with warm palms), and focusing near/far.",
+      "difficulty": "beginner",
+      "target_areas": [
+        "eyes"
+      ],
+      "type": "exercise",
+      "benefits": [
+        "Relieves eye strain from screens",
+        "Strengthens eye muscles",
+        "Improves focus and concentration",
+        "Reduces eye fatigue"
+      ],
+      "general_contraindications": [
+        "eye_surgery_recent"
+      ],
+      "precautions": "Move eyes gently. Stop if any pain.",
+      "modifications": "Reduce range of motion."
+    }
+  ],
+  "decision_tree": {
+    "start": {
+      "question": "What best describes your primary concern?",
+      "type": "single_select",
+      "options": [
+        {
+          "label": "I have pain in a specific body area",
+          "next": "pain_location"
+        },
+        {
+          "label": "I have a cardiovascular condition",
+          "next": "cardiovascular_type"
+        },
+        {
+          "label": "I am pregnant",
+          "next": "pregnancy_trimester"
+        },
+        {
+          "label": "I have mental health or sleep concerns",
+          "next": "mental_health_type"
+        },
+        {
+          "label": "I have a metabolic condition (diabetes, weight)",
+          "next": "metabolic_type"
+        },
+        {
+          "label": "I have digestive issues",
+          "next": "digestive_issues"
+        },
+        {
+          "label": "I have respiratory issues",
+          "next": "respiratory_issues"
+        },
+        {
+          "label": "I have headaches, eye strain, or vertigo",
+          "next": "neurological_type"
+        },
+        {
+          "label": "I just want general yoga safety guidelines",
+          "next": "safety_guidelines"
+        }
+      ]
+    },
+    "pain_location": {
+      "question": "Where is your pain located?",
+      "type": "multi_select",
+      "options": [
+        {
+          "label": "Neck",
+          "condition": "neck_pain"
+        },
+        {
+          "label": "Shoulder",
+          "condition": "shoulder_pain"
+        },
+        {
+          "label": "Upper Back",
+          "condition": "upper_back_pain"
+        },
+        {
+          "label": "Lower Back",
+          "condition": "lower_back_pain"
+        },
+        {
+          "label": "Knee",
+          "condition": "knee_pain"
+        },
+        {
+          "label": "Hip",
+          "condition": "hip_pain"
+        },
+        {
+          "label": "Wrist / Hand",
+          "condition": "wrist_pain"
+        },
+        {
+          "label": "Chest (non-cardiac)",
+          "condition": "chest_pain"
+        },
+        {
+          "label": "Joints (Arthritis)",
+          "condition": "arthritis"
+        },
+        {
+          "label": "Post Hip Replacement",
+          "condition": "hip_replacement"
+        }
+      ],
+      "next": "severity_level"
+    },
+    "cardiovascular_type": {
+      "question": "What is your cardiovascular concern?",
+      "type": "single_select",
+      "options": [
+        {
+          "label": "High Blood Pressure (Hypertension)",
+          "condition": "high_blood_pressure"
+        },
+        {
+          "label": "Heart Condition / Post Cardiac Surgery",
+          "condition": "heart_condition"
+        }
+      ],
+      "next": "severity_level"
+    },
+    "pregnancy_trimester": {
+      "question": "Which trimester are you in?",
+      "type": "single_select",
+      "options": [
+        {
+          "label": "First Trimester (Weeks 1-12)",
+          "condition": "pregnancy_first_trimester"
+        },
+        {
+          "label": "Second Trimester (Weeks 13-26)",
+          "condition": "pregnancy_second_trimester"
+        },
+        {
+          "label": "Third Trimester (Weeks 27-40)",
+          "condition": "pregnancy_third_trimester"
+        }
+      ],
+      "next": "results"
+    },
+    "mental_health_type": {
+      "question": "What is your primary concern?",
+      "type": "multi_select",
+      "options": [
+        {
+          "label": "Anxiety / Stress",
+          "condition": "anxiety_stress"
+        },
+        {
+          "label": "Depression / Low Mood",
+          "condition": "depression"
+        },
+        {
+          "label": "Insomnia / Sleep Problems",
+          "condition": "insomnia"
+        }
+      ],
+      "next": "severity_level"
+    },
+    "metabolic_type": {
+      "question": "What is your metabolic concern?",
+      "type": "multi_select",
+      "options": [
+        {
+          "label": "Diabetes / Blood Sugar Issues",
+          "condition": "diabetes"
+        },
+        {
+          "label": "Obesity / Weight Management",
+          "condition": "obesity"
+        }
+      ],
+      "next": "severity_level"
+    },
+    "digestive_issues": {
+      "question": "You selected digestive issues.",
+      "type": "auto",
+      "condition": "digestive_issues",
+      "next": "severity_level"
+    },
+    "respiratory_issues": {
+      "question": "You selected respiratory issues.",
+      "type": "auto",
+      "condition": "respiratory_issues",
+      "next": "severity_level"
+    },
+    "neurological_type": {
+      "question": "What is your concern?",
+      "type": "multi_select",
+      "options": [
+        {
+          "label": "Headaches / Migraines",
+          "condition": "headache"
+        },
+        {
+          "label": "Eye Strain / Digital Fatigue",
+          "condition": "eye_strain"
+        },
+        {
+          "label": "Vertigo / Balance Issues",
+          "condition": "vertigo"
+        }
+      ],
+      "next": "severity_level"
+    },
+    "severity_level": {
+      "question": "How would you rate the severity of your condition?",
+      "type": "single_select",
+      "options": [
+        {
+          "label": "Mild \u2014 Occasional discomfort, manageable",
+          "value": "mild"
+        },
+        {
+          "label": "Moderate \u2014 Regular discomfort, affects daily activities",
+          "value": "moderate"
+        },
+        {
+          "label": "Severe \u2014 Constant or intense, significantly limits activities",
+          "value": "severe"
+        }
+      ],
+      "next": "results"
+    },
+    "safety_guidelines": {
+      "question": "General safety guidelines",
+      "type": "info",
+      "next": "results"
+    }
+  },
+  "safety_rules": {
+    "general_guidelines": [
+      "Always consult a healthcare professional before starting yoga, especially with existing health conditions",
+      "Listen to your body \u2014 yoga should never cause sharp, stabbing, or radiating pain",
+      "Warm up before practice with gentle movements like Cat-Cow and neck rolls",
+      "Breathe steadily throughout practice \u2014 never hold your breath unless specifically instructed in pranayama",
+      "Stay hydrated before, during, and after practice",
+      "Practice on an empty stomach or wait 2-3 hours after a meal",
+      "Use props (blocks, straps, blankets, bolsters) to make poses accessible",
+      "Progress gradually \u2014 don't force your body into advanced poses",
+      "Rest in Child's Pose whenever you need a break",
+      "End every practice with Savasana (Corpse Pose) for at least 5 minutes"
+    ],
+    "when_to_stop": [
+      "Sharp, stabbing, or radiating pain",
+      "Dizziness or lightheadedness",
+      "Difficulty breathing or shortness of breath",
+      "Nausea",
+      "Numbness or tingling",
+      "Chest pain or pressure",
+      "Excessive shaking or instability",
+      "Joint pain that worsens during or after practice"
+    ],
+    "common_mistakes": [
+      "Pushing through pain \u2014 discomfort is okay, pain is not",
+      "Holding the breath during challenging poses",
+      "Rushing through poses without proper alignment",
+      "Comparing yourself to others in class",
+      "Skipping the warm-up",
+      "Skipping Savasana at the end",
+      "Practicing on a full stomach",
+      "Not using props when needed",
+      "Forcing flexibility instead of building it gradually",
+      "Ignoring modifications for your specific conditions"
+    ],
+    "age_considerations": {
+      "children": "Children can practice yoga but should focus on fun, playful poses. Avoid intense poses and long holds.",
+      "teens": "Teens can practice most yoga styles. Avoid extreme flexibility training during growth spurts.",
+      "adults": "Full range of yoga is available. Adapt based on fitness level and health conditions.",
+      "seniors": "Focus on gentle yoga, chair yoga, and balance poses. Use props extensively. Avoid inversions and deep backbends. Prioritize fall prevention."
+    },
+    "post_surgery_guidelines": {
+      "general": "Always get medical clearance before returning to yoga after any surgery.",
+      "cardiac": "Wait 6-12 weeks. Start with breathing exercises only. Gradually add gentle movement.",
+      "orthopedic": "Follow surgeon's specific restrictions. Start with gentle range-of-motion exercises.",
+      "abdominal": "Avoid all core work and twists until fully healed. Start with gentle breathing and walking.",
+      "spinal": "Work with a yoga therapist. Avoid all forward bends, backbends, and twists until cleared."
+    },
+    "breathing_guidelines": [
+      "Breathe through the nose unless instructed otherwise",
+      "Inhale during expansion movements (backbends, opening)",
+      "Exhale during contraction movements (forward bends, twists)",
+      "Keep the breath smooth and steady \u2014 never forced or strained",
+      "If you can't maintain steady breathing, the pose is too intense",
+      "Practice pranayama (breathing exercises) on an empty stomach",
+      "Stop any breathing exercise that causes dizziness or discomfort"
+    ]
+  }
+}
