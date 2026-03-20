@@ -42,7 +42,7 @@ const SURYA_A: FlowStep[] = [
   {
     name: "Prayer Pose",
     sanskrit: "Pranamasana",
-    imageKey: "tadasana",
+    imageKey: "pranamasana",
     breath: "Normal",
     duration: 5,
     instruction: "Stand at the front of your mat with feet together. Bring palms together at heart center. Ground through all four corners of your feet.",
@@ -69,16 +69,16 @@ const SURYA_A: FlowStep[] = [
   {
     name: "Equestrian Pose",
     sanskrit: "Ashwa Sanchalanasana",
-    imageKey: "anjaneyasana",
+    imageKey: "ashwa_sanchalanasana_mirrored",
     breath: "Inhale",
     duration: 5,
-    instruction: "Step the right foot back into a deep lunge. Drop the back knee to the mat. Look up, opening the chest.",
+    instruction: "Step the right foot back into a deep lunge. Drop the back knee to the mat. Hands flat on the floor framing the front foot. Look up, opening the chest.",
     tips: "Keep front knee directly over the ankle. Press hips forward and down for a deep hip flexor stretch.",
   },
   {
     name: "Plank Pose",
     sanskrit: "Dandasana / Phalakasana",
-    imageKey: "phalakasana",
+    imageKey: "phalakasana_v2",
     breath: "Hold",
     duration: 5,
     instruction: "Step the left foot back to meet the right, forming a straight line from head to heels. Engage the core.",
@@ -87,7 +87,7 @@ const SURYA_A: FlowStep[] = [
   {
     name: "Eight-Limbed Salute",
     sanskrit: "Ashtanga Namaskara",
-    imageKey: "chaturanga_dandasana",
+    imageKey: "ashtanga_namaskara",
     breath: "Exhale",
     duration: 5,
     instruction: "Lower knees, chest, and chin to the floor. Keep hips slightly elevated. Eight points touch the ground: two feet, two knees, two hands, chest, chin.",
@@ -96,7 +96,7 @@ const SURYA_A: FlowStep[] = [
   {
     name: "Cobra Pose",
     sanskrit: "Bhujangasana",
-    imageKey: "bhujangasana",
+    imageKey: "bhujangasana_mirrored",
     breath: "Inhale",
     duration: 5,
     instruction: "Slide forward and rise up into Cobra. Press hands into the mat, lift the chest. Keep elbows slightly bent and close to the body.",
@@ -114,10 +114,10 @@ const SURYA_A: FlowStep[] = [
   {
     name: "Equestrian Pose",
     sanskrit: "Ashwa Sanchalanasana",
-    imageKey: "anjaneyasana",
+    imageKey: "ashwa_sanchalanasana",
     breath: "Inhale",
     duration: 5,
-    instruction: "Step the right foot forward between the hands into a lunge. Drop the back knee. Look up, opening the chest.",
+    instruction: "Step the right foot forward between the hands into a lunge. Drop the back knee. Hands flat on the floor. Look up, opening the chest.",
     tips: "Use your hand to help guide the foot forward if needed. This mirrors step 4 on the opposite side.",
   },
   {
@@ -141,7 +141,7 @@ const SURYA_A: FlowStep[] = [
   {
     name: "Prayer Pose",
     sanskrit: "Pranamasana",
-    imageKey: "tadasana",
+    imageKey: "pranamasana",
     breath: "Exhale",
     duration: 5,
     instruction: "Return to standing with palms together at heart center. Take a moment to notice the effects of the round.",

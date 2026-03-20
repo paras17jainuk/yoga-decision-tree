@@ -10,6 +10,7 @@ export const asanaImages: Record<string, string> = {
   "balasana": "https://files.manuscdn.com/user_upload_by_module/session_file/310519663318567070/EeLQLsiQSvnZiGJU.png",
   "bhastrika_pranayama": "https://files.manuscdn.com/user_upload_by_module/session_file/310519663318567070/ZPOpIHtLZRmZBThS.png",
   "bhujangasana": "https://files.manuscdn.com/user_upload_by_module/session_file/310519663318567070/eMroYZdhXbaewPWR.png",
+  "bhujangasana_mirrored": "https://d2xsxph8kpxj0f.cloudfront.net/310519663318567070/87xTRNw69cyUtrfeqdS85m/bhujangasana_mirrored_0972c4af.png",
   "brahmari_pranayama": "https://files.manuscdn.com/user_upload_by_module/session_file/310519663318567070/pzZTVIcCMxVxSLCy.png",
   "chakrasana": "https://files.manuscdn.com/user_upload_by_module/session_file/310519663318567070/JfqmnkUfKhxyvMjg.png",
   "chakravakasana": "https://files.manuscdn.com/user_upload_by_module/session_file/310519663318567070/fzKcXmAxsvOmhDMT.png",
@@ -71,4 +72,9 @@ export const asanaImages: Record<string, string> = {
   "virabhadrasana_iii": "https://files.manuscdn.com/user_upload_by_module/session_file/310519663318567070/eYfllMxClYiHfJMt.png",
   "virasana": "https://files.manuscdn.com/user_upload_by_module/session_file/310519663318567070/iQcSbTrBNjDPHIyO.png",
   "vrksasana": "https://files.manuscdn.com/user_upload_by_module/session_file/310519663318567070/fHGBLfDhrLKaZPMe.png",
+  "pranamasana": "https://d2xsxph8kpxj0f.cloudfront.net/310519663318567070/87xTRNw69cyUtrfeqdS85m/pranamasana-fWjpQWdSD4ZTZDSxRhzoXs.png",
+  "ashwa_sanchalanasana": "https://d2xsxph8kpxj0f.cloudfront.net/310519663318567070/87xTRNw69cyUtrfeqdS85m/ashwa_sanchalanasana-Yai8Y93DxZ9qDXA8KpxonY.png",
+  "ashtanga_namaskara": "https://d2xsxph8kpxj0f.cloudfront.net/310519663318567070/87xTRNw69cyUtrfeqdS85m/ashtanga_namaskara_v2-fBLAYAV9WnGz7rfrEbZtka.png",
+  "ashwa_sanchalanasana_mirrored": "https://d2xsxph8kpxj0f.cloudfront.net/310519663318567070/87xTRNw69cyUtrfeqdS85m/ashwa_sanchalanasana_mirrored_e75cda8d.png",
+  "phalakasana_v2": "https://d2xsxph8kpxj0f.cloudfront.net/310519663318567070/87xTRNw69cyUtrfeqdS85m/phalakasana_v2-AjRY4m9JFQ9Fyqx9eo2rMK.png",
 };
