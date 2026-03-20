@@ -4,7 +4,7 @@
  * Uses localStorage-based history data from cookies.ts analytics helpers
  */
 import { useState, useMemo } from "react";
-import { Link } from "wouter";
+import { Link, useLocation } from "wouter";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   BarChart,
@@ -123,6 +123,12 @@ function StatCard({
 }
 
 function EmptyState() {
+  const [, navigate] = useLocation();
+
+  const handleStartAssessment = () => {
+    navigate("/?start=assessment");
+  };
+
   return (
     <motion.div
       initial={{ opacity: 0, scale: 0.95 }}
@@ -139,16 +145,15 @@ function EmptyState() {
         Complete your first yoga session to start tracking your progress. Take the assessment
         to get personalized recommendations, then start a guided session.
       </p>
-      <Link href="/">
-        <motion.span
-          whileHover={{ scale: 1.03 }}
-          whileTap={{ scale: 0.97 }}
-          className="inline-flex items-center gap-2 px-6 py-3 bg-forest text-cream font-semibold rounded-full hover:bg-forest-light transition-colors"
-        >
-          Take Assessment
-          <ArrowRight className="w-4 h-4" />
-        </motion.span>
-      </Link>
+      <motion.button
+        onClick={handleStartAssessment}
+        whileHover={{ scale: 1.03 }}
+        whileTap={{ scale: 0.97 }}
+        className="inline-flex items-center gap-2 px-6 py-3 bg-forest text-cream font-semibold rounded-full hover:bg-forest-light transition-colors"
+      >
+        Take Assessment
+        <ArrowRight className="w-4 h-4" />
+      </motion.button>
     </motion.div>
   );
 }

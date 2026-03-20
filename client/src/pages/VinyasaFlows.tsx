@@ -33,6 +33,7 @@ import Navbar from "@/components/Navbar";
 import { asanaImages } from "@/data/asanaImages";
 import { vinyasaFlowVideos } from "@/data/transitionVideos";
 import { Switch } from "@/components/ui/switch";
+import { addSessionToHistory } from "@/lib/cookies";
 
 interface FlowStep {
   name: string;
@@ -276,6 +277,7 @@ export default function VinyasaFlows() {
   const [mode, setMode] = useState<"browse" | "learn" | "practice">("browse");
   const [currentStepIndex, setCurrentStepIndex] = useState(0);
   const [isPlaying, setIsPlaying] = useState(false);
+  const [practiceStartTime, setPracticeStartTime] = useState<number | null>(null);
   const [timeLeft, setTimeLeft] = useState(0);
   const [soundEnabled, setSoundEnabled] = useState(true);
   const [showContraindications, setShowContraindications] = useState(false);
@@ -347,8 +349,31 @@ export default function VinyasaFlows() {
     setCurrentStepIndex(0);
     setTimeLeft(steps[0]?.duration || 5);
     setIsPlaying(true);
+    setPracticeStartTime(Date.now());
     playBell();
   };
+
+  // Save session to history when flow completes
+  const prevPlayingRef = useRef(false);
+  useEffect(() => {
+    if (prevPlayingRef.current && !isPlaying && practiceStartTime && selectedFlow && currentStepIndex >= steps.length - 1) {
+      const elapsed = Math.round((Date.now() - practiceStartTime) / 60000);
+      const totalDuration = Math.round(steps.reduce((s, st) => s + st.duration, 0) / 60);
+      addSessionToHistory({
+        id: `vinyasa_${selectedFlow.id}_${Date.now()}`,
+        completedAt: Date.now(),
+        durationMinutes: totalDuration,
+        actualMinutes: Math.max(1, elapsed),
+        asanaCount: steps.length,
+        asanaIds: steps.map((s) => s.imageKey),
+        conditions: [],
+        severity: null,
+        type: "vinyasa",
+      });
+      setPracticeStartTime(null);
+    }
+    prevPlayingRef.current = isPlaying;
+  }, [isPlaying, practiceStartTime, currentStepIndex, steps, selectedFlow]);
 
   const goBack = () => {
     if (mode === "practice") {

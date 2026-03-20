@@ -114,7 +114,7 @@ export default function Home() {
     navigate("/safety");
   }, [navigate]);
 
-  // Listen for the "start-assessment" event from Navbar
+  // Listen for the "start-assessment" event from Navbar or Dashboard
   useEffect(() => {
     const handler = () => {
       if (currentStep === "hero") {
@@ -124,6 +124,15 @@ export default function Home() {
     window.addEventListener("start-assessment", handler);
     return () => window.removeEventListener("start-assessment", handler);
   }, [currentStep, goToStep]);
+
+  // Auto-start assessment if URL has ?start=assessment
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    if (params.get("start") === "assessment" && currentStep === "hero") {
+      goToStep("start");
+    }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const currentNode = currentStep !== "hero" ? getDecisionNode(currentStep) : null;
 

@@ -33,6 +33,7 @@ import Navbar from "@/components/Navbar";
 import { asanaImages } from "@/data/asanaImages";
 import { suryaATransitionVideos, suryaBTransitionVideos } from "@/data/transitionVideos";
 import { Switch } from "@/components/ui/switch";
+import { addSessionToHistory } from "@/lib/cookies";
 
 /* ── Surya Namaskar A Steps ── */
 interface FlowStep {
@@ -447,6 +448,7 @@ export default function SuryaNamaskar() {
   const [rounds, setRounds] = useState(3);
   const [currentRound, setCurrentRound] = useState(1);
   const [isPlaying, setIsPlaying] = useState(false);
+  const [practiceStartTime, setPracticeStartTime] = useState<number | null>(null);
   const [timeLeft, setTimeLeft] = useState(0);
   const [soundEnabled, setSoundEnabled] = useState(true);
   const [showContraindications, setShowContraindications] = useState(false);
@@ -485,22 +487,62 @@ export default function SuryaNamaskar() {
     } catch { /* ignore */ }
   }, [soundEnabled]);
 
+  /* Gentle singing bowl chime for cinematic mode — layered harmonics with long decay */
+  const playSoftChime = useCallback(() => {
+    if (!soundEnabled) return;
+    try {
+      if (!audioRef.current) audioRef.current = new AudioContext();
+      const ctx = audioRef.current;
+      const t = ctx.currentTime;
+
+      // Fundamental tone — warm, low singing bowl
+      const osc1 = ctx.createOscillator();
+      const g1 = ctx.createGain();
+      osc1.connect(g1);
+      g1.connect(ctx.destination);
+      osc1.frequency.value = 396; // G4-ish, soothing Solfeggio frequency
+      osc1.type = "sine";
+      g1.gain.setValueAtTime(0.12, t);
+      g1.gain.exponentialRampToValueAtTime(0.001, t + 3.0);
+      osc1.start(t);
+      osc1.stop(t + 3.0);
+
+      // Soft harmonic overtone
+      const osc2 = ctx.createOscillator();
+      const g2 = ctx.createGain();
+      osc2.connect(g2);
+      g2.connect(ctx.destination);
+      osc2.frequency.value = 528; // Love frequency harmonic
+      osc2.type = "sine";
+      g2.gain.setValueAtTime(0.06, t);
+      g2.gain.exponentialRampToValueAtTime(0.001, t + 2.5);
+      osc2.start(t + 0.05);
+      osc2.stop(t + 2.5);
+
+      // High shimmer — very quiet, adds sparkle
+      const osc3 = ctx.createOscillator();
+      const g3 = ctx.createGain();
+      osc3.connect(g3);
+      g3.connect(ctx.destination);
+      osc3.frequency.value = 792; // Octave above fundamental
+      osc3.type = "sine";
+      g3.gain.setValueAtTime(0.03, t);
+      g3.gain.exponentialRampToValueAtTime(0.001, t + 2.0);
+      osc3.start(t + 0.1);
+      osc3.stop(t + 2.0);
+    } catch { /* ignore */ }
+  }, [soundEnabled]);
+
   /* ── CINEMATIC MODE TIMER ── */
-  // In cinematic mode, the "pose" phase lasts CINEMATIC_POSE_HOLD seconds,
-  // then switches to "video" phase which plays at natural speed until onEnded fires.
+  // In cinematic mode: video plays first, then pose image is shown for CINEMATIC_POSE_HOLD seconds,
+  // then advances to next step (which starts with video again).
   useEffect(() => {
     if (!isPlaying || mode !== "practice" || !cinematicMode) return;
     if (cinematicPhase !== "pose") return;
 
-    // Countdown for the pose hold
+    // Countdown for the pose hold, then advance to next step
     const timer = setTimeout(() => {
-      // After pose hold, check if there's a transition video
-      if (currentStepIndex < currentVideos.length) {
-        setCinematicPhase("video");
-      } else {
-        // No video for this step, advance to next step
-        advanceCinematicStep();
-      }
+      advanceCinematicStep();
     }, CINEMATIC_POSE_HOLD * 1000);
 
     return () => clearTimeout(timer);
@@ -513,20 +555,26 @@ export default function SuryaNamaskar() {
       if (currentRound < rounds) {
         setCurrentRound((r) => r + 1);
         setCurrentStepIndex(0);
-        setCinematicPhase("pose");
+        // Start next round with video if available, otherwise pose
+        setCinematicPhase(currentVideos.length > 0 ? "video" : "pose");
+        playSoftChime();
       } else {
         setIsPlaying(false);
         setCinematicPhase("pose");
+        playSoftChime();
       }
     } else {
       setCurrentStepIndex(nextIndex);
-      setCinematicPhase("pose");
+      // Start next step with video if available, otherwise pose
+      setCinematicPhase(nextIndex < currentVideos.length ? "video" : "pose");
+      playSoftChime();
     }
-  }, [currentStepIndex, steps.length, currentRound, rounds]);
+  }, [currentStepIndex, steps.length, currentRound, rounds, playSoftChime, currentVideos.length]);
 
   const handleCinematicVideoEnded = useCallback(() => {
-    advanceCinematicStep();
-  }, [advanceCinematicStep]);
+    // Video finished, now show the pose image for the hold duration
+    setCinematicPhase("pose");
+  }, []);
 
   /* ── STANDARD TIMER (non-cinematic) ── */
   useEffect(() => {
@@ -568,13 +616,38 @@ export default function SuryaNamaskar() {
     setCurrentRound(1);
     setTimeLeft(steps[0].duration);
     setIsPlaying(true);
+    setPracticeStartTime(Date.now());
     if (cinematicMode) {
-      setCinematicPhase("pose");
+      // Start cinematic mode with video first
+      setCinematicPhase(currentVideos.length > 0 ? "video" : "pose");
+      playSoftChime();
     } else {
       playBell();
     }
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
+
+  // Save session to history when flow completes (isPlaying goes false after being true)
+  const prevPlayingRef = useRef(false);
+  useEffect(() => {
+    if (prevPlayingRef.current && !isPlaying && practiceStartTime && currentStepIndex >= steps.length - 1) {
+      const elapsed = Math.round((Date.now() - practiceStartTime) / 60000);
+      const totalDuration = Math.round((steps.reduce((s, st) => s + st.duration, 0) * currentRound) / 60);
+      addSessionToHistory({
+        id: `surya_${selectedFlow}_${Date.now()}`,
+        completedAt: Date.now(),
+        durationMinutes: totalDuration,
+        actualMinutes: Math.max(1, elapsed),
+        asanaCount: steps.length * currentRound,
+        asanaIds: steps.map((s) => s.imageKey),
+        conditions: [],
+        severity: null,
+        type: "surya_namaskar",
+      });
+      setPracticeStartTime(null);
+    }
+    prevPlayingRef.current = isPlaying;
+  }, [isPlaying, practiceStartTime, currentStepIndex, steps, currentRound, selectedFlow]);
 
   const togglePause = () => setIsPlaying(!isPlaying);
 
@@ -867,7 +940,7 @@ export default function SuryaNamaskar() {
                 >
                   <p className="text-sm text-foreground">
                     <Clapperboard className="w-4 h-4 inline mr-2 text-gold-dark" />
-                    <strong>Cinematic Mode:</strong> Each pose is shown for {poseHoldSeconds} second{poseHoldSeconds !== 1 ? 's' : ''}, followed by a smooth transition video. Adjust the hold time above.
+                    <strong>Cinematic Mode:</strong> Each pose is shown for {poseHoldSeconds} second{poseHoldSeconds !== 1 ? 's' : ''}, followed by a smooth transition video. Gentle singing bowl chimes mark each transition. Adjust the hold time above.
                   </p>
                 </motion.div>
               )}
@@ -1050,7 +1123,7 @@ export default function SuryaNamaskar() {
                               />
                             )}
                             <span className="text-sm text-muted-foreground font-medium">
-                              {cinematicPhase === "pose" ? "Observing pose..." : "Flowing to next pose..."}
+                              {cinematicPhase === "video" ? "Transitioning..." : "Hold & observe..."}
                             </span>
                           </div>
                         </div>
@@ -1081,14 +1154,12 @@ export default function SuryaNamaskar() {
                 >
                   <ChevronRight className="w-5 h-5" />
                 </button>
-                {!cinematicMode && (
-                  <button
-                    onClick={() => setSoundEnabled(!soundEnabled)}
-                    className="w-10 h-10 rounded-full bg-cream-dark flex items-center justify-center hover:bg-border transition-colors"
-                  >
-                    {soundEnabled ? <Volume2 className="w-4 h-4" /> : <VolumeX className="w-4 h-4" />}
-                  </button>
-                )}
+                <button
+                  onClick={() => setSoundEnabled(!soundEnabled)}
+                  className="w-10 h-10 rounded-full bg-cream-dark flex items-center justify-center hover:bg-border transition-colors"
+                >
+                  {soundEnabled ? <Volume2 className="w-4 h-4" /> : <VolumeX className="w-4 h-4" />}
+                </button>
                 <button
                   onClick={resetPractice}
                   className="w-10 h-10 rounded-full bg-cream-dark flex items-center justify-center hover:bg-border transition-colors"
@@ -1106,7 +1177,7 @@ export default function SuryaNamaskar() {
                       onClick={() => {
                         setCurrentStepIndex(i);
                         setTimeLeft(steps[i].duration);
-                        if (cinematicMode) setCinematicPhase("pose");
+                        if (cinematicMode) setCinematicPhase(i < currentVideos.length ? "video" : "pose");
                       }}
                       className={`shrink-0 w-14 h-14 rounded-xl border-2 overflow-hidden flex items-center justify-center transition-all relative ${
                         i === currentStepIndex
