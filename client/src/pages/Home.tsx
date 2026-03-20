@@ -114,6 +114,17 @@ export default function Home() {
     navigate("/safety");
   }, [navigate]);
 
+  // Listen for the "start-assessment" event from Navbar
+  useEffect(() => {
+    const handler = () => {
+      if (currentStep === "hero") {
+        goToStep("start");
+      }
+    };
+    window.addEventListener("start-assessment", handler);
+    return () => window.removeEventListener("start-assessment", handler);
+  }, [currentStep, goToStep]);
+
   const currentNode = currentStep !== "hero" ? getDecisionNode(currentStep) : null;
 
   return (

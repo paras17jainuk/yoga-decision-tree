@@ -5,18 +5,28 @@
  */
 import { Link, useLocation } from "wouter";
 import { motion } from "framer-motion";
-import { Leaf, Menu, X } from "lucide-react";
+import { Leaf, Menu, X, Sun, Wind } from "lucide-react";
 import { useState } from "react";
 
 const navItems = [
   { label: "Home", href: "/" },
   { label: "Explore Asanas", href: "/explore" },
+  { label: "Surya Namaskar", href: "/surya-namaskar" },
+  { label: "Vinyasa Flows", href: "/vinyasa" },
   { label: "Safety Guide", href: "/safety" },
 ];
 
 export default function Navbar() {
   const [location] = useLocation();
   const [mobileOpen, setMobileOpen] = useState(false);
+
+  const handleStartAssessment = () => {
+    if (location === "/") {
+      // Already on home — dispatch a custom event that Home listens for
+      window.dispatchEvent(new CustomEvent("start-assessment"));
+    }
+    // If not on home, the Link will navigate there and the hero has the button
+  };
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-cream/80 backdrop-blur-lg border-b border-border">
@@ -37,7 +47,7 @@ export default function Navbar() {
             return (
               <Link key={item.href} href={item.href}>
                 <span
-                  className={`relative px-4 py-2 text-sm font-medium rounded-full transition-colors ${
+                  className={`relative px-3 py-2 text-sm font-medium rounded-full transition-colors ${
                     isActive
                       ? "text-forest-dark"
                       : "text-muted-foreground hover:text-foreground"
@@ -57,7 +67,7 @@ export default function Navbar() {
           })}
         </div>
 
-        <Link href="/">
+        <Link href="/" onClick={handleStartAssessment}>
           <motion.span
             whileHover={{ scale: 1.03 }}
             whileTap={{ scale: 0.97 }}
@@ -101,7 +111,7 @@ export default function Navbar() {
               </Link>
             );
           })}
-          <Link href="/">
+          <Link href="/" onClick={handleStartAssessment}>
             <span
               onClick={() => setMobileOpen(false)}
               className="block mt-2 px-4 py-3 bg-forest text-cream text-sm font-semibold rounded-xl text-center"
