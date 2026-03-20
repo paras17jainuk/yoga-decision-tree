@@ -114,7 +114,7 @@ const SURYA_A: FlowStep[] = [
   {
     name: "Equestrian Pose",
     sanskrit: "Ashwa Sanchalanasana",
-    imageKey: "ashwa_sanchalanasana",
+    imageKey: "ashwa_sanchalanasana_mirrored",
     breath: "Inhale",
     duration: 5,
     instruction: "Step the right foot forward between the hands into a lunge. Drop the back knee. Hands flat on the floor. Look up, opening the chest.",
