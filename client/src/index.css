@@ -147,4 +147,16 @@
       max-width: 1280px;
     }
   }
+
+  /* Safe area for mobile bottom tab bar */
+  .safe-area-bottom {
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+
+  /* Add bottom padding on mobile so content isn't hidden behind bottom tab bar */
+  @media (max-width: 1023px) {
+    body {
+      padding-bottom: 4.5rem;
+    }
+  }
 }
