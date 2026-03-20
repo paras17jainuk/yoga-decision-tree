@@ -15,6 +15,7 @@ import {
 } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import { getAllAsanas } from "@/data/engine";
+import { asanaImages } from "@/data/asanaImages";
 import type { Asana } from "@/data/types";
 
 const GENTLE_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663318567070/87xTRNw69cyUtrfeqdS85m/yoga-gentle-ekPcTrvJzCpwpzFotXwp7G.webp";
@@ -214,7 +215,20 @@ function ExploreAsanaCard({
       className="bg-card border border-border rounded-2xl overflow-hidden hover:border-forest/20 transition-all"
     >
       <button onClick={onToggle} className="w-full text-left p-5">
-        <div className="flex items-start justify-between gap-3">
+        <div className="flex items-start gap-4">
+          {/* Asana image */}
+          <div className="w-16 h-16 rounded-xl overflow-hidden bg-white border border-border/50 shrink-0 flex items-center justify-center">
+            {asanaImages[asana.id] ? (
+              <img
+                src={asanaImages[asana.id]}
+                alt={asana.english_name}
+                className="w-full h-full object-contain p-1.5"
+                loading="lazy"
+              />
+            ) : (
+              <Leaf className="w-6 h-6 text-forest/20" />
+            )}
+          </div>
           <div className="flex-1">
             <div className="flex items-center gap-2 mb-1">
               <span className="text-xs text-muted-foreground font-medium uppercase tracking-wide">

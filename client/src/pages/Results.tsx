@@ -18,6 +18,8 @@ import {
   Shield,
   Star,
   RefreshCw,
+  Play,
+  Timer,
 } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import {
@@ -25,6 +27,7 @@ import {
   getConditionById,
   getSafetyRules,
 } from "@/data/engine";
+import { asanaImages } from "@/data/asanaImages";
 import type { Severity, AsanaRecommendation } from "@/data/types";
 
 const RESULTS_BG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663318567070/87xTRNw69cyUtrfeqdS85m/results-bg-nM45BvEepFyKP9wrtVQrZ4.webp";
@@ -336,13 +339,23 @@ export default function Results() {
           )}
         </AnimatePresence>
 
-        {/* Restart button */}
+        {/* Action buttons */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.5 }}
-          className="mt-12 text-center"
+          className="mt-12 flex flex-col sm:flex-row items-center justify-center gap-3"
         >
+          {results.recommended.length > 0 && (
+            <button
+              onClick={() => navigate(`/session?${search}`)}
+              className="inline-flex items-center gap-2 px-8 py-3.5 bg-forest text-cream rounded-full font-semibold hover:bg-forest-light transition-colors shadow-lg"
+            >
+              <Play className="w-5 h-5" />
+              Start Session
+              <Timer className="w-4 h-4 opacity-60" />
+            </button>
+          )}
           <button
             onClick={() => navigate("/")}
             className="inline-flex items-center gap-2 px-6 py-3 bg-cream-dark text-foreground rounded-full font-medium hover:bg-border transition-colors"
@@ -387,7 +400,20 @@ function AsanaCard({
         onClick={onToggle}
         className="w-full text-left p-5"
       >
-        <div className="flex items-start justify-between gap-3">
+        <div className="flex items-start gap-4">
+          {/* Asana image */}
+          <div className="w-16 h-16 rounded-xl overflow-hidden bg-white border border-border/50 shrink-0 flex items-center justify-center">
+            {asanaImages[asana.id] ? (
+              <img
+                src={asanaImages[asana.id]}
+                alt={asana.english_name}
+                className="w-full h-full object-contain p-1.5"
+                loading="lazy"
+              />
+            ) : (
+              <Leaf className="w-6 h-6 text-forest/20" />
+            )}
+          </div>
           <div className="flex-1">
             <div className="flex items-center gap-2 mb-1">
               <span

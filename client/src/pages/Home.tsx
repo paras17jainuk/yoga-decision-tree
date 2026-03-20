@@ -3,7 +3,7 @@
  * Home: Full-screen hero with decision tree wizard
  * Warm earthy tones, organic shapes, flowing animations
  */
-import { useState, useMemo, useCallback } from "react";
+import { useState, useMemo, useCallback, useEffect } from "react";
 import { useLocation } from "wouter";
 import { motion, AnimatePresence } from "framer-motion";
 import {
@@ -318,12 +318,13 @@ function AutoRedirect({
   setSelectedConditions: React.Dispatch<React.SetStateAction<string[]>>;
   onContinue: (next: string) => void;
 }) {
-  useState(() => {
+  useEffect(() => {
     setSelectedConditions((prev) =>
       prev.includes(condition) ? prev : [...prev, condition]
     );
-    setTimeout(() => onContinue(next), 400);
-  });
+    const timer = setTimeout(() => onContinue(next), 400);
+    return () => clearTimeout(timer);
+  }, [condition, next, setSelectedConditions, onContinue]);
 
   return (
     <div className="flex items-center gap-3 text-muted-foreground">
